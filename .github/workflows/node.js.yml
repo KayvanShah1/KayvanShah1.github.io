@@ -13,7 +13,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -50,7 +50,11 @@ jobs:
 
     - name: Deploy with gh-pages
       run: |
+        git config --global user.name $user_name
+        git config --global user.email $user_email
         git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-        npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+        npm run deploy
       env:
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
