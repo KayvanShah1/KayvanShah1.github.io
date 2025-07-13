@@ -1,8 +1,15 @@
-import { ModeToggle } from "./mode-toggle";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+	Sheet,
+	SheetContent,
+	SheetDescription,
+	SheetTitle,
+	SheetTrigger,
+} from "@/components/ui/sheet";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import { ModeToggle } from "./mode-toggle";
 import {
 	NavigationMenu,
 	NavigationMenuItem,
@@ -52,6 +59,9 @@ const Navbar = () => {
 							))}
 						</NavigationMenuList>
 					</NavigationMenu>
+
+					<div className="bg-border h-6 w-px" />
+
 					<ModeToggle />
 				</div>
 
@@ -70,6 +80,12 @@ const Navbar = () => {
 							</Button>
 						</SheetTrigger>
 						<SheetContent side="right" className="flex flex-col gap-6 p-6">
+							<VisuallyHidden>
+								<SheetTitle>Menu</SheetTitle>
+								<SheetDescription>
+									Navigation menu for mobile users
+								</SheetDescription>
+							</VisuallyHidden>
 							<div className="text-lg font-semibold">Menu</div>
 							<nav className="flex flex-col gap-4">
 								{navItems.map((item) => (
