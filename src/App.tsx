@@ -8,7 +8,7 @@ function App() {
 			<div className="no-scrollbar min-h-screen flex-col overflow-x-hidden">
 				<Navbar />
 
-				<main className="container mt-10 flex-1 px-4 pt-20 md:px-8">
+				<main className="container mt-10 flex-1 px-24 pt-20">
 					{/* This is where you place the main sections like About, Projects, etc. */}
 					<section id="home">Home Section</section>
 					<section id="about">About Section</section>
