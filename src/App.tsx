@@ -5,12 +5,18 @@ import { ThemeProvider } from "@/components/theme-provider";
 function App() {
 	return (
 		<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-			<div className="overflow-x-hidden text-neutral-300 antialiased">
-				<div>Welcome to My App</div>
-				<div className="container mx-auto px-8">
-					<Navbar />
-					<Footer />
-				</div>
+			<div className="no-scrollbar min-h-screen flex-col overflow-x-hidden">
+				<Navbar />
+
+				<main className="container mt-10 flex-1 px-4 pt-20 md:px-8">
+					{/* This is where you place the main sections like About, Projects, etc. */}
+					<section id="home">Home Section</section>
+					<section id="about">About Section</section>
+					<section id="experience">Experience Section</section>
+					<section id="projects">Projects Section</section>
+				</main>
+
+				<Footer />
 			</div>
 		</ThemeProvider>
 	);
