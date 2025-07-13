@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=NTR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Quintessential&display=swap');
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -39,6 +45,11 @@
 }
 
 @theme inline {
+	--font-f-inter: 'Inter', sans-serif;
+	--font-f-ntr: 'NTR', sans-serif;
+	--font-f-roboto: 'Roboto', monospace;
+	--font-f-opensans: 'Open Sans', sans-serif;
+	--font-f-merienda: 'Merienda', cursive;
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
