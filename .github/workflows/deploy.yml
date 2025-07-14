@@ -29,6 +29,8 @@ jobs:
 
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      VITE_WEB3FORMS_API_URL: ${{ secrets.VITE_WEB3FORMS_API_URL }}
+      VITE_WEB3FORMS_API_KEY: ${{ secrets.VITE_WEB3FORMS_API_KEY }}
 
     steps:
       - name: Checkout
