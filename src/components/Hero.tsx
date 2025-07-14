@@ -5,7 +5,7 @@ import Typewriter from "./Typewriter";
 
 const Hero = () => {
 	return (
-		<div className="relative container flex h-screen w-full flex-col items-center justify-center px-10">
+		<div className="relative flex h-screen w-full flex-col items-center justify-center px-10">
 			<div className="mb-6">
 				<img src={ArtPic} alt="Some Image" className="h-64 w-64" />
 			</div>
