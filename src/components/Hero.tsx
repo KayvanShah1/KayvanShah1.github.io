@@ -1,6 +1,7 @@
 import ArtPic from "@/assets/hero-abstract.png";
 import { Button } from "./ui/button";
 import { FaEnvelope } from "react-icons/fa";
+import Typewriter from "./Typewriter";
 
 const Hero = () => {
 	return (
@@ -11,7 +12,12 @@ const Hero = () => {
 
 			<div>
 				<h1 className="text-6xl font-semibold">
-					Hi, <span className="font-bold text-green-400">Kayvan</span> here.
+					<Typewriter speed={100} cursor>
+						<>
+							Hi, <span className="font-bold text-green-400">Kayvan</span> here.
+						</>
+					</Typewriter>
+					{/* Hi, <span className="font-bold text-green-400">Kayvan</span> here. */}
 				</h1>
 			</div>
 
@@ -26,8 +32,8 @@ const Hero = () => {
 				impactful products.
 			</div>
 
-			<Button variant="outline" size="lg" className="my-4 text-green-400">
-				<FaEnvelope /> Say Hi!
+			<Button variant="outline" size="lg" className="my-4 gap-2 text-lg text-green-400">
+				<FaEnvelope size={40} /> Say Hi!
 			</Button>
 		</div>
 	);
