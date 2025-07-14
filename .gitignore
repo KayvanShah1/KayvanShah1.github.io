@@ -22,3 +22,38 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development
+.env.test
+.env.production
+# Ignore build output
+build
+coverage
+.vite
+.vitest
+.vitest-test-results.json
+.vitest-test-results
+# Ignore test coverage reports
+coverage/
+# Ignore dependency directories
+node_modules/
+# Ignore lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+lerna-lock.json
+# Ignore IDE specific files
+.idea/
+.vscode/
+# Ignore temporary files
+*.tmp
+*.temp
+*.bak
+# Ignore logs
+logs/
+*.log
