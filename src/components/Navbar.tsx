@@ -30,7 +30,7 @@ const Navbar = () => {
 	// const [toggle, setToggle] = useState(false);
 
 	return (
-		<header className="fixed top-0 right-0 left-0 z-50 w-full bg-transparent backdrop-blur">
+		<header className="bg-background fixed top-0 right-0 left-0 z-50 w-full backdrop-blur">
 			<div className="relative mx-4 flex h-16 max-w-screen-xl items-center justify-between border-b px-20 py-3 md:px-16">
 				{/* Brand */}
 				<a href="/" className="text-xl font-semibold tracking-tight">
