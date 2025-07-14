@@ -31,7 +31,7 @@ const Navbar = () => {
 
 	return (
 		<header className="bg-background fixed top-0 right-0 left-0 z-50 w-full backdrop-blur">
-			<div className="relative mx-4 flex h-16 max-w-screen-xl items-center justify-between border-b px-20 py-3 md:px-16">
+			<div className="relative mx-4 flex h-16 max-w-screen-xl items-center justify-between border-b py-3 sm:px-16 md:px-16 lg:px-16">
 				{/* Brand */}
 				<a href="/" className="text-xl font-semibold tracking-tight">
 					Kayvan Shah
@@ -66,7 +66,7 @@ const Navbar = () => {
 				</div>
 
 				{/* Mobile Nav */}
-				<div className="flex items-center gap-2 md:hidden">
+				<div className="flex items-center justify-between gap-2 md:hidden lg:hidden">
 					<ModeToggle />
 					<Sheet>
 						<SheetTrigger asChild>
@@ -79,7 +79,7 @@ const Navbar = () => {
 								<Menu className="h-5 w-5" />
 							</Button>
 						</SheetTrigger>
-						<SheetContent side="right" className="flex flex-col gap-6 p-6">
+						<SheetContent side="right" className="flex h-1/3 w-1/3 flex-col gap-6 p-6">
 							<VisuallyHidden>
 								<SheetTitle>Menu</SheetTitle>
 								<SheetDescription>
@@ -87,6 +87,7 @@ const Navbar = () => {
 								</SheetDescription>
 							</VisuallyHidden>
 							<div className="text-lg font-semibold">Menu</div>
+
 							<nav className="flex flex-col gap-4">
 								{navItems.map((item) => (
 									<a
