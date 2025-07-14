@@ -11,6 +11,7 @@ const flattenText = (node: ReactNode): string => {
 	if (typeof node === "string") return node;
 	if (Array.isArray(node)) return node.map(flattenText).join("");
 	if (typeof node === "object" && node && "props" in node)
+		// @ts-expect-error – we know this is a valid React element
 		return flattenText(node.props.children);
 	return "";
 };
@@ -26,6 +27,7 @@ const getTextLength = (node: ReactNode): number => {
 	if (typeof node === "string") return node.length;
 	if (Array.isArray(node)) return node.reduce((acc, child) => acc + getTextLength(child), 0);
 	if (typeof node === "object" && node && "props" in node)
+		// @ts-expect-error – we know this is a valid React element
 		return getTextLength(node.props.children);
 	return 0;
 };
@@ -42,6 +44,7 @@ const renderTypedContent = (node: ReactNode, remaining: { count: number }): Reac
 	}
 
 	if (typeof node === "object" && node !== null && "props" in node) {
+		// @ts-expect-error – we know this is a valid React element
 		const typedChildren = renderTypedContent(node.props.children, remaining);
 		return <node.type {...(node.props as object)}>{typedChildren}</node.type>;
 	}
