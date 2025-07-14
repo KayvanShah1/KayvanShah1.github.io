@@ -1,64 +1,166 @@
 import { Button } from "@/components/ui/button";
-import {
-	Card,
-	CardAction,
-	CardContent,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "./ui/textarea";
+import { useState, type FormEvent } from "react";
 
 const Contact = () => {
+	const apiUrl = import.meta.env.VITE_WEB3FORMS_API_URL;
+	const apiKey = import.meta.env.VITE_WEB3FORMS_API_KEY;
+
+	const [submissionStatus, setSubmissionStatus] = useState<"success" | "error" | null>(null);
+
+	const SendEmail = async (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+
+		const form = event.currentTarget;
+		const formData = new FormData(form);
+
+		const name = formData.get("name");
+		const customSubject = `A visitor sent a message from website`;
+		const additionalData = {
+			access_key: apiKey,
+			from_name: name,
+			subject: customSubject,
+		};
+
+		for (const [key, value] of Object.entries(additionalData)) {
+			formData.append(key, value);
+		}
+
+		const json = JSON.stringify(Object.fromEntries(formData));
+		if (import.meta.env.DEV) {
+			console.log(json);
+		}
+
+		try {
+			const res = await fetch(apiUrl, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Accept: "application/json",
+				},
+				body: json,
+			}).then((res) => res.json());
+
+			if (res.success) {
+				console.log("Success", res);
+				form.reset();
+				setSubmissionStatus("success");
+			} else {
+				setSubmissionStatus("error");
+			}
+		} catch (err) {
+			console.error("Error submitting form:", err);
+			setSubmissionStatus("error");
+		}
+	};
+
 	return (
-		<div className="relative my-20 flex h-screen items-center justify-center p-4">
-			<Card className="w-full max-w-sm">
+		<div className="relative my-10 flex h-screen items-center justify-center p-10">
+			<Card className="w-full max-w-md shadow-lg">
 				<CardHeader>
-					<CardTitle>Login to your account</CardTitle>
+					<CardTitle className="text-2xl font-semibold">Get in Touch</CardTitle>
 					<CardDescription>
-						Enter your email below to login to your account
+						Feel free to reach out for collabs, questions, or just to say hi!
 					</CardDescription>
-					<CardAction>
-						<Button variant="link">Sign Up</Button>
-					</CardAction>
 				</CardHeader>
 				<CardContent>
-					<form>
+					<form className="w-full" onSubmit={SendEmail}>
 						<div className="flex flex-col gap-6">
+							<div className="grid gap-2">
+								<Label htmlFor="name">Name</Label>
+								<Input
+									id="name"
+									name="name"
+									type="text"
+									placeholder="Enter your name"
+									required
+								/>
+							</div>
 							<div className="grid gap-2">
 								<Label htmlFor="email">Email</Label>
 								<Input
 									id="email"
+									name="email"
 									type="email"
 									placeholder="m@example.com"
 									required
 								/>
 							</div>
 							<div className="grid gap-2">
+								<Label htmlFor="summary">Subject</Label>
+								<Input
+									id="summary"
+									name="summary"
+									type="text"
+									placeholder="What's this about?"
+								/>
+							</div>
+							<div className="grid gap-2">
 								<div className="flex items-center">
-									<Label htmlFor="password">Password</Label>
-									<a
-										href="#"
-										className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-									>
-										Forgot your password?
-									</a>
+									<Label htmlFor="message">Message</Label>
 								</div>
-								<Input id="password" type="password" required />
+								<Textarea
+									id="message"
+									name="message"
+									placeholder="Tell me what you’d like to connect for"
+									required
+								/>
+								<p className="text-muted-foreground text-xs">
+									I typically respond within 2-3 days. Thanks for reaching out!
+								</p>
 							</div>
 						</div>
+
+						<div className="mt-6">
+							<Button type="submit" className="w-full">
+								Send Message
+							</Button>
+						</div>
 					</form>
+
+					{submissionStatus === "success" && (
+						<div className="mt-2 flex items-center justify-center text-green-500">
+							<svg
+								className="mr-2 h-6 w-6"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth="2"
+									d="M5 13l4 4L19 7"
+								></path>
+							</svg>
+							Your message was successfully submitted!
+						</div>
+					)}
+
+					{submissionStatus === "error" && (
+						<div className="mt-2 flex items-center justify-center text-red-500">
+							<svg
+								className="mr-2 h-6 w-6"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth="2"
+									d="M6 18L18 6M6 6l12 12"
+								></path>
+							</svg>
+							There was an error submitting your message.
+						</div>
+					)}
 				</CardContent>
-				<CardFooter className="flex-col gap-2">
-					<Button type="submit" className="w-full">
-						Login
-					</Button>
-					<Button variant="outline" className="w-full">
-						Login with Google
-					</Button>
-				</CardFooter>
 			</Card>
 		</div>
 	);
