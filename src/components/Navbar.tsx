@@ -1,13 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {
-	Sheet,
-	SheetContent,
-	SheetDescription,
-	SheetTitle,
-	SheetTrigger,
-} from "@/components/ui/sheet";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ModeToggle } from "./mode-toggle";
 import {
@@ -65,7 +57,6 @@ const Navbar = () => {
 				</a>
 
 				{/* Desktop Nav */}
-
 				<div className="hidden items-center gap-6 md:flex" aria-label="Main navigation">
 					<NavigationMenu>
 						<NavigationMenuList>
@@ -92,54 +83,43 @@ const Navbar = () => {
 					<ModeToggle />
 				</div>
 
-				{/* Mobile Nav */}
-				<div className="flex items-center justify-between gap-2 md:hidden">
+				{/* Mobile Nav using NavigationMenu */}
+				<div className="bg-background flex items-center justify-between gap-2 md:hidden">
 					<ModeToggle />
-					<Sheet open={isOpen} onOpenChange={setIsOpen}>
-						<SheetTrigger asChild>
-							<Button
-								variant="ghost"
-								size="icon"
-								className="md:hidden"
-								aria-label="Open Menu"
-							>
-								<Menu className="h-5 w-5" />
-							</Button>
-						</SheetTrigger>
-						<SheetContent side="right" className="flex h-64 w-48 flex-col gap-6 p-6">
-							<VisuallyHidden>
-								<SheetTitle>Menu</SheetTitle>
-								<SheetDescription>
-									Navigation menu for mobile users
-								</SheetDescription>
-							</VisuallyHidden>
-							{/* <div className="text-lg font-semibold">Menu</div> */}
+					<Button
+						variant="ghost"
+						size="icon"
+						onClick={() => setIsOpen((prev) => !prev)}
+						aria-label={isOpen ? "Close Menu" : "Open Menu"}
+					>
+						{isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+					</Button>
+				</div>
 
-							<nav
-								className="flex flex-col gap-4 py-4"
-								aria-label="Mobile navigation"
-							>
-								{navItems.map((item) => (
-									<a
-										key={item.label}
+				{isOpen && (
+					<NavigationMenu className="bg-background border-border absolute top-16 right-1 z-40 origin-top transform rounded-xl border px-4 py-2 shadow-md transition-all duration-300 ease-in-out md:hidden">
+						<NavigationMenuList className="flex flex-col items-center gap-1">
+							{navItems.map((item) => (
+								<NavigationMenuItem key={item.label}>
+									<NavigationMenuLink
 										href={item.href}
-										onClick={() => {
-											setActive(item.label);
-											setIsOpen(false);
-										}}
-										className={`text-base font-medium transition ${
+										className={`text-base font-medium transition-colors ${
 											active === item.label
 												? "text-foreground"
 												: "text-muted-foreground"
 										} hover:text-foreground`}
+										onClick={() => {
+											setActive(item.label);
+											setIsOpen(false);
+										}}
 									>
 										{item.label}
-									</a>
-								))}
-							</nav>
-						</SheetContent>
-					</Sheet>
-				</div>
+									</NavigationMenuLink>
+								</NavigationMenuItem>
+							))}
+						</NavigationMenuList>
+					</NavigationMenu>
+				)}
 			</div>
 		</header>
 	);

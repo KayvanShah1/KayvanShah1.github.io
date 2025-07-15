@@ -7,7 +7,7 @@ const Hero = () => {
 	return (
 		<section
 			id="hero"
-			className="relative flex min-h-screen w-full scroll-mt-14 flex-col items-center justify-center px-10"
+			className="relative flex w-full flex-col items-center justify-center px-10"
 		>
 			<div className="mb-6">
 				<img src={ArtPic} alt="Some Image" className="h-64 w-64" />
