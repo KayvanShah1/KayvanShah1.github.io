@@ -106,21 +106,27 @@ const Navbar = () => {
 								<Menu className="h-5 w-5" />
 							</Button>
 						</SheetTrigger>
-						<SheetContent side="right" className="flex h-full w-1/2 flex-col gap-6 p-6">
+						<SheetContent side="right" className="flex h-64 w-48 flex-col gap-6 p-6">
 							<VisuallyHidden>
 								<SheetTitle>Menu</SheetTitle>
 								<SheetDescription>
 									Navigation menu for mobile users
 								</SheetDescription>
 							</VisuallyHidden>
-							<div className="text-lg font-semibold">Menu</div>
+							{/* <div className="text-lg font-semibold">Menu</div> */}
 
-							<nav className="flex flex-col gap-4" aria-label="Mobile navigation">
+							<nav
+								className="flex flex-col gap-4 py-4"
+								aria-label="Mobile navigation"
+							>
 								{navItems.map((item) => (
 									<a
 										key={item.label}
 										href={item.href}
-										onClick={() => setActive(item.label)}
+										onClick={() => {
+											setActive(item.label);
+											setIsOpen(false);
+										}}
 										className={`text-base font-medium transition ${
 											active === item.label
 												? "text-foreground"
