@@ -58,7 +58,7 @@ const Contact = () => {
 	};
 
 	return (
-		<section id="contact" className="relative my-10 flex items-center justify-center p-10">
+		<section id="contact" className="relative my-20 flex items-center justify-center p-10">
 			<Card className="w-full max-w-md shadow-lg">
 				<CardHeader>
 					<CardTitle className="text-2xl font-semibold">Get in Touch</CardTitle>
