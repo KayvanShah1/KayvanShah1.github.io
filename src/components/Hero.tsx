@@ -5,7 +5,10 @@ import Typewriter from "./Typewriter";
 
 const Hero = () => {
 	return (
-		<div className="relative flex h-screen w-full flex-col items-center justify-center px-10">
+		<section
+			id="hero"
+			className="relative flex min-h-screen w-full scroll-mt-20 flex-col items-center justify-center px-10"
+		>
 			<div className="mb-6">
 				<img src={ArtPic} alt="Some Image" className="h-64 w-64" />
 			</div>
@@ -32,10 +35,19 @@ const Hero = () => {
 				impactful products.
 			</div>
 
-			<Button variant="outline" size="lg" className="my-4 gap-2 text-lg text-green-400">
-				<FaEnvelope size={40} /> Say Hi!
+			<Button
+				variant="outline"
+				size="lg"
+				className="my-4 gap-2 text-lg text-green-400"
+				asChild
+			>
+				{/* <FaEnvelope size={40} /> Say Hi! */}
+				<a href="#contact" className="flex items-center gap-2">
+					<FaEnvelope size={20} />
+					<span>Say Hi!</span>
+				</a>
 			</Button>
-		</div>
+		</section>
 	);
 };
 

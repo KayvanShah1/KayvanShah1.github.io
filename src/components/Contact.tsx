@@ -58,7 +58,10 @@ const Contact = () => {
 	};
 
 	return (
-		<div className="relative my-10 flex h-screen items-center justify-center p-10">
+		<section
+			id="contact"
+			className="relative my-10 flex min-h-screen scroll-mt-20 items-center justify-center p-10"
+		>
 			<Card className="w-full max-w-md shadow-lg">
 				<CardHeader>
 					<CardTitle className="text-2xl font-semibold">Get in Touch</CardTitle>
@@ -162,7 +165,7 @@ const Contact = () => {
 					)}
 				</CardContent>
 			</Card>
-		</div>
+		</section>
 	);
 };
 
