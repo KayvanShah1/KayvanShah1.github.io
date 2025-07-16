@@ -7,6 +7,9 @@ const treeScale = 0.95;
 const growthDelay = 275; // ms per level
 const childDelay = 120; // ms delay between child creation
 const growthDuration = 900; // ms for full branch growth
+let swayDirection = { x: 0, y: 0 };
+let swayStartTime = 0;
+const swayDecayDuration = 3000; // ms
 
 interface BranchOptions {
 	angle: number;
@@ -57,10 +60,19 @@ class Branch {
 		const elapsedSinceCreated = now - this.createdTime;
 		this.lengthProgress = p.constrain(elapsedSinceCreated / growthDuration, 0, 1);
 
-		// Sway
 		if (this.depth >= 2) {
 			const swayFactor = 1 / Math.sqrt(this.depth + 1);
-			this.animatedAngle = this.baseAngle + Math.sin(t + this.depth) * 0.075 * swayFactor;
+			let swayOffset = Math.sin(t + this.depth) * 0.075 * swayFactor;
+
+			// External sway influence
+			const swayElapsed = now - swayStartTime;
+			if (swayElapsed < swayDecayDuration) {
+				const decayFactor = 1 - swayElapsed / swayDecayDuration;
+				const directionalInfluence = swayDirection.x * 0.00075; // tweak this factor
+				swayOffset += directionalInfluence * decayFactor;
+			}
+
+			this.animatedAngle = this.baseAngle + swayOffset;
 		} else {
 			this.animatedAngle = this.baseAngle;
 		}
@@ -244,7 +256,15 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 		root = createTree();
 	};
 
+	function applyDirectionalSway(x: number, y: number) {
+		const dx = x - p.width / 2;
+		const dy = y - p.height;
+		swayDirection = { x: dx, y: dy };
+		swayStartTime = p.millis();
+	}
+
 	p.mousePressed = () => {
+		applyDirectionalSway(p.mouseX, p.mouseY);
 		root.resetShine();
 		root.triggerShine(p.millis());
 		lastShineTime = p.millis();
