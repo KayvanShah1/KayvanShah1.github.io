@@ -57,3 +57,4 @@ lerna-lock.json
 # Ignore logs
 logs/
 *.log
+src/lib/firebase.js

@@ -8,6 +8,7 @@ import {
 	NavigationMenuLink,
 	NavigationMenuList,
 } from "./ui/navigation-menu";
+import React from "react";
 
 const navItems: { label: string; href: string }[] = [
 	{ label: "Home", href: "#hero" },
@@ -99,23 +100,28 @@ const Navbar = () => {
 				{isOpen && (
 					<NavigationMenu className="bg-background border-border absolute top-16 right-1 z-40 origin-top transform rounded-xl border px-4 py-2 shadow-md transition-all duration-300 ease-in-out md:hidden">
 						<NavigationMenuList className="flex flex-col items-center gap-1">
-							{navItems.map((item) => (
-								<NavigationMenuItem key={item.label}>
-									<NavigationMenuLink
-										href={item.href}
-										className={`text-base font-medium transition-colors ${
-											active === item.label
-												? "text-foreground"
-												: "text-muted-foreground"
-										} hover:text-foreground`}
-										onClick={() => {
-											setActive(item.label);
-											setIsOpen(false);
-										}}
-									>
-										{item.label}
-									</NavigationMenuLink>
-								</NavigationMenuItem>
+							{navItems.map((item, index) => (
+								<React.Fragment key={item.label}>
+									<NavigationMenuItem key={item.label}>
+										<NavigationMenuLink
+											href={item.href}
+											className={`text-base font-medium transition-colors ${
+												active === item.label
+													? "text-foreground"
+													: "text-muted-foreground"
+											} hover:text-foreground`}
+											onClick={() => {
+												setActive(item.label);
+												setIsOpen(false);
+											}}
+										>
+											{item.label}
+										</NavigationMenuLink>
+									</NavigationMenuItem>
+									{index != navItems.length - 1 && (
+										<div className="bg-border mt-1 h-px min-w-full self-stretch" />
+									)}
+								</React.Fragment>
 							))}
 						</NavigationMenuList>
 					</NavigationMenu>
