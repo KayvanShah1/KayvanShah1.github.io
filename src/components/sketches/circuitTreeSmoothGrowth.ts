@@ -60,7 +60,7 @@ class Branch {
 		// Sway
 		if (this.depth >= 2) {
 			const swayFactor = 1 / Math.sqrt(this.depth + 1);
-			this.animatedAngle = this.baseAngle + Math.sin(t + this.depth) * 0.15 * swayFactor;
+			this.animatedAngle = this.baseAngle + Math.sin(t + this.depth) * 0.075 * swayFactor;
 		} else {
 			this.animatedAngle = this.baseAngle;
 		}
