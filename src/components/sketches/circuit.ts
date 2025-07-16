@@ -1,9 +1,11 @@
 import type p5 from "p5";
 
-const maxDepth = 5;
-const maxBranchesPerNode = 3;
+const maxDepth = 6; // maximum depth of the tree
+const maxBranchesPerNode = 3; // maximum branches per node
 const shineSpeed = 130; // pixels per second
+let treeScale = 1; // scaling factor based on canvas height
 
+// 🌱 Branch options interface
 interface BranchOptions {
 	angle: number;
 	depth: number;
@@ -12,6 +14,7 @@ interface BranchOptions {
 	originY?: number;
 }
 
+// 🌳 Branch class
 class Branch {
 	baseAngle: number;
 	animatedAngle: number;
@@ -31,19 +34,46 @@ class Branch {
 		this.parent = opts.parent;
 		this.originX = opts.originX;
 		this.originY = opts.originY;
-		this.length = p.random(20, 70);
+		this.length = p.random(20, 70) * treeScale; // length of the branch, scaled by treeScale
 
 		if (this.depth < maxDepth) {
-			const numChildren = p.int(p.random(1, maxBranchesPerNode + 1));
-			for (let i = 0; i < numChildren; i++) {
-				const newAngle = this.baseAngle + p.random(-p.PI / 3.5, p.PI / 3.5);
-				this.children.push(
-					new Branch(p, {
-						angle: newAngle,
-						depth: this.depth + 1,
-						parent: this,
-					})
-				);
+			const shouldBranch = this.depth < 2 || p.random() < 0.92;
+
+			if (shouldBranch) {
+				const childAngles: number[] = [];
+
+				if (this.depth === 0 || this.depth === 1) {
+					// 🔁 Symmetric branching
+					const numChildren = p.int(p.random(2, maxBranchesPerNode + 1));
+					const spread = p.PI / 3; // adjust as needed (wider = more fan)
+
+					for (let i = 0; i < numChildren; i++) {
+						const normalized = i / (numChildren - 1) - 0.5; // [-0.5, 0.5]
+						const offset = normalized * spread;
+						const angle = this.baseAngle + offset + p.random(-0.25, 0.25); // slight noise
+						childAngles.push(angle);
+					}
+				} else {
+					// 🌱 Fully random
+					const numChildren = p.int(p.random(1, maxBranchesPerNode + 1));
+					for (let i = 0; i < numChildren; i++) {
+						const angle = this.baseAngle + p.random(-p.PI / 3.5, p.PI / 3.5);
+						childAngles.push(angle);
+					}
+				}
+
+				// Create children
+				for (const angle of childAngles) {
+					this.children.push(
+						new Branch(p, {
+							angle,
+							depth: this.depth + 1,
+							parent: this,
+							originX: this.getEndPosition().x,
+							originY: this.getEndPosition().y,
+						})
+					);
+				}
 			}
 		}
 	}
@@ -117,7 +147,7 @@ class Branch {
 		const t = this.depth / maxDepth;
 		const weight = p.lerp(maxWeight, minWeight, t); // linear interpolation
 
-		p.stroke(100);
+		p.stroke(120);
 		p.strokeWeight(weight);
 		// p.stroke(100);
 		// p.strokeWeight(1);
@@ -141,6 +171,7 @@ class Branch {
 				const trailProgress = (i / trailSteps) * this.shineProgress;
 				const trailX = start.x + Math.cos(this.animatedAngle) * this.length * trailProgress;
 				const trailY = start.y + Math.sin(this.animatedAngle) * this.length * trailProgress;
+
 				const alpha = p.lerp(0, 0.6, i / trailSteps); // trail fade-in
 
 				p.drawingContext.shadowBlur = pulse * 0.5;
@@ -174,7 +205,7 @@ const circuitSketch = (p: p5) => {
 
 	function createTree() {
 		return new Branch(p, {
-			angle: -Math.PI / 2,
+			angle: -Math.PI / 2 + p.random(-0.15, 0.15),
 			depth: 0,
 			parent: null,
 			originX: p.width / 2,
@@ -183,8 +214,10 @@ const circuitSketch = (p: p5) => {
 	}
 
 	p.setup = () => {
-		p.createCanvas(600, 325);
+		p.createCanvas(p.windowWidth, 325);
+		treeScale = p.height / 325; // set initial scale
 		p.clear();
+		// p.colorMode(p.HSL);
 		root = createTree();
 	};
 
@@ -203,7 +236,14 @@ const circuitSketch = (p: p5) => {
 
 	p.windowResized = () => {
 		p.resizeCanvas(600, 325);
+		treeScale = p.height / 400; // recompute scale
 		root = createTree();
+	};
+
+	p.mousePressed = () => {
+		root.resetShine();
+		root.triggerShine(p.millis());
+		lastShineTime = p.millis(); // update tracker
 	};
 };
 
