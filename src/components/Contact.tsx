@@ -58,45 +58,26 @@ const Contact = () => {
 	};
 
 	return (
-		<section id="contact" className="relative my-20 flex items-center justify-center p-10">
+		<section id="contact" className="relative my-10 flex items-center justify-center p-10 md:my-10">
 			<Card className="w-full max-w-md shadow-lg">
 				<CardHeader>
 					<CardTitle className="text-2xl font-semibold">Get in Touch</CardTitle>
-					<CardDescription>
-						Feel free to reach out for collabs, questions, or just to say hi!
-					</CardDescription>
+					<CardDescription>Feel free to reach out for collabs, questions, or just to say hi!</CardDescription>
 				</CardHeader>
 				<CardContent>
 					<form className="w-full" onSubmit={SendEmail}>
 						<div className="flex flex-col gap-6">
 							<div className="grid gap-2">
 								<Label htmlFor="name">Name</Label>
-								<Input
-									id="name"
-									name="name"
-									type="text"
-									placeholder="Enter your name"
-									required
-								/>
+								<Input id="name" name="name" type="text" placeholder="Enter your name" required />
 							</div>
 							<div className="grid gap-2">
 								<Label htmlFor="email">Email</Label>
-								<Input
-									id="email"
-									name="email"
-									type="email"
-									placeholder="m@example.com"
-									required
-								/>
+								<Input id="email" name="email" type="email" placeholder="m@example.com" required />
 							</div>
 							<div className="grid gap-2">
 								<Label htmlFor="summary">Subject</Label>
-								<Input
-									id="summary"
-									name="summary"
-									type="text"
-									placeholder="What's this about?"
-								/>
+								<Input id="summary" name="summary" type="text" placeholder="What's this about?" />
 							</div>
 							<div className="grid gap-2">
 								<div className="flex items-center">

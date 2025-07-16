@@ -2,12 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ModeToggle } from "./mode-toggle";
-import {
-	NavigationMenu,
-	NavigationMenuItem,
-	NavigationMenuLink,
-	NavigationMenuList,
-} from "./ui/navigation-menu";
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "./ui/navigation-menu";
 import React from "react";
 
 const navItems: { label: string; href: string }[] = [
@@ -66,9 +61,7 @@ const Navbar = () => {
 									<NavigationMenuLink
 										href={item.href}
 										className={`text-sm font-medium transition-colors ${
-											active === item.label
-												? "text-foreground"
-												: "text-muted-foreground"
+											active === item.label ? "text-foreground" : "text-muted-foreground"
 										} hover:text-foreground`}
 										onClick={() => setActive(item.label)}
 									>
@@ -106,9 +99,7 @@ const Navbar = () => {
 										<NavigationMenuLink
 											href={item.href}
 											className={`text-base font-medium transition-colors ${
-												active === item.label
-													? "text-foreground"
-													: "text-muted-foreground"
+												active === item.label ? "text-foreground" : "text-muted-foreground"
 											} hover:text-foreground`}
 											onClick={() => {
 												setActive(item.label);
