@@ -319,6 +319,12 @@ class Branch {
 	}
 }
 
+function getTimestamp() {
+	const now = new Date();
+	const pad = (n: number) => n.toString().padStart(2, "0");
+	return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}_${pad(now.getHours())}-${pad(now.getMinutes())}-${pad(now.getSeconds())}`;
+}
+
 const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 	let root: Branch;
 	let lastShineTime = 0;
@@ -403,6 +409,13 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 		root.triggerShine(p.millis());
 		lastShineTime = p.millis();
 		return false; // prevent default double click behavior
+	};
+
+	p.keyPressed = () => {
+		if (p.key === "s") {
+			const filename = `circuit_tree_ss_${getTimestamp()}`;
+			p.saveCanvas(filename, "png");
+		}
 	};
 };
 
