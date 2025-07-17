@@ -193,7 +193,7 @@ class Branch {
 
 			// Config
 			const segmentLength = 0.45;
-			const steps = 10;
+			const steps = 5;
 			const trailStart = Math.max(0, this.shineProgress - segmentLength);
 			const trailEnd = this.shineProgress;
 			const baseLenTrail = this.length * this.lengthProgress;
