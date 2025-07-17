@@ -345,7 +345,7 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 
 	p.setup = () => {
 		p.createCanvas(600, 325);
-		p.background(0);
+		p.clear();
 		p.frameRate(45);
 		root = createTree();
 
@@ -356,7 +356,7 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 	};
 
 	p.draw = () => {
-		p.background(0);
+		p.clear();
 		const now = p.millis();
 		root.update(p, now);
 		root.draw(p);
