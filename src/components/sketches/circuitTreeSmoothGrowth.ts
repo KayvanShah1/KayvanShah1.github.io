@@ -60,9 +60,12 @@ class Branch {
 		const elapsedSinceCreated = now - this.createdTime;
 		this.lengthProgress = p.constrain(elapsedSinceCreated / growthDuration, 0, 1);
 
+		// ✅ A. Skip update if not growing and not shining
+		if (this.lengthProgress < 0.05 && this.shineProgress < 0) return;
+
 		if (this.depth >= 2) {
 			const swayFactor = 1 / Math.sqrt(this.depth + 1);
-			let swayOffset = Math.sin(t + this.depth) * 0.055 * swayFactor;
+			let swayOffset = Math.sin(t + this.depth) * 0.065 * swayFactor;
 
 			// External sway influence
 			const swayElapsed = now - swayStartTime;
@@ -101,9 +104,24 @@ class Branch {
 		for (const child of this.children) child.update(p, now);
 	}
 
+	willChildBeVisible(p: p5, angle: number): boolean {
+		const start = this.getEndPosition();
+		const previewLength = this.length * 0.9;
+		const x = start.x + Math.cos(angle) * previewLength;
+		const y = start.y + Math.sin(angle) * previewLength;
+
+		// Random relaxed margin between 15 and 40px, scaled by depth
+		const randomness = p.random(15, 30);
+		const margin = randomness * (1 + this.depth / maxDepth);
+		return x >= -margin && x <= p.width + margin && y >= -margin && y <= p.height + margin;
+	}
+
 	growChildren(p: p5) {
-		const shouldBranch = this.depth < 2 || p.random() < 0.92;
-		if (!shouldBranch) return;
+		// const shouldBranch = this.depth < 2 || p.random() < 0.92;
+		const branchProbability = p.map(this.depth, 0, maxDepth, 1.0, 0.4); // deeper = less likely
+		const shouldBranch = p.random() < branchProbability;
+		// if (!shouldBranch) return;
+		if (!shouldBranch && this.depth < 2) return; // early pruning
 
 		const childAngles: number[] = [];
 
@@ -128,19 +146,21 @@ class Branch {
 			const delay = childDelay * i;
 			const childTime = this.createdTime + delay;
 
-			this.children.push(
-				new Branch(
-					p,
-					{
-						angle,
-						depth: this.depth + 1,
-						parent: this,
-						originX: this.getEndPosition().x,
-						originY: this.getEndPosition().y,
-					},
-					childTime
-				)
-			);
+			if (this.willChildBeVisible(p, angle)) {
+				this.children.push(
+					new Branch(
+						p,
+						{
+							angle,
+							depth: this.depth + 1,
+							parent: this,
+							originX: this.getEndPosition().x,
+							originY: this.getEndPosition().y,
+						},
+						childTime
+					)
+				);
+			}
 		}
 	}
 
@@ -172,13 +192,13 @@ class Branch {
 	}
 
 	draw(p: p5) {
-		if (this.lengthProgress < 0.05) return;
+		if (this.lengthProgress < 0.05 && this.shineProgress < 0) return;
 
 		const start = this.getStartPosition();
 		const end = this.getEndPosition();
 
-		const maxWeight = 4,
-			minWeight = 0.5;
+		const maxWeight = 4;
+		const minWeight = 0.5;
 		const t = this.depth / maxDepth;
 		p.strokeWeight(p.lerp(maxWeight, minWeight, t));
 		p.stroke(120);
@@ -193,13 +213,15 @@ class Branch {
 
 			// Config
 			const segmentLength = 0.45;
-			const steps = 5;
+			const steps = 7;
 			const trailStart = Math.max(0, this.shineProgress - segmentLength);
 			const trailEnd = this.shineProgress;
 			const baseLenTrail = this.length * this.lengthProgress;
 			// Green (120) → Yellow (60)
 			const eased = Math.pow(this.shineProgress, 0.75);
 			const shineHue = p.lerp(160, 60, eased);
+			p.drawingContext.shadowBlur = 10;
+			p.drawingContext.shadowColor = `hsla(${shineHue}, 100%, 50%, 0.8)`;
 
 			// Draw segmented trail with fading width/opacity
 			for (let i = 0; i < steps; i++) {
@@ -218,8 +240,6 @@ class Branch {
 				p.strokeWeight(weight);
 				const strokeColor = `hsla(${shineHue}, 100%, 65%, ${alpha})`;
 				p.stroke(strokeColor);
-				p.drawingContext.shadowBlur = 10;
-				p.drawingContext.shadowColor = `hsla(${shineHue}, 100%, 50%, 0.8)`;
 				p.line(x1, y1, x2, y2);
 			}
 			p.drawingContext.shadowBlur = 0;
@@ -319,12 +339,18 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 
 	p.setup = () => {
 		p.createCanvas(600, 325);
-		p.clear();
+		p.background(0);
+		p.frameRate(45);
 		root = createTree();
+
+		// Disable context menu
+		for (const element of document.getElementsByClassName("p5Canvas")) {
+			element.addEventListener("contextmenu", (e) => e.preventDefault());
+		}
 	};
 
 	p.draw = () => {
-		p.clear();
+		p.background(0);
 		const now = p.millis();
 		root.update(p, now);
 		root.draw(p);
@@ -336,10 +362,10 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 		}
 	};
 
-	p.windowResized = () => {
-		p.resizeCanvas(600, 325);
-		root = createTree();
-	};
+	// p.windowResized = () => {
+	// 	p.resizeCanvas(600, 325);
+	// 	root = createTree();
+	// };
 
 	function applyDirectionalSway(x: number, y: number) {
 		const dx = x - p.width / 2;
@@ -349,14 +375,34 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 	}
 
 	p.mousePressed = () => {
-		const clickedBranch = root.findClickedBranch(p.mouseX, p.mouseY);
-		if (clickedBranch) {
-			applyDirectionalSway(p.mouseX, p.mouseY);
+		if (!root) return;
 
-			root.resetShine();
-			root.triggerShine(p.millis());
-			lastShineTime = p.millis();
+		const clickedBranch = root.findClickedBranch(p.mouseX, p.mouseY);
+		if (p.mouseButton["left"] == true) {
+			if (clickedBranch) {
+				applyDirectionalSway(p.mouseX, p.mouseY);
+				root.resetShine();
+				root.triggerShine(p.millis());
+				lastShineTime = p.millis();
+			}
 		}
+
+		if (p.mouseButton["right"] == true) {
+			if (clickedBranch) {
+				root.resetShine();
+				root.triggerShine(p.millis());
+				lastShineTime = p.millis();
+			}
+		}
+	};
+
+	p.doubleClicked = () => {
+		if (!root) return;
+		// ⬅️ Double click = regenerate new tree
+		root = createTree();
+		root.triggerShine(p.millis());
+		lastShineTime = p.millis();
+		return false; // prevent default double click behavior
 	};
 };
 
