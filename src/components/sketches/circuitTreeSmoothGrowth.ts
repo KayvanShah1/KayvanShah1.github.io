@@ -321,8 +321,20 @@ class Branch {
 
 function getTimestamp() {
 	const now = new Date();
-	const pad = (n: number) => n.toString().padStart(2, "0");
-	return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}_${pad(now.getHours())}-${pad(now.getMinutes())}-${pad(now.getSeconds())}`;
+	const pad = (n: number, width = 2) => n.toString().padStart(width, "0");
+
+	const year = now.getUTCFullYear();
+	const month = pad(now.getUTCMonth() + 1);
+	const day = pad(now.getUTCDate());
+	const hour = pad(now.getUTCHours());
+	const minute = pad(now.getUTCMinutes());
+	const second = pad(now.getUTCSeconds());
+	const millis = pad(now.getUTCMilliseconds(), 3);
+
+	const datePart = `${year}${month}${day}`;
+	const timePart = `${hour}${minute}${second}${millis}`;
+
+	return `${datePart}T${timePart}`;
 }
 
 const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
