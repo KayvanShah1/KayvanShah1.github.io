@@ -3,10 +3,10 @@ import type p5 from "p5";
 const maxDepth = 6;
 const maxBranchesPerNode = 3;
 const shineSpeed = 130; // pixels per second
-const treeScale = 0.95;
-const growthDelay = 275; // ms per level
+const treeScale = 0.92;
+const growthDelay = 375; // ms per level
 const childDelay = 120; // ms delay between child creation
-const growthDuration = 900; // ms for full branch growth
+const growthDuration = 1800; // ms for full branch growth
 let swayDirection = { x: 0, y: 0 };
 let swayStartTime = 0;
 const swayDecayDuration = 3000; // ms
