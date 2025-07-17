@@ -177,7 +177,7 @@ class Branch {
 		const start = this.getStartPosition();
 		const end = this.getEndPosition();
 
-		const maxWeight = 3.5,
+		const maxWeight = 4,
 			minWeight = 0.5;
 		const t = this.depth / maxDepth;
 		p.strokeWeight(p.lerp(maxWeight, minWeight, t));
@@ -189,31 +189,113 @@ class Branch {
 			const baseLen = this.length * this.lengthProgress;
 			const shineDotX = start.x + Math.cos(this.animatedAngle) * baseLen * this.shineProgress;
 			const shineDotY = start.y + Math.sin(this.animatedAngle) * baseLen * this.shineProgress;
-			const pulse = 40 * p.lerp(2.0, 0.3, this.depth / maxDepth) + Math.sin(p.millis() / 100 + this.depth) * 4;
+			// const pulse = 40 * p.lerp(2.0, 0.3, this.depth / maxDepth) + Math.sin(p.millis() / 100 + this.depth) * 4;
 
-			for (let i = 0; i < 8; i++) {
-				const progress = (i / 8) * this.shineProgress;
-				const trailX = start.x + Math.cos(this.animatedAngle) * baseLen * progress;
-				const trailY = start.y + Math.sin(this.animatedAngle) * baseLen * progress;
-				const alpha = p.lerp(0, 0.6, i / 8);
+			// Config
+			const segmentLength = 0.45;
+			const steps = 10;
+			const trailStart = Math.max(0, this.shineProgress - segmentLength);
+			const trailEnd = this.shineProgress;
+			const baseLenTrail = this.length * this.lengthProgress;
+			// Green (120) → Yellow (60)
+			const eased = Math.pow(this.shineProgress, 0.75);
+			const shineHue = p.lerp(160, 60, eased);
 
-				p.drawingContext.shadowBlur = pulse * 0.5;
-				p.drawingContext.shadowColor = "rgba(57, 255, 20, 0.8)";
+			// Draw segmented trail with fading width/opacity
+			for (let i = 0; i < steps; i++) {
+				const t1 = p.lerp(trailStart, trailEnd, i / steps);
+				const t2 = p.lerp(trailStart, trailEnd, (i + 1) / steps);
+
+				const x1 = start.x + Math.cos(this.animatedAngle) * baseLenTrail * t1;
+				const y1 = start.y + Math.sin(this.animatedAngle) * baseLenTrail * t1;
+				const x2 = start.x + Math.cos(this.animatedAngle) * baseLenTrail * t2;
+				const y2 = start.y + Math.sin(this.animatedAngle) * baseLenTrail * t2;
+
+				const fade = (i + 1) / steps;
+				const alpha = p.lerp(0.05, 0.5, fade);
+				const weight = p.lerp(0.5, 2.5, fade);
+
+				p.strokeWeight(weight);
+				const strokeColor = `hsla(${shineHue}, 100%, 65%, ${alpha})`;
+				p.stroke(strokeColor);
+				p.drawingContext.shadowBlur = 10;
+				p.drawingContext.shadowColor = `hsla(${shineHue}, 100%, 50%, 0.8)`;
+				p.line(x1, y1, x2, y2);
+			}
+			p.drawingContext.shadowBlur = 0;
+
+			// 🌈 Multicolor glow ripple + core shine
+			const rippleCount = 4;
+			for (let i = 0; i < rippleCount; i++) {
+				const rippleProgress = i / rippleCount;
+				const radius = 8 + rippleProgress * 18 + Math.sin(p.millis() / 150 + i) * 2;
+				const alpha = 0.12 * (1 - rippleProgress);
+
 				p.noStroke();
-				p.fill(`rgba(57, 255, 20, ${alpha})`);
-				p.circle(trailX, trailY, 2.5);
+				p.fill(`hsla(${shineHue}, 100%, 45%, ${alpha})`);
+				p.circle(shineDotX, shineDotY, radius);
 			}
 
-			p.drawingContext.shadowBlur = pulse;
-			p.drawingContext.shadowColor = "#39FF14";
+			// Core animated glow dot
+			const pulseSize = 3.5 + Math.sin(p.millis() / 100 + this.depth) * 1.4;
+
+			p.drawingContext.shadowBlur = 25;
+			p.drawingContext.shadowColor = `hsla(${shineHue}, 100%, 60%, 0.9)`;
 			p.noStroke();
-			p.fill("#39FF14");
-			p.circle(shineDotX, shineDotY, 3.5);
+			p.fill(`hsla(${shineHue}, 100%, 60%, 0.9)`);
+			p.circle(shineDotX, shineDotY, pulseSize);
+
 			p.drawingContext.shadowBlur = 0;
 			p.noFill();
 		}
 
 		for (const child of this.children) child.draw(p);
+	}
+
+	isMouseNearBranch(mx: number, my: number): boolean {
+		const start = this.getStartPosition();
+		const end = this.getEndPosition();
+
+		const d = this.pointToSegmentDistance(mx, my, start.x, start.y, end.x, end.y);
+		return d < 8; // threshold in pixels (adjust as needed)
+	}
+
+	// Helper for point-line distance
+	pointToSegmentDistance(px: number, py: number, x1: number, y1: number, x2: number, y2: number): number {
+		const A = px - x1;
+		const B = py - y1;
+		const C = x2 - x1;
+		const D = y2 - y1;
+
+		const dot = A * C + B * D;
+		const lenSq = C * C + D * D;
+		let param = -1;
+		if (lenSq !== 0) param = dot / lenSq;
+
+		let xx, yy;
+		if (param < 0) {
+			xx = x1;
+			yy = y1;
+		} else if (param > 1) {
+			xx = x2;
+			yy = y2;
+		} else {
+			xx = x1 + param * C;
+			yy = y1 + param * D;
+		}
+
+		const dx = px - xx;
+		const dy = py - yy;
+		return Math.sqrt(dx * dx + dy * dy);
+	}
+
+	findClickedBranch(mx: number, my: number): Branch | null {
+		if (this.isMouseNearBranch(mx, my)) return this;
+		for (const child of this.children) {
+			const hit = child.findClickedBranch(mx, my);
+			if (hit) return hit;
+		}
+		return null;
 	}
 }
 
@@ -267,10 +349,14 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 	}
 
 	p.mousePressed = () => {
-		applyDirectionalSway(p.mouseX, p.mouseY);
-		root.resetShine();
-		root.triggerShine(p.millis());
-		lastShineTime = p.millis();
+		const clickedBranch = root.findClickedBranch(p.mouseX, p.mouseY);
+		if (clickedBranch) {
+			applyDirectionalSway(p.mouseX, p.mouseY);
+
+			root.resetShine();
+			root.triggerShine(p.millis());
+			lastShineTime = p.millis();
+		}
 	};
 };
 
