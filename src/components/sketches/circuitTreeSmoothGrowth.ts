@@ -62,14 +62,17 @@ class Branch {
 
 		if (this.depth >= 2) {
 			const swayFactor = 1 / Math.sqrt(this.depth + 1);
-			let swayOffset = Math.sin(t + this.depth) * 0.075 * swayFactor;
+			let swayOffset = Math.sin(t + this.depth) * 0.085 * swayFactor;
 
 			// External sway influence
 			const swayElapsed = now - swayStartTime;
 			if (swayElapsed < swayDecayDuration) {
 				const decayFactor = 1 - swayElapsed / swayDecayDuration;
+
+				// one way
 				const directionalInfluence = swayDirection.x * 0.00075; // tweak this factor
-				swayOffset += directionalInfluence * decayFactor;
+				const oscillation = Math.sin(t * 2 + this.depth) * 0.003;
+				swayOffset += (directionalInfluence + oscillation) * decayFactor;
 			}
 
 			this.animatedAngle = this.baseAngle + swayOffset;
