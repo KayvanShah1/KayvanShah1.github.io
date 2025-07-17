@@ -62,7 +62,7 @@ class Branch {
 
 		if (this.depth >= 2) {
 			const swayFactor = 1 / Math.sqrt(this.depth + 1);
-			let swayOffset = Math.sin(t + this.depth) * 0.085 * swayFactor;
+			let swayOffset = Math.sin(t + this.depth) * 0.055 * swayFactor;
 
 			// External sway influence
 			const swayElapsed = now - swayStartTime;
