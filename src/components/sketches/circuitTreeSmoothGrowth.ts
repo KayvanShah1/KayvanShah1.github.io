@@ -381,9 +381,9 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 		if (p.mouseButton["left"] == true) {
 			if (clickedBranch) {
 				applyDirectionalSway(p.mouseX, p.mouseY);
-				root.resetShine();
-				root.triggerShine(p.millis());
-				lastShineTime = p.millis();
+				// root.resetShine();
+				// root.triggerShine(p.millis());
+				// lastShineTime = p.millis();
 			}
 		}
 
