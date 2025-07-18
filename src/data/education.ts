@@ -38,6 +38,11 @@ const educationData: Education[] = [
 				period: "Aug 2023 - Dec 2024",
 			},
 			{
+				title: "Graduate Mentor",
+				org: "Viterbi Graduate Student Mentorship Program",
+				period: "Aug 2023 - Dec 2024",
+			},
+			{
 				title: "Technical AI Fellow",
 				org: "USC Center for AI Safety",
 				period: "Jan 2023 - Mar 2023",
