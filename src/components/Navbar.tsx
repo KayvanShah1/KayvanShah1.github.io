@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ModeToggle } from "./mode-toggle";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "./ui/navigation-menu";
 import React from "react";
+import { Separator } from "./ui/separator";
 
 const navItems: { label: string; href: string }[] = [
 	{ label: "Home", href: "#hero" },
@@ -91,7 +92,7 @@ const Navbar = () => {
 				</div>
 
 				{isOpen && (
-					<NavigationMenu className="bg-background border-border absolute top-16 right-1 z-40 origin-top transform rounded-xl border px-4 py-2 shadow-md transition-all duration-300 ease-in-out md:hidden">
+					<NavigationMenu className="bg-background border-border absolute top-16 right-0 z-40 origin-top transform rounded-xl border px-4 py-2 shadow-md transition-all duration-300 ease-in-out md:hidden">
 						<NavigationMenuList className="flex flex-col items-center gap-1">
 							{navItems.map((item, index) => (
 								<React.Fragment key={item.label}>
@@ -110,7 +111,8 @@ const Navbar = () => {
 										</NavigationMenuLink>
 									</NavigationMenuItem>
 									{index != navItems.length - 1 && (
-										<div className="bg-border mt-1 h-px min-w-full self-stretch" />
+										// <div className="bg-border mt-1 h-px min-w-full self-stretch" />
+										<Separator />
 									)}
 								</React.Fragment>
 							))}
