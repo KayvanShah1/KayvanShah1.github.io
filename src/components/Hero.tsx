@@ -32,7 +32,12 @@ const Hero = () => {
 				raw data, applied machine learning, and impactful products.
 			</div>
 
-			<Button variant="outline" size="lg" className="mt-10 mb-4 gap-2 text-lg text-green-400" asChild>
+			<Button
+				variant="outline"
+				size="lg"
+				className="bg-foreground mt-10 mb-4 gap-2 text-lg text-green-400"
+				asChild
+			>
 				{/* <FaEnvelope size={40} /> Say Hi! */}
 				<a href="#contact" className="flex items-center gap-2">
 					<FaEnvelope size={20} />
