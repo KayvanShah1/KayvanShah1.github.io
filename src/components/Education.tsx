@@ -21,12 +21,20 @@ const Education = () => {
 							<TimelineTime variant="default" className="bg-muted-foreground">
 								{item.duration}
 							</TimelineTime>
-							<TimelineTitle className="text-xl">{item.university}</TimelineTitle>
+							<div className="flex w-full flex-col justify-between">
+								<TimelineTitle className="text-xl">{item.university}</TimelineTitle>
+								<p className="text-muted-foreground text-lg font-medium">{item.degree}</p>
+							</div>
+							{/* {item.logo && (
+								<img
+									src={item.logo}
+									alt={`${item.university} logo`}
+									className="bg-muted-foreground mt-2 h-10 w-10 rounded object-contain"
+								/>
+							)} */}
 						</TimelineHeader>
 
-						<TimelineDescription className="mt-1 space-y-3 text-sm leading-relaxed">
-							<p className="text-lg font-medium">{item.degree}</p>
-
+						<TimelineDescription className="mt-2 space-y-3 text-sm leading-relaxed">
 							<div className="mt-1 flex flex-wrap items-center gap-2">
 								{item.key_courses && (
 									<span className="text-muted-foreground font-medium">Key Courses:</span>
