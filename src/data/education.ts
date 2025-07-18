@@ -1,3 +1,6 @@
+import USCLogo from "@/assets/img/USCLogo_PrimShield_Word_RegUse_Card-Blk_RGB.png";
+import DJSCOELogo from "@/assets/img/DJSCOE_Logo.png";
+
 type EducationRole = {
 	title: string;
 	org: string;
@@ -13,6 +16,7 @@ type Education = {
 	gpa?: string;
 	key_courses?: Array<string>;
 	roles?: EducationRole[];
+	logo?: string; // Optional logo URL for the university
 };
 
 const educationData: Education[] = [
@@ -48,6 +52,7 @@ const educationData: Education[] = [
 				period: "Jan 2023 - Mar 2023",
 			},
 		],
+		logo: USCLogo,
 	},
 	{
 		id: 2,
@@ -69,6 +74,7 @@ const educationData: Education[] = [
 				period: "Jan 2020 - May 2021",
 			},
 		],
+		logo: DJSCOELogo,
 	},
 ];
 
