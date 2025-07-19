@@ -1,69 +1,53 @@
-# React + TypeScript + Vite
+# 💼 Kayvan Shah | Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my personal portfolio, showcasing work in data engineering, MLOps, machine learning, and creative coding. Built with a modern stack, the site blends technical expertise with visual storytelling — featuring interactive animations and detailed project documentation.
 
-Currently, two official plugins are available:
+## 🧩 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **Responsive, Minimal Design** — Tailored for both desktop and mobile devices.
+* **Tabbed Experience Section** — Cleanly displays multi-role and multi-company timelines.
+* **Projects & Education** — Highlights academic background and impactful engineering contributions.
+* **Web3Forms Contact** — Easy-to-use, spam-free form handling.
+* **Creative Visuals** — Includes custom interactive sketches like the circuit tree (p5.js + WebGL).
 
-## Expanding the ESLint configuration
+## 🌟 Visual Highlight
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Recursive Electric Circuit Tree**
+A dynamic, interactive visualization of recursive circuit-style trees built using `p5.js` with `WebGL` and rendered inside a React component using `p5-wrapper`. The animation features smooth branch growth, shine propagation, tree sway on user interaction, shine reset, and saving a snapshot of the tree and regrowth of tree.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### ⚙️ Customization Options
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+All key animation parameters are exposed and can be tweaked, including:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* `maxDepth`, `maxBranchesPerNode`
+* `shineSpeed`, `growthDelay`, `childDelay`, `growthDuration`
+* `treeScale`, `swayDecayDuration`
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+These allow experimentation with different tree behaviors and styles.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🖱️ Interactions
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* **Left Click:** Triggers a sway based on click location
+* **Timed Shine:** Pulses from the tree center periodically
+* **Tree Charging:** Brief glow effect before shine
+
+## 🛠 Tech Stack
+
+* React + TypeScript + Vite
+* TailwindCSS / ShadCN UI
+* p5.js (WebGL)
+* Web3Forms for contact handling
+* GitHub Pages for deployment
+
+#### License
+
+This project is **publicly viewable** for portfolio purposes, but **not licensed for reuse, distribution, or derivative works** without **explicit permission** from the author.
+
+Read more [here](LICENSE).
+
+If you'd like to use parts of this project or collaborate, feel free to reach out via the contact form on the site.
+
+##### Disclaimer
+<sub>
+This portfolio and the associated code, visuals, and documentation were written and developed by Kayvan Shah, with collaborative input, code structuring, and creative ideation assisted by AI tools including ChatGPT and Perplexity. All content remains the intellectual property of the author unless otherwise stated.  
+</sub>
