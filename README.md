@@ -47,7 +47,7 @@ Read more [here](LICENSE).
 
 If you'd like to use parts of this project or collaborate, feel free to reach out via the contact form on the site.
 
-##### Disclaimer
+#### Disclaimer
 <sub>
 This portfolio and the associated code, visuals, and documentation were written and developed by Kayvan Shah, with collaborative input, code structuring, and creative ideation assisted by AI tools including ChatGPT and Perplexity. All content remains the intellectual property of the author unless otherwise stated.  
 </sub>
