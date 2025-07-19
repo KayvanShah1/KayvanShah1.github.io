@@ -14,8 +14,8 @@ const Footer = () => {
 				{/* Left: Copyright */}
 				<div className="order-2 w-full text-center md:order-none md:text-left">
 					{/* Copyright © {year} Kayvan Shah. All rights reserved. */}
-					<p>Built and designed by Kayvan Shah</p>
-					<p>Copyright © {year}. All rights reserved.</p>
+					{/* <p>Built and designed by Kayvan Shah</p> */}
+					<p>Copyright © {year} Kayvan Shah. All rights reserved.</p>
 				</div>
 
 				{/* Right: Social Icons */}
