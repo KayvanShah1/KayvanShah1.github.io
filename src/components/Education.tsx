@@ -11,8 +11,8 @@ import { Badge } from "./ui/badge";
 
 const Education = () => {
 	return (
-		<section id="education" className="mx-4 my-10 flex flex-col justify-center py-10 sm:px-8 md:px-16">
-			<h1 className="mb-6 text-4xl font-semibold">Education</h1>
+		<section id="education" className="mx-6 my-10 flex flex-col justify-center py-10 sm:px-8 md:mx-4 md:px-16">
+			<h1 className="mb-8 text-4xl font-semibold">Education</h1>
 
 			<Timeline className="mt-2">
 				{educationData.map((item) => (
