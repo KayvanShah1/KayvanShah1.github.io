@@ -356,13 +356,13 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 		);
 
 	p.setup = () => {
-		p.createCanvas(600, 325);
+		p.createCanvas(600, 325).class("circuit-tree-canvas");
 		p.clear();
 		p.frameRate(45);
 		root = createTree();
 
 		// Disable context menu
-		for (const element of document.getElementsByClassName("p5Canvas")) {
+		for (const element of document.getElementsByClassName("circuit-tree-canvas")) {
 			element.addEventListener("contextmenu", (e) => e.preventDefault());
 		}
 	};
