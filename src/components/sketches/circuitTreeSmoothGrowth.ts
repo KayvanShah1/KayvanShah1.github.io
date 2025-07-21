@@ -118,7 +118,7 @@ class Branch {
 
 	growChildren(p: p5) {
 		// const shouldBranch = this.depth < 2 || p.random() < 0.92;
-		const branchProbability = p.map(this.depth, 0, maxDepth, 1.0, 0.65); // deeper = less likely
+		const branchProbability = p.map(this.depth, 0, maxDepth, 1.0, 0.45); // deeper = less likely
 		const shouldBranch = p.random() < branchProbability;
 		// if (!shouldBranch) return;
 		if (!shouldBranch && this.depth < 2) return; // early pruning
