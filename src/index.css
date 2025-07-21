@@ -155,5 +155,5 @@ html {
 }
 
 section {
-	@apply relative min-h-screen scroll-mt-20;
+	@apply relative min-h-screen scroll-mt-14;
 }
