@@ -128,7 +128,7 @@ const experienceData: Experience[] = [
 						name: "Energy Demand & Load Forecasting",
 						bullets: [
 							"Designed an event-driven micro-batch pipeline to ingest power grid data from GCS into BigQuery using Pub/Sub, Cloud Functions, and Dataflow; reduced end-to-end latency from 15 to 5 minutes and cut cloud costs by 60%",
-							"Implemented end-to-end ML pipelines for 15-min energy load forecasting using Apache Beam, BigQuery SQL, MLflow, and Prefect on GCP; enabled daily retraining with freshness-aware feature prep, improving forecast accuracy by 3% and reducing turnaround time by 10%",
+							"Automated end-to-end ML pipelines for 15-min grid balancing forecasts on GCP (Beam, BigQuery, MLflow, Prefect); enabled daily retraining with updated SCADA features, improving forecast accuracy by 3% and reducing turn-around time by 10%",
 							"Engineered a data lakehouse using BigQuery and Cloud Storage, optimizing query performance for analytics platform through partitioning, materialized views and stored procedures, reducing data scanning by 30%",
 							"Migrated SCADA data (MongoDB to BigQuery) via Apache Beam, ensuring zero downtime and reducing storage costs by 60%",
 							"Refactored weather data pipelines integrating data validation and anomaly detection, automating workflows with Dagster, improving maintainability, and reducing pipeline failures by 70%",
