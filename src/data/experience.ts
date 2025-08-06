@@ -161,8 +161,9 @@ const experienceData: Experience[] = [
 				type: "Full-time",
 				description: [
 					"Built and scaled infrastructure intelligence platform, ingesting and unifying 60+ yrs of global public contracts data and $15T+ in project value, powering semantic discovery, demand indices, and procurement risk analytics",
-					"Engineered a semantic search and recommendation system using custom BERT embeddings and cosine similarity, achieving 65% Precision@10, improving relevance, diversity, and recall in discovery workflows",
+					"Engineered a semantic search and recommendation system using custom BERT embeddings and cosine similarity with heuristic re-ranking, achieving 65% Precision@10 and 0.8 MRR, improving relevance diversity in discovery workflows",
 					"Fine-tuned BERT embeddings for NER and Key-phrase extraction to enhance document tagging and data enrichment, reducing missing values by 27% and improving text-based entity recognition by 20%",
+					"Developed BERT-based weakly supervised classifier for sector-subsector labeling (∼300 classes) across 100K+ records, achieving 80% macro F1, organizing data for improving categorization, search, and analytics",
 					"Orchestrated and automated data pipelines with Argo Workflows on AWS EKS with Fargate leveraging Terraform, Docker, and GitLab CI/CD, reducing manual work by 60% and saving 120+ hrs/month on data product delivery",
 					"Designed scalable data infrastructure using hot and cold storage strategy, optimized S3 for cost-efficient back-filling, and leveraged Elasticsearch for fast retrieval across 50M+ documents, reducing retrieval costs by 20%",
 					"Modeled a hybrid data schema and quality checks, standardizing diverse sources into a Common Data Model, improving data consistency, and reducing analytical discrepancies by 30%",
