@@ -1,5 +1,5 @@
-import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
-import { FaFacebook, FaGoogleScholar, FaKaggle } from "react-icons/fa6";
+import { FaLinkedin, FaGithub, FaMedium } from "react-icons/fa";
+import { FaGoogleScholar, FaKaggle } from "react-icons/fa6";
 
 const socialLinks = [
 	{
@@ -13,15 +13,20 @@ const socialLinks = [
 		label: "LinkedIn",
 	},
 	{
-		icon: <FaInstagram className="h-5 w-5" />,
-		href: "https://instagram.com/kayvanshah", // Replace with your link
-		label: "Instagram",
+		icon: <FaMedium className="h-5 w-5" />,
+		href: "https://medium.com/@KayvanShah1", // Replace with your link
+		label: "Medium",
 	},
-	{
-		icon: <FaFacebook className="h-5 w-5" />,
-		href: "https://www.facebook.com/kayvan.shah.108", // Replace with your link
-		label: "Facebook",
-	},
+	// {
+	// 	icon: <FaInstagram className="h-5 w-5" />,
+	// 	href: "https://instagram.com/kayvanshah", // Replace with your link
+	// 	label: "Instagram",
+	// },
+	// {
+	// 	icon: <FaFacebook className="h-5 w-5" />,
+	// 	href: "https://www.facebook.com/kayvan.shah.108", // Replace with your link
+	// 	label: "Facebook",
+	// },
 	{
 		icon: <FaGoogleScholar className="h-5 w-5" />,
 		href: "https://scholar.google.com/citations?user=zNzHN0MAAAAJ&hl=en", // Replace with your link
