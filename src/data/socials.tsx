@@ -1,5 +1,6 @@
 import { FaLinkedin, FaGithub, FaMedium } from "react-icons/fa";
 import { FaGoogleScholar, FaKaggle } from "react-icons/fa6";
+import { HiMail } from "react-icons/hi";
 
 const socialLinks = [
 	{
@@ -36,6 +37,11 @@ const socialLinks = [
 		icon: <FaKaggle className="h-5 w-5" />,
 		href: "https://www.kaggle.com/kayvanshah", // Replace with your link
 		label: "Kaggle",
+	},
+	{
+		icon: <HiMail className="h-5 w-5" />,
+		href: "mailto:kayvan.taiyo@gmail.com", // Replace with your link
+		label: "Email",
 	},
 ];
 
