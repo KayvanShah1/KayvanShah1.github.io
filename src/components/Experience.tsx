@@ -15,14 +15,14 @@ const Experience = () => {
 			<h1 className="mb-8 text-4xl font-semibold">Experience</h1>
 
 			<Tabs defaultValue={experienceData[0].id} className="w-full">
-				<div className="flex h-full w-full flex-col md:flex-row">
+				<div className="flex h-full w-full flex-col gap-3">
 					{/* Tabs List */}
-					<TabsList className="flex h-full w-full flex-col gap-2 bg-transparent md:w-1/5">
+					<TabsList className="flex w-full flex-1 flex-col justify-center gap-2 bg-transparent md:flex-row">
 						{experienceData.map((exp) => (
 							<TabsTrigger
 								key={exp.id}
 								value={exp.id}
-								className="hover:bg-muted/70 focus-visible:ring-primary h-auto w-full border-r-4 px-4 py-2 text-center break-words whitespace-normal transition-colors duration-200 focus-visible:ring-2"
+								className="hover:bg-muted/70 h-auto w-full border-b-4 border-transparent px-4 py-2 text-center break-words whitespace-normal transition-colors duration-200 focus-visible:outline-none data-[state=active]:!border-b-green-400"
 							>
 								{exp.company}
 							</TabsTrigger>
@@ -30,7 +30,7 @@ const Experience = () => {
 					</TabsList>
 
 					{/* Tabs Content */}
-					<div className="mt-6 w-full md:mt-0 md:w-4/5 md:pl-6">
+					<div className="mt-6 w-full md:mt-3">
 						{experienceData.map((exp) => (
 							<TabsContent key={exp.id} value={exp.id}>
 								<Timeline>
