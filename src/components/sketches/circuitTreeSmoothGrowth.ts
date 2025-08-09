@@ -457,11 +457,13 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 
 	p.doubleClicked = () => {
 		if (!root) return;
-		// ⬅️ Double click = regenerate new tree
-		root = createTree();
-		root.triggerShine(p.millis());
-		lastShineTime = p.millis();
-		return false; // prevent default double click behavior
+		if (document.activeElement == canvasElt) {
+			// ⬅️ Double click = regenerate new tree
+			root = createTree();
+			root.triggerShine(p.millis());
+			lastShineTime = p.millis();
+			return false; // prevent default double click behavior
+		}
 	};
 
 	p.keyPressed = () => {
