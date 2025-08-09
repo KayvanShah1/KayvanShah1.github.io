@@ -38,6 +38,7 @@ class Branch {
 	originX?: number;
 	originY?: number;
 	createdTime: number;
+	hasLeaf: boolean;
 
 	constructor(p: p5, opts: BranchOptions, createdTime: number) {
 		this.baseAngle = opts.angle;
@@ -48,6 +49,8 @@ class Branch {
 		this.originY = opts.originY;
 		this.createdTime = createdTime;
 		this.length = p.random(20, 70) * treeScale;
+		// Depth-based leaf probability (outer canopy more likely)
+		this.hasLeaf = p.random() < p.map(this.depth, 1, maxDepth, 0.55, 0.9, true);
 	}
 
 	triggerShine(startTime: number) {
@@ -204,31 +207,35 @@ class Branch {
 		p.stroke(120);
 		p.line(start.x, start.y, end.x, end.y);
 
-		// 🌿 Draw leaf at end if this is a terminal branch
-		if (this.children.length === 0 && this.lengthProgress >= 0.99) {
-			const leafSize = p.map(this.depth, 2, maxDepth, 4, 8, true);
-			const pulse = 0.9 + 0.15 * Math.sin(p.millis() / 400 + this.depth);
-			const twinkle = Math.sin(p.millis() / 250 + this.depth) * 0.15;
+		// 🌿 Draw leaf at end if this is a terminal branch (attached state only)
+		if (this.children.length === 0 && this.hasLeaf && this.lengthProgress >= 0.99) {
+			// keep leaves small
+			const base = p.map(this.depth, 2, maxDepth, 3, 6, true);
+			const pulse = 1 + 0.06 * Math.sin(p.millis() / 500 + this.depth);
 
-			// 🌈 Slight color variation
-			const hue = p.lerp(100, 140, this.depth / maxDepth) + p.random(-5, 5); // vibrant green range
+			// elliptical shape (wider than tall)
+			const leafW = base * 0.65 * pulse;
+			const leafH = base * 1.05 * pulse;
 
-			// ✨ Core glowing leaf
+			// stable depth-based hue (no per-frame randomness)
+			const hue = p.lerp(100, 140, this.depth / maxDepth);
+
+			p.push();
+			p.translate(end.x, end.y);
+			p.rotate(this.animatedAngle + Math.PI / 2); // align across the branch
+
+			// core leaf
 			p.noStroke();
-			p.fill(`hsla(${hue}, 100%, 55%, 0.92)`);
-			p.ellipse(end.x, end.y, (leafSize + twinkle) * pulse, (leafSize + twinkle) * pulse);
+			p.fill(`hsla(${hue}, 100%, 52%, 0.85)`);
+			p.ellipse(0, 0, leafW, leafH);
 
-			// 🌸 Soft glow ring around leaf
+			// subtle halo
 			p.noFill();
-			p.stroke(`hsla(${hue}, 100%, 70%, 0.3)`);
-			p.strokeWeight(1.0);
-			p.circle(end.x, end.y, (leafSize + 2.5) * pulse);
+			p.strokeWeight(0.6);
+			p.stroke(`hsla(${hue}, 100%, 60%, 0.18)`);
+			p.ellipse(0, 0, leafW * 1.35, leafH * 1.35);
 
-			// ✴️ Petal pulse ring (optional rainbow feel)
-			const ringHue = (hue + 30 + Math.sin(p.millis() / 500 + this.depth) * 10) % 360;
-			p.stroke(`hsla(${ringHue}, 100%, 65%, 0.12)`);
-			p.strokeWeight(0.8);
-			p.circle(end.x, end.y, (leafSize + 6.5) * pulse);
+			p.pop();
 		}
 
 		// Shine trail
