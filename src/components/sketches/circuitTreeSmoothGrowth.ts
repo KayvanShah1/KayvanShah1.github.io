@@ -375,6 +375,7 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 	let root: Branch;
 	let lastShineTime = 0;
 	const shineInterval = 3000;
+	let canvasElt: HTMLCanvasElement;
 
 	const createTree = () =>
 		new Branch(
@@ -390,15 +391,21 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 		);
 
 	p.setup = () => {
-		p.createCanvas(600, 325).class("circuit-tree-canvas");
+		const cnv = p.createCanvas(600, 325).class("circuit-tree-canvas");
+		canvasElt = cnv.elt as HTMLCanvasElement;
+
+		// Make focusable and focus on click
+		canvasElt.setAttribute("tabindex", "0");
+		canvasElt.style.outline = "none";
+		canvasElt.style.touchAction = "none"; // Disable touch actions
+		canvasElt.addEventListener("mousedown", () => canvasElt.focus());
+
 		p.clear();
 		p.frameRate(45);
 		root = createTree();
 
 		// Disable context menu
-		for (const element of document.getElementsByClassName("circuit-tree-canvas")) {
-			element.addEventListener("contextmenu", (e) => e.preventDefault());
-		}
+		canvasElt.addEventListener("contextmenu", (e) => e.preventDefault());
 	};
 
 	p.draw = () => {
@@ -458,7 +465,7 @@ const circuitTreeWithGrowthSmoothSketch = (p: p5) => {
 	};
 
 	p.keyPressed = () => {
-		if (p.key === "s") {
+		if (document.activeElement == canvasElt && p.key === "s") {
 			const filename = `circuit_tree_ss_${getTimestamp()}`;
 			p.saveCanvas(filename, "png");
 		}
