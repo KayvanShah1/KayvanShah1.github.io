@@ -24,8 +24,9 @@ const Footer = () => {
 						<a
 							key={link.label}
 							href={link.href}
-							target="_blank"
-							rel="noopener noreferrer"
+							{...(link.href.startsWith("mailto:") || link.href.startsWith("tel:")
+								? {}
+								: { target: "_blank", rel: "noopener noreferrer" })}
 							aria-label={link.label}
 							className="hover:text-foreground transition"
 						>
