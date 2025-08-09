@@ -3,10 +3,12 @@ import P5Canvas from "./P5Canvas";
 import circuitTreeSmoothGrowth from "./sketches/circuitTreeSmoothGrowth";
 import Typewriter from "./Typewriter";
 import { Button } from "./ui/button";
+import { ScrollProgress } from "./magicui/scroll-progress";
 
 const Hero = () => {
 	return (
 		<section id="hero" className="relative mb-10 flex w-full flex-col items-center justify-center px-6 py-10">
+			<ScrollProgress className="top-16 z-50 w-full bg-gradient-to-r from-green-400 via-teal-400 to-green-400" />
 			<P5Canvas sketch={circuitTreeSmoothGrowth} className="mt-20 mb-10 items-center" />
 
 			<h1 className="text-center text-4xl font-semibold sm:text-5xl lg:text-6xl xl:text-7xl" id="hero-title">
