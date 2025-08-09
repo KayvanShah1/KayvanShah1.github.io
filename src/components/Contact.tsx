@@ -146,7 +146,7 @@ const Contact = () => {
 									{formErrors.message && (
 										<p className="mt-1 pl-1 text-xs text-red-500">{formErrors.message}</p>
 									)}
-									<p className="text-muted-foreground text-xs">
+									<p className="text-muted-foreground mt-0.5 text-xs">
 										I typically respond within 2-3 days. Thanks for reaching out!
 									</p>
 								</div>
