@@ -121,7 +121,7 @@ const experienceData: Experience[] = [
 							"Developed cross-cloud real-time pipeline to stream carbon credits data (GCP Pub/Sub to AWS SNS/SQS, S3, Glue, DynamoDB), with event decoding, replay and failover mechanisms for emissions trading",
 							"Curated and prepared a dataset for carbon offsets price forecasting, integrating financial data (commodities, stock indices) and applying statistical analysis, enhancing feature coverage with 10 new features and improving prediction accuracy",
 							"Led end-to-end automation of carbon registry data ingestion using Selenium, BeautifulSoup, and GCP; built scalable Python ETL pipelines, streamlining workflows and reducing manual effort by 40%",
-							"Orchestrated a dynamic dashboard in Looker Studio to monitor key metrics, patterns and trends in real-time helpingthe sales team to improve carbon footprint reporting by 30%",
+							"Orchestrated a dynamic dashboard in Looker Studio to monitor key metrics, patterns and trends in real-time helping the sales team to improve carbon footprint reporting by 30%",
 						],
 					},
 					{
