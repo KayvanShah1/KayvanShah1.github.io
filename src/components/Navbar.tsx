@@ -5,6 +5,7 @@ import { ModeToggle } from "./mode-toggle";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "./ui/navigation-menu";
 import React from "react";
 import { Separator } from "./ui/separator";
+import { CommandPalette } from "./CommandPalette";
 
 const navItems: { label: string; href: string }[] = [
 	{ label: "Home", href: "#hero" },
@@ -42,8 +43,12 @@ const Navbar = () => {
 	}, []);
 
 	return (
-		<header className="bg-background fixed top-0 z-50 w-full backdrop-blur" id="navbar" role="navigation">
-			<div className="relative mx-4 flex h-16 items-center justify-between border-b py-3 sm:px-16 md:px-16 lg:px-16">
+		<header
+			className="bg-background sticky inset-0 top-0 z-50 w-full overflow-x-hidden"
+			id="navbar"
+			role="navigation"
+		>
+			<div className="relative flex h-16 items-center justify-between border-b py-3 sm:px-16 md:px-16 lg:px-16">
 				{/* Brand */}
 				<a href="/" className="text-xl font-semibold tracking-tight">
 					Kayvan Shah
@@ -70,7 +75,7 @@ const Navbar = () => {
 					</NavigationMenu>
 
 					<div className="bg-border h-6 w-px self-center" />
-
+					<CommandPalette />
 					<ModeToggle />
 				</div>
 
