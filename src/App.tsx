@@ -9,15 +9,17 @@ import Navbar from "./components/Navbar";
 
 function HomePage() {
 	return (
-		<div className="no-scrollbar min-h-screen flex-col overflow-x-hidden">
+		<>
 			<Navbar />
-			<Hero />
-			<About />
-			<Experience />
-			<Education />
-			<Contact />
+			<main className="max-w-screen overflow-x-hidden">
+				<Hero />
+				<About />
+				<Experience />
+				<Education />
+				<Contact />
+			</main>
 			<Footer />
-		</div>
+		</>
 	);
 }
 
