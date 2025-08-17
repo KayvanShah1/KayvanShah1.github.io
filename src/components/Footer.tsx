@@ -10,7 +10,7 @@ const Footer = () => {
 			aria-label="Footer"
 			id="footer"
 		>
-			<div className="relative flex max-w-screen-xl flex-col items-center justify-between gap-4 py-6 sm:px-6 md:flex-row md:px-16">
+			<div className="relative flex flex-col items-center justify-between gap-4 py-6 sm:px-6 md:flex-row md:px-16">
 				{/* Left: Copyright */}
 				<div className="order-2 w-full text-center md:order-none md:text-left">
 					{/* Copyright © {year} Kayvan Shah. All rights reserved. */}

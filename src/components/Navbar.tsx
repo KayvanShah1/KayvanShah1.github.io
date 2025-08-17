@@ -42,12 +42,8 @@ const Navbar = () => {
 	}, []);
 
 	return (
-		<header
-			className="bg-background fixed top-0 right-0 left-0 z-50 w-full backdrop-blur"
-			id="navbar"
-			role="navigation"
-		>
-			<div className="relative mx-4 flex h-16 max-w-screen-xl items-center justify-between border-b py-3 sm:px-16 md:px-16 lg:px-16">
+		<header className="bg-background fixed top-0 z-50 w-full backdrop-blur" id="navbar" role="navigation">
+			<div className="relative mx-4 flex h-16 items-center justify-between border-b py-3 sm:px-16 md:px-16 lg:px-16">
 				{/* Brand */}
 				<a href="/" className="text-xl font-semibold tracking-tight">
 					Kayvan Shah
