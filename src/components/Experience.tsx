@@ -1,3 +1,5 @@
+// import { Marquee } from "@/components/magicui/marquee";
+// import { Logos } from "@/data/logos";
 import experienceData from "@/data/experience";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import {
@@ -77,6 +79,28 @@ const Experience = () => {
 					</div>
 				</div>
 			</Tabs>
+
+			{/* <div className="relative flex w-full flex-col items-center justify-center overflow-hidden py-4">
+				<Marquee className="gap-16 [--duration:10s]">
+					{Logos.map((logo, i) => (
+						<div
+							key={`${logo.alt}-${i}`}
+							className="flex h-32 w-full items-center justify-center rounded-md bg-transparent p-2 transition-transform"
+							title={logo.alt}
+						>
+							<img
+								src={logo.src}
+								alt={logo.alt}
+								className="max-h-full max-w-full object-contain grayscale-100"
+								loading="lazy"
+								decoding="async"
+							/>
+						</div>
+					))}
+				</Marquee>
+				<div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r" />
+				<div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l" />
+			</div> */}
 		</section>
 	);
 };
