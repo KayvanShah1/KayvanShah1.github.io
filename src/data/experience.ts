@@ -175,11 +175,13 @@ const experienceData: Experience[] = [
 				type: "Part-time",
 				description: [
 					"Developed BERT-based weakly supervised classifier for sector-subsector labeling (~300 classes) across 100K+ records, achieving 80% macro F1, organizing data for improving categorization, search, and analytics",
-					"Engineered modular ETL framework with parallel processing, powering 20+ pipelines across web/API sources; clean, validate, and enabled transformations (semantic, spatial, standardization), reducing dev and ingestion time by 50%",
+					// "Engineered modular ETL framework with parallel processing, powering 20+ pipelines across web/API sources; clean, validate, and enabled transformations (semantic, spatial, standardization), reducing dev and ingestion time by 50%",
+					"Engineered a modular Python ETL framework with multiprocessing for data retrieval and Spark for distributed transformations and ingestion, with checkpointing and failure recovery, cutting delivery time by 50%",
+					"Developed 20+ data pipelines to scrape data from web pages and 3rd Party APIs using BeautifulSoup, and Selenium, transformed (cleaned, geocoded, standardized) data with PySpark, generated embeddings using Hugging Face models, and ingested into GCS and Elasticsearch",
 					// "Built reusable training and inference pipeline and integrated SHAP into analytics dashboards to highlight top 10 risk drivers from 1K+ features, improving model transparency and guiding stakeholder decisions",
-					// "Trained a voting-based ensemble (XGBoost, RF, NNs) for investment risk profiling from static and temporal data, handling complexity and imbalance; achieved 84% F1-score for early identification of high-risk projects",
+					"Trained a voting-based ensemble (XGBoost, RF, NNs) for investment risk profiling from static and temporal data, handling complexity and imbalance; achieved 84% F1-score for early identification of high-risk projects",
 					"Built inference pipelines with SHAP explainability, integrated into analytics APIs to surface top 10 risk drivers from 1K+ features, delivering over 80% explainability coverage in investment risk decisions",
-					"Trained a voting ensemble (XGBoost, RF, NNs) on static and temporal data, addressing class imbalance and complexity applying feature reduction (10K+ → ∼1K); achieving 84% F1-score in early detection of high-risk investment projects",
+					// "Trained a voting ensemble (XGBoost, RF, NNs) on static and temporal data, addressing class imbalance and complexity applying feature reduction (10K+ → ∼1K); achieving 84% F1-score in early detection of high-risk investment projects",
 				],
 			},
 			{
