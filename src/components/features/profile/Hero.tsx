@@ -1,9 +1,9 @@
 import { FaEnvelope } from "react-icons/fa";
-import P5Canvas from "./P5Canvas";
-import circuitTreeSmoothGrowth from "./sketches/circuitTreeSmoothGrowth";
-import Typewriter from "./Typewriter";
-import { Button } from "./ui/button";
-import { ScrollProgress } from "./magicui/scroll-progress";
+import P5Canvas from "@/components/P5Canvas";
+import circuitTreeSmoothGrowth from "@/components/sketches/circuitTreeSmoothGrowth";
+import Typewriter from "@/components/Typewriter";
+import { Button } from "@/components/ui/button";
+import { ScrollProgress } from "@/components/magicui/scroll-progress";
 
 const Hero = () => {
 	return (

@@ -1,17 +1,18 @@
+import About from "@/components/features/profile/About";
+import Contact from "@/components/features/profile/Contact";
+import Education from "@/components/features/profile/Education";
+import Experience from "@/components/features/profile/Experience";
+import Hero from "@/components/features/profile/Hero";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import { ScrollTop } from "@/components/scroll-top";
 import { ThemeProvider } from "@/components/theme-provider";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Education from "./components/Education";
-import Experience from "./components/Experience";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
 
 function HomePage() {
 	return (
 		<>
 			<Navbar />
-			<main className="max-w-screen overflow-x-hidden">
+			<main className="mx-auto max-w-screen overflow-x-hidden md:max-w-screen-xl">
 				<Hero />
 				<About />
 				<Experience />
@@ -19,6 +20,7 @@ function HomePage() {
 				<Contact />
 			</main>
 			<Footer />
+			<ScrollTop />
 		</>
 	);
 }

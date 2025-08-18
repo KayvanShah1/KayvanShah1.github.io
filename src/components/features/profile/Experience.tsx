@@ -1,7 +1,7 @@
 // import { Marquee } from "@/components/magicui/marquee";
 // import { Logos } from "@/data/logos";
 import experienceData from "@/data/experience";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
 	Timeline,
 	TimelineDescription,
@@ -9,7 +9,7 @@ import {
 	TimelineItem,
 	TimelineTime,
 	TimelineTitle,
-} from "./ui/timeline";
+} from "@/components/ui/timeline";
 
 const Experience = () => {
 	return (

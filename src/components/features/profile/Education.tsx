@@ -7,7 +7,7 @@ import {
 	TimelineHeader,
 	TimelineDescription,
 } from "@/components/ui/timeline";
-import { Badge } from "./ui/badge";
+import { Badge } from "@/components/ui/badge";
 
 const Education = () => {
 	return (

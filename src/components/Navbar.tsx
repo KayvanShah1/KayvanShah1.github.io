@@ -1,11 +1,15 @@
+import { CommandPalette } from "@/components/CommandPalette";
+import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
+import {
+	NavigationMenu,
+	NavigationMenuItem,
+	NavigationMenuLink,
+	NavigationMenuList,
+} from "@/components/ui/navigation-menu";
+import { Separator } from "@/components/ui/separator";
 import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
-import { ModeToggle } from "./mode-toggle";
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "./ui/navigation-menu";
-import React from "react";
-import { Separator } from "./ui/separator";
-import { CommandPalette } from "./CommandPalette";
+import React, { useEffect, useState } from "react";
 
 const navItems: { label: string; href: string }[] = [
 	{ label: "Home", href: "#hero" },
@@ -48,7 +52,7 @@ const Navbar = () => {
 			id="navbar"
 			role="navigation"
 		>
-			<div className="relative flex h-16 items-center justify-between border-b py-3 sm:px-16 md:px-16 lg:px-16">
+			<div className="relative mx-4 flex h-16 items-center justify-between border-b py-3 sm:px-16 md:px-16 lg:px-16">
 				{/* Brand */}
 				<a href="/" className="text-xl font-semibold tracking-tight">
 					Kayvan Shah

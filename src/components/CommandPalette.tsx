@@ -12,16 +12,20 @@ import { cn } from "@/lib/utils";
 import {
 	BriefcaseBusiness,
 	Check,
-	CornerDownLeft,
-	Download,
+	GraduationCapIcon,
+	LetterTextIcon,
 	Link as LinkIcon,
 	MoonStar,
-	Rss,
 	Sun,
-	User,
+	Contact as ContactIcon,
+	CornerDownLeftIcon,
 } from "lucide-react";
 import * as React from "react";
+import { FaHome } from "react-icons/fa";
+import { FaMedium, FaNairaSign } from "react-icons/fa6";
 import { toast } from "sonner";
+import { Icons } from "./icons";
+import { Separator } from "./ui/separator";
 
 /* ---------- Types ---------- */
 type CommandLinkItem = {
@@ -36,22 +40,21 @@ type CommandKind = "command" | "page" | "link";
 
 /* ---------- Example data (tweak to your portfolio) ---------- */
 const MENU_LINKS: CommandLinkItem[] = [
-	{ title: "Home", href: "/", icon: LinkIcon },
-	{ title: "Blog", href: "/blog", icon: Rss },
+	{ title: "Home", href: "/#hero", icon: FaHome },
+	{ title: "Blog", href: "/blog", icon: FaMedium },
 ];
 
 const PORTFOLIO_LINKS: CommandLinkItem[] = [
-	{ title: "About", href: "/#about", icon: User },
+	{ title: "About", href: "/#about", icon: LetterTextIcon },
 	{ title: "Experience", href: "/#experience", icon: BriefcaseBusiness },
-	{ title: "Education", href: "/#education", icon: LinkIcon },
-	{ title: "Projects", href: "/#projects", icon: LinkIcon },
-	{ title: "Contact", href: "/#contact", icon: LinkIcon },
+	{ title: "Education", href: "/#education", icon: GraduationCapIcon },
+	{ title: "Projects", href: "/#projects", icon: Icons.project },
+	{ title: "Contact", href: "/#contact", icon: ContactIcon },
 ];
 
 const SOCIAL_LINKS: CommandLinkItem[] = [
 	{ title: "LinkedIn", href: "https://linkedin.com/in/your-handle", openInNewTab: true, icon: LinkIcon },
 	{ title: "GitHub", href: "https://github.com/your-handle", openInNewTab: true, icon: LinkIcon },
-	{ title: "X / Twitter", href: "https://x.com/your-handle", openInNewTab: true, icon: LinkIcon },
 ];
 
 /* ---------- Theme helpers (safe for SSR) ---------- */
@@ -151,17 +154,6 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 		}
 	}, []);
 
-	const handleDownloadVcard = React.useCallback(() => {
-		setOpen(false);
-		const a = document.createElement("a");
-		a.href = "/vcard/your-name.vcf";
-		a.download = "your-name.vcf";
-		document.body.appendChild(a);
-		a.click();
-		a.remove();
-		toast.success("Downloading vCard…");
-	}, []);
-
 	const handleTheme = React.useCallback((t: "light" | "dark" | "system") => {
 		setOpen(false);
 		setTheme(t);
@@ -173,15 +165,23 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 	return (
 		<>
 			{/* Trigger (put this in your navbar) */}
-			<Button variant="outline" className="rounded-full text-sm" onClick={() => setOpen(true)}>
-				<span className="font-sans text-sm/4 font-medium">Search</span>
+			<Button variant="outline" className="gap-1.5 rounded-full text-sm" onClick={() => setOpen(true)}>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" aria-hidden>
+					<path
+						d="M10.278 11.514a5.824 5.824 0 1 1 1.235-1.235l3.209 3.208A.875.875 0 0 1 14.111 15a.875.875 0 0 1-.624-.278l-3.209-3.208Zm.623-4.69a4.077 4.077 0 1 1-8.154 0 4.077 4.077 0 0 1 8.154 0Z"
+						fill="currentColor"
+						fillRule="evenodd"
+						clipRule="evenodd"
+					/>
+				</svg>
+				<span className="font-sans text-sm/4 font-medium sm:hidden">Search</span>
 				<CommandMenuKbd className="hidden tracking-wider sm:in-[.os-macos_&]:flex">⌘K</CommandMenuKbd>
 				<CommandMenuKbd className="hidden sm:not-[.os-macos_&]:flex">Ctrl K</CommandMenuKbd>
 			</Button>
 
 			<CommandDialog open={open} onOpenChange={setOpen}>
 				<CommandInput placeholder="Type a command or search…" />
-				<CommandList className="max-h-[60vh]">
+				<CommandList className="min-h-80">
 					<CommandEmpty>No results found.</CommandEmpty>
 
 					<LinksGroup
@@ -235,21 +235,6 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 
 					<CommandSeparator />
 
-					<CommandGroup heading="Brand / Utilities">
-						<CommandItem
-							value="Download vCard"
-							keywords={["vcard", "download"]}
-							onSelect={handleDownloadVcard}
-							onMouseMove={() => setHighlightedTitle("Download vCard")}
-							onFocus={() => setHighlightedTitle("Download vCard")}
-						>
-							<Download className="mr-2 h-4 w-4" />
-							Download vCard
-						</CommandItem>
-					</CommandGroup>
-
-					<CommandSeparator />
-
 					<CommandGroup heading="Theme">
 						<CommandItem
 							value="Light"
@@ -258,7 +243,7 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 							onMouseMove={() => setHighlightedTitle("Light")}
 							onFocus={() => setHighlightedTitle("Light")}
 						>
-							<Sun className="mr-2 h-4 w-4" />
+							<Sun className="h-4 w-4" />
 							<span className="flex-1">Light</span>
 							{resolvedTheme === "light" && <Check className="h-4 w-4 opacity-70" />}
 						</CommandItem>
@@ -270,7 +255,7 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 							onMouseMove={() => setHighlightedTitle("Dark")}
 							onFocus={() => setHighlightedTitle("Dark")}
 						>
-							<MoonStar className="mr-2 h-4 w-4" />
+							<MoonStar className="h-4 w-4" />
 							<span className="flex-1">Dark</span>
 							{resolvedTheme === "dark" && <Check className="h-4 w-4 opacity-70" />}
 						</CommandItem>
@@ -282,7 +267,7 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 							onMouseMove={() => setHighlightedTitle("Auto")}
 							onFocus={() => setHighlightedTitle("Auto")}
 						>
-							<CornerDownLeft className="mr-2 h-4 w-4 rotate-90 opacity-70" />
+							<Icons.contrast />
 							<span className="flex-1">Auto</span>
 							<span className="text-muted-foreground mr-2 text-xs">({resolvedTheme})</span>
 						</CommandItem>
@@ -291,10 +276,15 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 
 				{/* Footer */}
 				<div className="text-muted-foreground flex items-center justify-between border-t px-3 py-2 text-xs">
-					<span>{ENTER_ACTION_LABELS[selectedKind]}</span>
+					<FaNairaSign />
 					<div className="flex items-center gap-2">
-						<kbd className="bg-muted rounded px-1.5 py-0.5">Esc</kbd>
-						<span>Exit</span>
+						<span>{ENTER_ACTION_LABELS[selectedKind]}</span>
+						<CommandMenuKbd>
+							<CornerDownLeftIcon />
+						</CommandMenuKbd>
+						<Separator orientation="vertical" className="data-[orientation=vertical]:h-4" />
+						<span className="text-muted-foreground">Exit</span>
+						<CommandMenuKbd>Esc</CommandMenuKbd>
 					</div>
 				</div>
 			</CommandDialog>
@@ -328,7 +318,7 @@ function LinksGroup({
 						onMouseMove={() => onHighlight(val)}
 						onFocus={() => onHighlight(val)}
 					>
-						<Icon className="mr-2 h-4 w-4 shrink-0" />
+						<Icon className="h-4 w-4 shrink-0" />
 						{l.title}
 					</CommandItem>
 				);
