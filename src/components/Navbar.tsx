@@ -85,6 +85,7 @@ const Navbar = () => {
 
 				{/* Mobile Nav using NavigationMenu */}
 				<div className="bg-background flex items-center justify-between gap-2 md:hidden">
+					<CommandPalette />
 					<ModeToggle />
 					<Button
 						variant="ghost"
@@ -96,7 +97,7 @@ const Navbar = () => {
 					</Button>
 				</div>
 
-				{isOpen && (
+				{/* {isOpen && (
 					<NavigationMenu className="bg-background border-border absolute top-16 right-0 z-40 origin-top transform rounded-xl border px-4 py-2 shadow-md transition-all duration-300 ease-in-out md:hidden">
 						<NavigationMenuList className="flex flex-col items-center gap-1">
 							{navItems.map((item, index) => (
@@ -123,6 +124,31 @@ const Navbar = () => {
 							))}
 						</NavigationMenuList>
 					</NavigationMenu>
+				)} */}
+				{isOpen && (
+					<div id="mobile-menu" className="fixed inset-x-0 top-16 left-24 z-[60] md:hidden">
+						<div className="bg-background mx-4 rounded-xl border p-2 shadow-md">
+							<nav className="flex flex-col">
+								{navItems.map((item, index) => (
+									<React.Fragment key={item.label}>
+										<a
+											href={item.href}
+											className={`block rounded-md px-3 py-1 text-base font-medium transition-colors ${
+												active === item.label ? "text-foreground" : "text-muted-foreground"
+											} hover:text-foreground`}
+											onClick={() => {
+												setActive(item.label);
+												setIsOpen(false);
+											}}
+										>
+											{item.label}
+										</a>
+										{index !== navItems.length - 1 && <Separator className="my-1" />}
+									</React.Fragment>
+								))}
+							</nav>
+						</div>
+					</div>
 				)}
 			</div>
 		</header>
