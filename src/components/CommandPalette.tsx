@@ -22,12 +22,12 @@ import {
 } from "lucide-react";
 import * as React from "react";
 import { FaHome } from "react-icons/fa";
-import { FaMedium, FaNairaSign } from "react-icons/fa6";
+import { FaNairaSign } from "react-icons/fa6";
 import { toast } from "sonner";
 import { Icons } from "./icons";
 import { Separator } from "./ui/separator";
+import socialLinks from "@/data/socials";
 
-/* ---------- Types ---------- */
 type CommandLinkItem = {
 	title: string;
 	href: string;
@@ -38,10 +38,9 @@ type CommandLinkItem = {
 
 type CommandKind = "command" | "page" | "link";
 
-/* ---------- Example data (tweak to your portfolio) ---------- */
 const MENU_LINKS: CommandLinkItem[] = [
 	{ title: "Home", href: "/#hero", icon: FaHome },
-	{ title: "Blog", href: "/blog", icon: FaMedium },
+	{ title: "Contact", href: "/#contact", icon: ContactIcon },
 ];
 
 const PORTFOLIO_LINKS: CommandLinkItem[] = [
@@ -49,13 +48,15 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
 	{ title: "Experience", href: "/#experience", icon: BriefcaseBusiness },
 	{ title: "Education", href: "/#education", icon: GraduationCapIcon },
 	{ title: "Projects", href: "/#projects", icon: Icons.project },
-	{ title: "Contact", href: "/#contact", icon: ContactIcon },
 ];
 
-const SOCIAL_LINKS: CommandLinkItem[] = [
-	{ title: "LinkedIn", href: "https://linkedin.com/in/your-handle", openInNewTab: true, icon: LinkIcon },
-	{ title: "GitHub", href: "https://github.com/your-handle", openInNewTab: true, icon: LinkIcon },
-];
+const SOCIAL_LINKS: CommandLinkItem[] = socialLinks.map((s) => ({
+	title: s.label,
+	href: s.href,
+	icon: s.svg,
+	keywords: [s.label.toLowerCase()],
+	openInNewTab: true,
+}));
 
 /* ---------- Theme helpers (safe for SSR) ---------- */
 function setTheme(theme: "light" | "dark" | "system") {
@@ -278,7 +279,7 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 				<div className="text-muted-foreground flex items-center justify-between border-t px-3 py-2 text-xs">
 					<FaNairaSign />
 					<div className="flex items-center gap-2">
-						<span>{ENTER_ACTION_LABELS[selectedKind]}</span>
+						<span className="font-bold">{ENTER_ACTION_LABELS[selectedKind]}</span>
 						<CommandMenuKbd>
 							<CornerDownLeftIcon />
 						</CommandMenuKbd>
