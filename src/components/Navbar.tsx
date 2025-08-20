@@ -10,6 +10,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Menu, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { NavItemGitHub } from "@/components/nav-item-github";
 
 const navItems: { label: string; href: string }[] = [
 	{ label: "Home", href: "#hero" },
@@ -54,8 +55,8 @@ const Navbar = () => {
 		>
 			<div className="relative mx-4 flex h-16 items-center justify-between border-b py-3 sm:px-16 md:px-16 lg:px-16">
 				{/* Brand */}
-				<a href="/" className="text-xl font-semibold tracking-tight">
-					Kayvan Shah
+				<a href="/" className="text-3xl font-semibold tracking-tight">
+					KS
 				</a>
 
 				{/* Desktop Nav */}
@@ -79,14 +80,20 @@ const Navbar = () => {
 					</NavigationMenu>
 
 					<div className="bg-border h-6 w-px self-center" />
-					<CommandPalette />
-					<ModeToggle />
+					<div className="flex items-center gap-3">
+						<CommandPalette />
+						<NavItemGitHub />
+						<ModeToggle />
+					</div>
 				</div>
 
 				{/* Mobile Nav using NavigationMenu */}
 				<div className="bg-background flex items-center justify-between gap-2 md:hidden">
-					<CommandPalette />
-					<ModeToggle />
+					<div className="flex items-center gap-2">
+						<CommandPalette />
+						<NavItemGitHub />
+						<ModeToggle />
+					</div>
 					<Button
 						variant="ghost"
 						size="icon"
@@ -96,35 +103,6 @@ const Navbar = () => {
 						{isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
 					</Button>
 				</div>
-
-				{/* {isOpen && (
-					<NavigationMenu className="bg-background border-border absolute top-16 right-0 z-40 origin-top transform rounded-xl border px-4 py-2 shadow-md transition-all duration-300 ease-in-out md:hidden">
-						<NavigationMenuList className="flex flex-col items-center gap-1">
-							{navItems.map((item, index) => (
-								<React.Fragment key={item.label}>
-									<NavigationMenuItem key={item.label}>
-										<NavigationMenuLink
-											href={item.href}
-											className={`text-base font-medium transition-colors ${
-												active === item.label ? "text-foreground" : "text-muted-foreground"
-											} hover:text-foreground`}
-											onClick={() => {
-												setActive(item.label);
-												setIsOpen(false);
-											}}
-										>
-											{item.label}
-										</NavigationMenuLink>
-									</NavigationMenuItem>
-									{index != navItems.length - 1 && (
-										// <div className="bg-border mt-1 h-px min-w-full self-stretch" />
-										<Separator />
-									)}
-								</React.Fragment>
-							))}
-						</NavigationMenuList>
-					</NavigationMenu>
-				)} */}
 				{isOpen && (
 					<div id="mobile-menu" className="fixed inset-x-0 top-16 left-24 z-[60] md:hidden">
 						<div className="bg-background mx-4 rounded-xl border p-2 shadow-md">
