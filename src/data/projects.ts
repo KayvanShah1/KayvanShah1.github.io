@@ -62,7 +62,7 @@ export const PROJECTS: Project[] = [
 * **Automated Deploys** – Backed by **GitHub Actions**, ensuring CI/CD with every commit.
 
 * **Open Source** – Fully available on [GitHub](https://github.com/KayvanShah1/KayvanShah1.github.io)`,
-		logo: "src/assets/img/portfolio-logo.png",
+		logo: "https://kayvanshah1.github.io/dark-logo/favicon-32x32.png",
 	},
 	{
 		id: "google-workspace-token-activity-audit-pipeline",
