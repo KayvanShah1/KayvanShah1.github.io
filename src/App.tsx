@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { ScrollTop } from "@/components/scroll-top";
 import { ThemeProvider } from "@/components/theme-provider";
+import Projects from "./components/features/profile/Projects";
 
 function HomePage() {
 	return (
@@ -16,6 +17,7 @@ function HomePage() {
 				<Hero />
 				<About />
 				<Experience />
+				<Projects />
 				<Education />
 				<Contact />
 			</main>
