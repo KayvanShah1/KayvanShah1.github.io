@@ -36,7 +36,7 @@ export function ModeToggle() {
 		<Button
 			variant="outline"
 			size="icon"
-			className="relative"
+			className="relative rounded-full"
 			onClick={toggle}
 			aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
 			title={`Switch to ${isDark ? "light" : "dark"} mode`}
