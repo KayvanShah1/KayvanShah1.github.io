@@ -27,9 +27,7 @@ export function TagToggle({ tag, active, onClick }: TagToggleProps) {
 			onPressedChange={onClick}
 			className={[
 				"rounded-full px-3 py-1 text-xs transition",
-				active
-					? "bg-green-500 text-white ring-2 ring-green-400"
-					: "bg-muted text-muted-foreground hover:bg-muted/70",
+				active ? "!text-green-400 ring-2 ring-green-400" : "bg-muted text-muted-foreground hover:bg-muted/70",
 			].join(" ")}
 		>
 			{tag}
@@ -42,23 +40,23 @@ export function ProjectFilters({ allTags, selected, mode, onToggleTag, onClear, 
 		<div className="mb-6 space-y-3">
 			{/* Row 1: AND/OR toggle + Clear */}
 			<div className="flex flex-wrap items-center gap-2">
+				Match
 				<Tabs value={mode} onValueChange={(val) => onModeChange(val as Mode)}>
 					<TabsList className="bg-muted/40 rounded-full">
 						<TabsTrigger
 							value="AND"
 							className="rounded-full px-3 py-1 text-xs data-[state=active]:!bg-green-500 data-[state=active]:text-white"
 						>
-							Match: AND
+							AND
 						</TabsTrigger>
 						<TabsTrigger
 							value="OR"
 							className="rounded-full px-3 py-1 text-xs data-[state=active]:!bg-green-500 data-[state=active]:text-white"
 						>
-							Match: OR
+							OR
 						</TabsTrigger>
 					</TabsList>
 				</Tabs>
-
 				{selected.length > 0 && (
 					<button
 						type="button"
@@ -121,7 +119,11 @@ export default function Projects() {
 			/>
 
 			{/* ✅ Filtered Projects */}
-			<CollapsibleList items={filtered} max={5} renderItem={(item) => <ProjectItem project={item} />} />
+			<CollapsibleList
+				items={filtered}
+				max={5}
+				renderItem={(item) => <ProjectItem project={item} selectedTags={selected} />}
+			/>
 		</section>
 	);
 }

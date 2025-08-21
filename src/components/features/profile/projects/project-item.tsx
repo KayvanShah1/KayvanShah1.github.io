@@ -17,7 +17,13 @@ type ProjectWithLogo = Project & {
 	logo?: LogoType;
 };
 
-export function ProjectItem({ className, project }: { className?: string; project: ProjectWithLogo }) {
+type ProjectItemProps = {
+	className?: string;
+	project: ProjectWithLogo;
+	selectedTags?: string[]; // <-- optional, since not always passed
+};
+
+export function ProjectItem({ className, project, selectedTags = [] }: ProjectItemProps) {
 	const { start, end } = project.period;
 	const isOngoing = !end;
 
@@ -25,7 +31,7 @@ export function ProjectItem({ className, project }: { className?: string; projec
 		if (!logo) {
 			return (
 				<div
-					className="text-muted-foreground mx-4 hidden size-6 shrink-0 items-center justify-center select-none sm:flex"
+					className="text-muted-foreground mx-4 size-6 shrink-0 items-center justify-center select-none sm:flex"
 					aria-hidden="true"
 				>
 					<Icons.project className="size-5" />
@@ -39,17 +45,14 @@ export function ProjectItem({ className, project }: { className?: string; projec
 					alt=""
 					width={32}
 					height={32}
-					className="mx-4 hidden size-6 shrink-0 select-none sm:flex"
+					className="mx-4 size-6 shrink-0 select-none sm:flex"
 					loading="lazy"
 					aria-hidden="true"
 				/>
 			);
 		}
 		return (
-			<div
-				className="mx-4 hidden size-6 shrink-0 items-center justify-center select-none sm:flex"
-				aria-hidden="true"
-			>
+			<div className="mx-4 size-6 shrink-0 items-center justify-center select-none sm:flex" aria-hidden="true">
 				{logo}
 			</div>
 		);
@@ -79,10 +82,7 @@ export function ProjectItem({ className, project }: { className?: string; projec
 										<span className="font-mono">—</span>
 										{isOngoing ? (
 											<>
-												<InfinityIcon
-													className="size-4 translate-y-[0.5px] text-green-400"
-													aria-hidden
-												/>
+												<InfinityIcon className="size-4.5 translate-y-[0.5px]" aria-hidden />
 												<span className="sr-only">Present</span>
 											</>
 										) : (
@@ -91,19 +91,25 @@ export function ProjectItem({ className, project }: { className?: string; projec
 									</dd>
 								</dl>
 
-								{project.tags && project.tags.length > 0 && (
-									<div className="mt-1 flex flex-wrap gap-1">
-										{project.tags.map((tag, idx) => (
+								<div className="mt-1 flex flex-wrap gap-1">
+									{project.tags?.map((tag, idx) => {
+										const isActive = selectedTags.includes(tag);
+										return (
 											<Badge
 												key={idx}
 												variant="outline"
-												className="text-muted-foreground bg-muted border-muted hover:bg-muted/80 rounded-full text-xs hover:text-green-400"
+												className={[
+													"rounded-full text-xs transition",
+													isActive
+														? "text-green-400 ring-2 ring-green-400"
+														: "text-muted-foreground bg-muted border-muted hover:bg-muted/80",
+												].join(" ")}
 											>
 												{tag}
 											</Badge>
-										))}
-									</div>
-								)}
+										);
+									})}
+								</div>
 							</div>
 
 							{project.link && (
