@@ -8,25 +8,25 @@ import {
 	CommandList,
 	CommandSeparator,
 } from "@/components/ui/command";
+import socialLinks from "@/data/socials";
 import { cn } from "@/lib/utils";
 import {
 	BriefcaseBusiness,
 	Check,
+	Contact as ContactIcon,
+	CornerDownLeftIcon,
 	GraduationCapIcon,
 	LetterTextIcon,
 	Link as LinkIcon,
 	MoonStar,
 	Sun,
-	Contact as ContactIcon,
-	CornerDownLeftIcon,
 } from "lucide-react";
 import * as React from "react";
 import { FaHome } from "react-icons/fa";
-import { FaNairaSign } from "react-icons/fa6";
 import { toast } from "sonner";
 import { Icons } from "./icons";
+import { NameInitialsSVGComponent } from "./TextToSvgComponent";
 import { Separator } from "./ui/separator";
-import socialLinks from "@/data/socials";
 
 type CommandLinkItem = {
 	title: string;
@@ -277,7 +277,7 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 
 				{/* Footer */}
 				<div className="text-muted-foreground flex items-center justify-between border-t px-3 py-2 text-xs">
-					<FaNairaSign />
+					<NameInitialsSVGComponent className="!text-muted-foreground size-5" />
 					<div className="flex items-center gap-2">
 						<span className="font-bold">{ENTER_ACTION_LABELS[selectedKind]}</span>
 						<CommandMenuKbd>
