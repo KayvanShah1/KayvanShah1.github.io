@@ -5,6 +5,7 @@ export type Project = {
 		start: string;
 		end?: string;
 	};
+	tags?: string[];
 	link?: string;
 	skills: string[];
 	summary?: string;
