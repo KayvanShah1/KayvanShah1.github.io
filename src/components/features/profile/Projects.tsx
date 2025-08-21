@@ -10,7 +10,7 @@ const Projects = () => {
 				<sup className="text-muted-foreground ml-1 text-sm select-none">({PROJECTS.length})</sup>
 			</h1>
 
-			<CollapsibleList items={PROJECTS} max={4} renderItem={(item) => <ProjectItem project={item} />} />
+			<CollapsibleList items={PROJECTS} max={5} renderItem={(item) => <ProjectItem project={item} />} />
 		</section>
 	);
 };
