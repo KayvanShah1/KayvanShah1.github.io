@@ -1,5 +1,7 @@
 import { CommandPalette } from "@/components/CommandPalette";
 import { ModeToggle } from "@/components/mode-toggle";
+import { NavItemGitHub } from "@/components/nav-item-github";
+import { NameInitialsSVGComponent } from "@/components/TextToSvgComponent";
 import { Button } from "@/components/ui/button";
 import {
 	NavigationMenu,
@@ -10,7 +12,6 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Menu, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { NavItemGitHub } from "@/components/nav-item-github";
 
 const navItems: { label: string; href: string }[] = [
 	{ label: "Home", href: "#hero" },
@@ -56,7 +57,7 @@ const Navbar = () => {
 			<div className="relative mx-4 flex h-16 items-center justify-between border-b py-3 sm:px-16 md:px-16 lg:px-16">
 				{/* Brand */}
 				<a href="/" className="text-3xl font-semibold tracking-tight">
-					KS
+					<NameInitialsSVGComponent className="size-12" />
 				</a>
 
 				{/* Desktop Nav */}
