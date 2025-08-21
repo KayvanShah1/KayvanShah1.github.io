@@ -70,20 +70,6 @@ export function ProjectItem({ className, project }: { className?: string; projec
 
 								<div className="mb-1 flex items-center">
 									<h3 className="text-lg leading-snug font-medium text-balance">{project.title}</h3>
-
-									{project.tags && project.tags.length > 0 && (
-										<div className="ml-2 flex flex-wrap gap-1">
-											{project.tags.map((tag, idx) => (
-												<Badge
-													key={idx}
-													variant="outline"
-													className="text-muted-foreground bg-muted border-muted hover:bg-muted/80 rounded-full text-xs hover:text-green-400"
-												>
-													{tag}
-												</Badge>
-											))}
-										</div>
-									)}
 								</div>
 
 								<dl className="text-muted-foreground text-sm">
@@ -104,6 +90,20 @@ export function ProjectItem({ className, project }: { className?: string; projec
 										)}
 									</dd>
 								</dl>
+
+								{project.tags && project.tags.length > 0 && (
+									<div className="mt-1 flex flex-wrap gap-1">
+										{project.tags.map((tag, idx) => (
+											<Badge
+												key={idx}
+												variant="outline"
+												className="text-muted-foreground bg-muted border-muted hover:bg-muted/80 rounded-full text-xs hover:text-green-400"
+											>
+												{tag}
+											</Badge>
+										))}
+									</div>
+								)}
 							</div>
 
 							{project.link && (
