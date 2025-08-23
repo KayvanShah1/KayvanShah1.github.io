@@ -99,10 +99,10 @@ export function ProjectItem({ className, project, selectedTags = [] }: ProjectIt
 												key={idx}
 												variant="outline"
 												className={[
-													"rounded-full text-xs transition",
+													"bg-muted border-muted rounded-full text-xs transition",
 													isActive
-														? "text-green-400 ring-2 ring-green-400"
-														: "text-muted-foreground bg-muted border-muted hover:bg-muted/80",
+														? "text-green-400 ring-2 ring-green-400/70 duration-300"
+														: "text-muted-foreground hover:bg-muted/80",
 												].join(" ")}
 											>
 												{tag}
