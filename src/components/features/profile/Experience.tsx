@@ -1,24 +1,26 @@
 // import { Marquee } from "@/components/magicui/marquee";
 // import { Logos } from "@/data/logos";
-import experienceData from "@/data/experience";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-	Timeline,
-	TimelineDescription,
-	TimelineHeader,
-	TimelineItem,
-	TimelineTime,
-	TimelineTitle,
-} from "@/components/ui/timeline";
+// import experienceData from "@/data/experience";
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// import {
+// 	Timeline,
+// 	TimelineDescription,
+// 	TimelineHeader,
+// 	TimelineItem,
+// 	TimelineTime,
+// 	TimelineTitle,
+// } from "@/components/ui/timeline";
+
+import { EXPERIENCES } from "@/data/experience";
+import { ExperienceItem } from "@/components/features/profile/experience/experience-item";
 
 const Experience = () => {
 	return (
 		<section id="experience" className="mx-6 my-10 flex flex-col justify-start py-10 sm:px-8 md:mx-4 md:px-16">
-			<h1 className="mb-8 text-4xl font-semibold">Experience</h1>
+			<h1 className="mb-4 text-4xl font-semibold">Experience</h1>
 
-			<Tabs defaultValue={experienceData[0].id} className="w-full">
+			{/* <Tabs defaultValue={experienceData[0].id} className="w-full">
 				<div className="flex h-full w-full flex-col gap-3">
-					{/* Tabs List */}
 					<TabsList className="flex w-full flex-1 flex-col justify-center gap-2 bg-transparent md:flex-row">
 						{experienceData.map((exp) => (
 							<TabsTrigger
@@ -31,7 +33,6 @@ const Experience = () => {
 						))}
 					</TabsList>
 
-					{/* Tabs Content */}
 					<div className="mt-6 w-full md:mt-3">
 						{experienceData.map((exp) => (
 							<TabsContent key={exp.id} value={exp.id}>
@@ -78,7 +79,7 @@ const Experience = () => {
 						))}
 					</div>
 				</div>
-			</Tabs>
+			</Tabs> */}
 
 			{/* <div className="relative flex w-full flex-col items-center justify-center overflow-hidden py-4">
 				<Marquee className="gap-16 [--duration:10s]">
@@ -101,6 +102,12 @@ const Experience = () => {
 				<div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r" />
 				<div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l" />
 			</div> */}
+
+			<div className="">
+				{EXPERIENCES.map((experience) => (
+					<ExperienceItem key={experience.id} experience={experience} />
+				))}
+			</div>
 		</section>
 	);
 };
