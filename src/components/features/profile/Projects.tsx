@@ -26,8 +26,10 @@ export function TagToggle({ tag, active, onClick }: TagToggleProps) {
 			pressed={active}
 			onPressedChange={onClick}
 			className={[
-				"rounded-full px-3 py-1 text-xs transition",
-				active ? "!text-green-400 ring-2 ring-green-400" : "bg-muted text-muted-foreground hover:bg-muted/70",
+				"rounded-full px-3 py-1 text-xs transition duration-300",
+				active
+					? "!text-green-400 ring-2 ring-green-400/70"
+					: "bg-muted text-muted-foreground hover:bg-muted/70",
 			].join(" ")}
 		>
 			{tag}
