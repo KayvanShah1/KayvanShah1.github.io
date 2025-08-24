@@ -1,20 +1,22 @@
-import educationData from "@/data/education";
-import {
-	Timeline,
-	TimelineItem,
-	TimelineTitle,
-	TimelineTime,
-	TimelineHeader,
-	TimelineDescription,
-} from "@/components/ui/timeline";
-import { Badge } from "@/components/ui/badge";
+// import educationData from "@/data/education";
+// import {
+// 	Timeline,
+// 	TimelineItem,
+// 	TimelineTitle,
+// 	TimelineTime,
+// 	TimelineHeader,
+// 	TimelineDescription,
+// } from "@/components/ui/timeline";
+// import { Badge } from "@/components/ui/badge";
+import { EDUCATION } from "./data/education";
+import { EducationPositionItem } from "./education/education-position-item";
 
 const Education = () => {
 	return (
 		<section id="education" className="mx-6 my-10 flex flex-col justify-center py-10 sm:px-8 md:mx-4 md:px-16">
 			<h1 className="mb-8 text-4xl font-semibold">Education</h1>
 
-			<Timeline className="mt-2">
+			{/* <Timeline className="mt-2">
 				{educationData.map((item) => (
 					<TimelineItem key={item.id}>
 						<TimelineHeader>
@@ -25,13 +27,6 @@ const Education = () => {
 								<TimelineTitle className="text-xl">{item.university}</TimelineTitle>
 								<p className="text-muted-foreground text-lg font-medium">{item.degree}</p>
 							</div>
-							{/* {item.logo && (
-								<img
-									src={item.logo}
-									alt={`${item.university} logo`}
-									className="bg-muted-foreground mt-2 h-10 w-10 rounded object-contain"
-								/>
-							)} */}
 						</TimelineHeader>
 
 						<TimelineDescription className="mt-2 space-y-3 text-sm leading-relaxed">
@@ -62,7 +57,13 @@ const Education = () => {
 						</TimelineDescription>
 					</TimelineItem>
 				))}
-			</Timeline>
+			</Timeline> */}
+
+			<div className="before:bg-border relative space-y-4 before:absolute before:left-3 before:h-full before:w-px">
+				{EDUCATION.map((position) => (
+					<EducationPositionItem key={position.id} position={position} />
+				))}
+			</div>
 		</section>
 	);
 };
