@@ -1,0 +1,100 @@
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Markdown } from "@/components/ui/markdown";
+import { Separator } from "@/components/ui/separator";
+import { Tag } from "@/components/ui/tag";
+import { Prose } from "@/components/ui/typography";
+import { cn } from "@/lib/utils";
+import { ChevronsDownUpIcon, ChevronsUpDownIcon, InfinityIcon } from "lucide-react";
+
+import type { EducationPosition } from "../types/education";
+import { ExperienceIcon } from "@/components/features/profile/experience/experience-position-icon";
+
+export function EducationPositionItem({ position }: { position: EducationPosition }) {
+	const { start, end } = position.educationPeriod;
+	const isOngoing = !end;
+
+	return (
+		<Collapsible defaultOpen={position.isExpanded} asChild>
+			<div className="last:before:bg-background relative last:before:absolute last:before:h-full last:before:w-4">
+				<CollapsibleTrigger
+					className={cn(
+						"group/experience block w-full text-left select-none",
+						"hover:before:bg-accent/50 relative before:absolute before:-top-1 before:-right-1 before:-bottom-1.5",
+						"before:left-7 before:-z-1 before:rounded-lg"
+					)}
+				>
+					<div className="relative z-1 mb-1 flex items-center gap-3">
+						<div
+							className="bg-muted text-muted-foreground flex size-6 shrink-0 items-center justify-center rounded-lg dark:inset-shadow-[1px_1px_1px,0px_0px_1px] dark:inset-shadow-white/15"
+							aria-hidden
+						>
+							<ExperienceIcon className="size-4" icon={position.icon} />
+						</div>
+
+						<h4 className="flex-1 text-xl font-medium">{position.university}</h4>
+
+						<div className="text-muted-foreground shrink-0 [&_svg]:size-4" aria-hidden>
+							<ChevronsDownUpIcon className="hidden group-data-[state=open]/experience:block" />
+							<ChevronsUpDownIcon className="hidden group-data-[state=closed]/experience:block" />
+						</div>
+					</div>
+
+					<div className="text-muted-foreground flex items-center gap-2 pl-9 text-sm">
+						<>
+							<dl>
+								<dt className="sr-only">Employment Type</dt>
+								<dd className="text-base">{position.degree}</dd>
+							</dl>
+
+							<Separator className="data-[orientation=vertical]:h-4" orientation="vertical" />
+						</>
+
+						<dl className="text-muted-foreground text-sm">
+							<dt className="sr-only">Employment Period</dt>
+							<dd className="flex items-center gap-1">
+								<time>{start}</time>
+								<span className="font-mono">—</span>
+								{isOngoing ? (
+									<>
+										<InfinityIcon className="size-4.5 translate-y-[0.5px]" aria-hidden />
+										<span className="sr-only">Present</span>
+									</>
+								) : (
+									<time>{end}</time>
+								)}
+							</dd>
+						</dl>
+
+						{position.location && (
+							<>
+								{/* <Separator className="data-[orientation=vertical]:h-4" orientation="vertical" /> */}
+								<dl>
+									<dt className="sr-only">Employment Location</dt>
+									<dd className="sr-only">{position.location}</dd>
+								</dl>
+							</>
+						)}
+					</div>
+				</CollapsibleTrigger>
+
+				<CollapsibleContent className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden duration-300">
+					{position.description && (
+						<Prose className="!text-muted-foreground pt-2 pl-9">
+							<Markdown>{position.description}</Markdown>
+						</Prose>
+					)}
+
+					{Array.isArray(position.key_courses) && position.key_courses.length > 0 && (
+						<ul className="flex flex-wrap gap-1.5 pt-2 pl-9">
+							{position.key_courses.map((key_courses, index) => (
+								<li key={index} className="flex">
+									<Tag>{key_courses}</Tag>
+								</li>
+							))}
+						</ul>
+					)}
+				</CollapsibleContent>
+			</div>
+		</Collapsible>
+	);
+}
