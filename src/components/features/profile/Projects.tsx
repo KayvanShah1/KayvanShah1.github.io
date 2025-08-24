@@ -47,13 +47,13 @@ export function ProjectFilters({ allTags, selected, mode, onToggleTag, onClear, 
 					<TabsList className="bg-muted/40 rounded-full">
 						<TabsTrigger
 							value="AND"
-							className="rounded-full px-3 py-1 text-xs data-[state=active]:!bg-green-500 data-[state=active]:text-white"
+							className="rounded-full px-3 py-1 text-xs data-[state=active]:!bg-green-600 data-[state=active]:text-white"
 						>
 							AND
 						</TabsTrigger>
 						<TabsTrigger
 							value="OR"
-							className="rounded-full px-3 py-1 text-xs data-[state=active]:!bg-green-500 data-[state=active]:text-white"
+							className="rounded-full px-3 py-1 text-xs data-[state=active]:!bg-green-600 data-[state=active]:text-white"
 						>
 							OR
 						</TabsTrigger>
