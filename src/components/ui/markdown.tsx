@@ -20,6 +20,7 @@ export function Markdown(props: React.ComponentProps<typeof ReactMarkdown>) {
 				// strong: ({ children }) => <span className="font-semibold text-green-400">{children}</span>,
 				em: ({ children }) => <span className="text-yellow-400 italic">{children}</span>,
 				mark: ({ children }) => <span className="bg-transparent font-bold text-green-400">{children}</span>,
+				img: (props) => <img {...props} style={{ display: "inline", margin: 0, verticalAlign: "middle" }} />,
 			}}
 			{...props}
 		/>
