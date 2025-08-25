@@ -177,6 +177,7 @@ export const PROJECTS: Project[] = [
 		id: "steam-sales-analysis",
 		title: "Steam Sales Analysis",
 		period: { start: "Jun 2024", end: "Aug 2024" },
+		link: "https://github.com/DataForgeOpenAIHub/Steam-Sales-Analysis",
 		skills: [
 			"Python",
 			"ETL",
@@ -201,11 +202,32 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		id: "virtuta-ai-ta",
-		title: "VirtuTA: AI enabled Virtual Teaching Assistant",
+		title: "VirtuTA",
 		period: { start: "Apr 2024", end: "May 2024" },
-		skills: ["NLP", "LLM", "LangChain", "ETL", "Python", "MLOps", "Data Warehousing", "Data Engineering"],
+		link: "https://github.com/KayvanShah1/VirtuTA",
+		skills: [
+			"NLP",
+			"LLM",
+			"LangChain",
+			"ETL",
+			"Python",
+			"MLOps",
+			"Data Warehousing",
+			"Data Engineering",
+			"Retrieval Augmented Generation (RAG)",
+		],
 		tags: ["AI", "MLOps", "Education"],
 		summary: "AI-powered teaching assistant automating Piazza Q&A with multimodal retrieval",
+		description: `VirtuTA is an AI-powered **virtual teaching assistant** that enhances university learning by delivering context-aware, multimodal, and automated support for students and instructors. As part of Final project for *DSCI 560 – Data Science Professional Practicum* @ *USC*.
+* Designed a **multimodal RAG pipeline** (LangChain + Google Gemini) using dual vector stores (Mongo Atlas) for content + logistics queries
+* Integrated with **Piazza API** to auto-answer unresolved student queries in discussion forums
+* Delivered **personalized support**: Q&A, assignment management, logistics updates, and tutoring resources
+* Enhanced responses with **slides, snapshots, timestamps, and source links** for contextual explanations
+* Leveraged **YouTube API** to fetch transcripts, align concept queries to relevant segments, and generate links starting at the exact timestamp
+* Achieved **94% answer rate** on student queries through automated response generation
+
+[![YouTube Presentation](https://img.shields.io/badge/YouTube-Presentation-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=zmJYuHgZtFs) ![Course Project](https://img.shields.io/badge/USC-DSCI%20560%20Project-maroon)
+		`,
 	},
 	{
 		id: "yelpr8-recommender",
