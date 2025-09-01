@@ -32,29 +32,29 @@ export const EXPERIENCES: Experience[] = [
 		],
 		isCurrentEmployer: true,
 	},
-	{
-		id: "usc",
-		companyName: "University of Southern California",
-		positions: [
-			{
-				id: "usc-pos-1",
-				title: "Course Producer & Grader",
-				employmentPeriod: { start: "Aug 2023", end: "Dec 2024" },
-				location: "Los Angeles, CA (Remote)",
-				employmentType: "Part-time",
-				icon: "idea",
-				description: `
-*Automation Expert* - DSCI 510: Principles of Programming for Data Science
+	// 	{
+	// 		id: "usc",
+	// 		companyName: "University of Southern California",
+	// 		positions: [
+	// 			{
+	// 				id: "usc-pos-1",
+	// 				title: "Course Producer & Grader",
+	// 				employmentPeriod: { start: "Aug 2023", end: "Dec 2024" },
+	// 				location: "Los Angeles, CA (Remote)",
+	// 				employmentType: "Part-time",
+	// 				icon: "idea",
+	// 				description: `
+	// *Automation Expert* - DSCI 510: Principles of Programming for Data Science
 
-- Orchestrated **GitHub Actions Workflow** to automate testing, linting, and reporting for 70+ assignments within 10 minutes on GitHub Classrooms  
-- Crafted test cases and Flake8 plugins to enforce assignment guidelines, utilizing **Pytest**, **Flake8**, and **Bash** for workflow efficiency
-- Designed challenging coding assignments, tests, and projects, ensuring alignment with course objectives and learning outcomes
-        `,
-				skills: ["Python", "GitHub Actions", "Pytest", "Flake8", "Bash", "CI/CD", "Automation"],
-			},
-		],
-		isCurrentEmployer: false,
-	},
+	// - Orchestrated **GitHub Actions Workflow** to automate testing, linting, and reporting for 70+ assignments within 10 minutes on GitHub Classrooms
+	// - Crafted test cases and Flake8 plugins to enforce assignment guidelines, utilizing **Pytest**, **Flake8**, and **Bash** for workflow efficiency
+	// - Designed challenging coding assignments, tests, and projects, ensuring alignment with course objectives and learning outcomes
+	//         `,
+	// 				skills: ["Python", "GitHub Actions", "Pytest", "Flake8", "Bash", "CI/CD", "Automation"],
+	// 			},
+	// 		],
+	// 		isCurrentEmployer: false,
+	// 	},
 	{
 		id: "workup",
 		companyName: "WorkUp",
