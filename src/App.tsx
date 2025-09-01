@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import { ScrollTop } from "@/components/scroll-top";
 import { ThemeProvider } from "@/components/theme-provider";
 import Projects from "./components/features/profile/Projects";
+import Leadership from "./components/features/profile/Leadership";
 
 function HomePage() {
 	return (
@@ -18,6 +19,7 @@ function HomePage() {
 				<About />
 				<Experience />
 				<Projects />
+				<Leadership />
 				<Education />
 				<Contact />
 			</main>
