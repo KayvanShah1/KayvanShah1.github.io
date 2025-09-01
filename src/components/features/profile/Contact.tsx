@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useState, type FormEvent } from "react";
+import { ShineBorder } from "@/components/magicui/shine-border";
 
 const Contact = () => {
 	const apiUrl = import.meta.env.VITE_WEB3FORMS_API_URL;
@@ -78,7 +79,8 @@ const Contact = () => {
 
 	return (
 		<section id="contact" className="relative my-10 flex items-center justify-center p-10 md:my-10">
-			<Card className="w-full max-w-md shadow-lg">
+			<Card className="relative w-full max-w-md overflow-hidden shadow-lg">
+				<ShineBorder shineColor={["#4ade80", "#f59e0b", "#14b8a6"]} />
 				<CardHeader>
 					<CardTitle className="text-2xl font-semibold">Get in Touch</CardTitle>
 					<CardDescription>Feel free to reach out for collabs, questions, or just to say hi!</CardDescription>
