@@ -1,4 +1,4 @@
-import { SiGooglepubsub, SiPolars, SiRender } from "@icons-pack/react-simple-icons"; // external pkg if needed
+import { SiFramer, SiGooglepubsub, SiPolars, SiRender } from "@icons-pack/react-simple-icons"; // external pkg if needed
 import { type ComponentType } from "react";
 import { MdFunctions } from "react-icons/md"; // placeholder for Lambda/Cloud Functions
 import {
@@ -15,6 +15,7 @@ import {
 	SiElasticsearch,
 	SiFastapi,
 	SiFlask,
+	SiGeopandas,
 	SiGithubactions,
 	SiGooglebigquery,
 	SiGooglecloud,
@@ -29,9 +30,11 @@ import {
 	SiLangchain,
 	SiLogstash,
 	SiMlflow,
+	SiMongodb,
 	SiMysql,
 	SiNextdotjs,
 	SiNumpy,
+	SiOnnx,
 	SiOpenapiinitiative,
 	SiOpencv,
 	SiPandas,
@@ -41,15 +44,19 @@ import {
 	SiPython,
 	SiPytorch,
 	SiReact,
+	SiRedis,
 	SiScikitlearn,
+	SiShadcnui,
 	SiSnowflake,
 	SiSqlalchemy,
 	SiSqlite,
+	SiTableau,
 	SiTailwindcss,
 	SiTensorflow,
 	SiTerraform,
 	SiTypescript,
 	SiVercel,
+	SiWeightsandbiases,
 } from "react-icons/si";
 import { TbSql } from "react-icons/tb";
 
@@ -70,6 +77,7 @@ export const SKILLS: Skill[] = [
 	{ name: "OpenCV", icon: SiOpencv, domain: "Languages & Libraries" },
 	{ name: "Jupyter", icon: SiJupyter, domain: "Languages & Libraries" },
 	{ name: "SQL", icon: TbSql, domain: "Languages & Libraries" },
+	{ name: "Geopandas", icon: SiGeopandas, domain: "Languages & Libraries" },
 
 	// Databases & Warehouses
 	{ name: "PostgreSQL", icon: SiPostgresql, domain: "Databases & Warehouses" },
@@ -79,6 +87,8 @@ export const SKILLS: Skill[] = [
 	{ name: "BigQuery", icon: SiGooglebigquery, domain: "Databases & Warehouses" },
 	{ name: "Snowflake", icon: SiSnowflake, domain: "Databases & Warehouses" },
 	{ name: "Elasticsearch", icon: SiElasticsearch, domain: "Databases & Warehouses" },
+	{ name: "MongoDB", icon: SiMongodb, domain: "Databases & Warehouses" },
+	{ name: "Redis", icon: SiRedis, domain: "Databases & Warehouses" },
 
 	// Data Engineering & Orchestration
 	{ name: "Airflow", icon: SiApacheairflow, domain: "Data Engineering & Orchestration" },
@@ -94,6 +104,8 @@ export const SKILLS: Skill[] = [
 	{ name: "TensorFlow", icon: SiTensorflow, domain: "Machine Learning & LLMs" },
 	{ name: "Hugging Face", icon: SiHuggingface, domain: "Machine Learning & LLMs" },
 	{ name: "LangChain", icon: SiLangchain, domain: "Machine Learning & LLMs" },
+	{ name: "ONNX", icon: SiOnnx, domain: "Machine Learning & LLMs" },
+	{ name: "Weights & Baises", icon: SiWeightsandbiases, domain: "Machine Learning & LLMs" },
 
 	// Backend & APIs
 	{ name: "FastAPI", icon: SiFastapi, domain: "Backend & APIs" },
@@ -122,10 +134,13 @@ export const SKILLS: Skill[] = [
 	{ name: "React", icon: SiReact, domain: "Frontend" },
 	{ name: "Next.js", icon: SiNextdotjs, domain: "Frontend" },
 	{ name: "Tailwind CSS", icon: SiTailwindcss, domain: "Frontend" },
+	{ name: "Framer", icon: SiFramer, domain: "Frontend" },
+	{ name: "Shadcn-ui", icon: SiShadcnui, domain: "Frontend" },
 
 	// Observability & Ops
 	{ name: "Grafana", icon: SiGrafana, domain: "Observability & Ops" },
 	{ name: "Kibana", icon: SiKibana, domain: "Observability & Ops" },
 	{ name: "Logstash", icon: SiLogstash, domain: "Observability & Ops" },
 	{ name: "GitHub Actions", icon: SiGithubactions, domain: "Observability & Ops" },
+	{ name: "Tableau", icon: SiTableau, domain: "Observability & Ops" },
 ];
