@@ -7,8 +7,8 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { ScrollTop } from "@/components/scroll-top";
 import { ThemeProvider } from "@/components/theme-provider";
-import Projects from "./components/features/profile/Projects";
 import Leadership from "./components/features/profile/Leadership";
+import Projects from "./components/features/profile/Projects";
 import Skills from "./components/features/profile/Skills";
 
 function HomePage() {
