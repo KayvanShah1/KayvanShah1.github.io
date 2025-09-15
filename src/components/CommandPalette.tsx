@@ -22,7 +22,7 @@ import {
 	Sun,
 } from "lucide-react";
 import * as React from "react";
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaTools } from "react-icons/fa";
 import { toast } from "sonner";
 import { Icons } from "./icons";
 import { NameInitialsSVGComponent } from "./TextToSvgComponent";
@@ -45,6 +45,7 @@ const MENU_LINKS: CommandLinkItem[] = [
 
 const PORTFOLIO_LINKS: CommandLinkItem[] = [
 	{ title: "About", href: "/#about", icon: LetterTextIcon },
+	{ title: "Skills", href: "/#skills", icon: FaTools },
 	{ title: "Experience", href: "/#experience", icon: BriefcaseBusiness },
 	{ title: "Education", href: "/#education", icon: GraduationCapIcon },
 	{ title: "Projects", href: "/#projects", icon: Icons.project },
