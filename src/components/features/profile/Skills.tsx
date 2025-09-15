@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 function SkillIcon({ Icon, label }: { Icon: Skill["icon"]; label: string }) {
 	return (
 		<SimpleTooltip content={label}>
-			<Icon className="size-6 shrink-0 md:size-8" />
+			<Icon className="text-muted-foreground size-6 shrink-0 md:size-8" />
 		</SimpleTooltip>
 	);
 }
@@ -44,9 +44,9 @@ export default function Skills() {
 	}, [selected]);
 
 	return (
-		<section id="tech-stack" className="mx-6 my-10 flex flex-col justify-start py-10 sm:px-8 md:mx-4 md:px-16">
+		<section id="skills" className="mx-6 my-10 flex flex-col justify-start py-10 sm:px-8 md:mx-4 md:px-16">
 			<h1 className="mb-4 text-4xl font-semibold">
-				Tech Stack
+				Skills
 				<sup className="text-muted-foreground ml-1 text-sm select-none">
 					({filtered.length}/{SKILLS.length})
 				</sup>
