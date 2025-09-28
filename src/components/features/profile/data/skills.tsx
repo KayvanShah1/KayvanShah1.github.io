@@ -9,6 +9,7 @@ import {
 	SiApachekafka,
 	SiApachespark,
 	SiArgo,
+	SiDbt,
 	SiDjango,
 	SiDocker,
 	SiDuckdb,
@@ -97,6 +98,7 @@ export const SKILLS: Skill[] = [
 	{ name: "PySpark", icon: SiApachespark, domain: "Data Engineering & Orchestration" },
 	{ name: "Prefect", icon: SiPrefect, domain: "Data Engineering & Orchestration" },
 	{ name: "MLflow", icon: SiMlflow, domain: "Data Engineering & Orchestration" },
+	{ name: "dbt", icon: SiDbt, domain: "Data Engineering & Orchestration" },
 
 	// Machine Learning & LLMs
 	{ name: "scikit-learn", icon: SiScikitlearn, domain: "Machine Learning & LLMs" },
