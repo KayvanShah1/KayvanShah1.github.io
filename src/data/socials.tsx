@@ -8,18 +8,21 @@ const socialLinks = [
 		svg: FaGithub,
 		href: "https://github.com/KayvanShah1", // Replace with your link
 		label: "GitHub",
+		username: "KayvanShah1",
 	},
 	{
 		icon: <FaLinkedin className="h-5 w-5" />,
 		svg: FaLinkedin,
 		href: "https://linkedin.com/in/kayvanshah999", // Replace with your link
 		label: "LinkedIn",
+		username: "kayvanshah999",
 	},
 	{
 		icon: <FaMedium className="h-5 w-5" />,
 		svg: FaMedium,
 		href: "https://medium.com/@KayvanShah1", // Replace with your link
 		label: "Medium",
+		username: "@KayvanShah1",
 	},
 	{
 		icon: <FaGoogleScholar className="h-5 w-5" />,
@@ -32,6 +35,7 @@ const socialLinks = [
 		svg: FaKaggle,
 		href: "https://www.kaggle.com/kayvanshah", // Replace with your link
 		label: "Kaggle",
+		username: "kayvanshah",
 	},
 	{
 		icon: <HiMail className="h-5 w-5" />,
