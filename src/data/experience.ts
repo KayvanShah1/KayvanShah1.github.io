@@ -130,26 +130,51 @@ export const EXPERIENCES: Experience[] = [
 		companyName: "Climate Connect Digital",
 		positions: [
 			{
+				id: "ccd-pos-0",
+				title: "Data Engineer",
+				employmentPeriod: { start: "Nov 2022", end: "Dec 2022" },
+				location: "Pune, Maharashtra, India (Hybrid)",
+				employmentType: "Freelance",
+				icon: "code",
+				description: `
+**Green Commodities Trading**  
+- Developed **cross-cloud** pipeline streaming *carbon credits* & *trading data* from GCP Pub/Sub into AWS (S3, Glue, DynamoDB) via **Kafka**, implementing decoding, bookkeeping, replay, and failover to sustain thousands of msgs/sec  
+- Curated and prepared a dataset for *carbon offsets price forecasting*, integrating *financial data (commodities, stock indices)* and applying statistical analysis, enhancing feature coverage with 10 new features and improving prediction accuracy  
+- Led end-to-end automation of *carbon registry data* ingestion using **Selenium**, **BeautifulSoup**, and **GCP**; built scalable **Python ETL** pipelines, streamlining workflows and reducing manual effort by 40%  
+- Designed a **Looker Studio dashboard** linking CRM, emissions, and *energy trade data* to surface real-time sales KPIs and carbon impact trends, improving carbon footprint reporting efficiency by 30%
+- Formulated a trading strategy using technical indicators (**RSI, moving averages**), time-series models (**ARIMA, Prophet, RNNs, LSTMs**), and improved forecast accuracy by 4% through pattern recognition and trend analysis
+        `,
+				skills: [
+					"Python",
+					"SQL",
+					"Google Cloud Platform (GCP)",
+					"Amazon Web Services (AWS)",
+					"Selenium",
+					"BeautifulSoup",
+					"Looker Studio",
+					"Time-Series Forecasting",
+					"Data Engineering",
+					"ETL Pipelines",
+					"Data Modeling",
+					"Data Warehousing",
+					"ML Ops",
+				],
+			},
+			{
 				id: "ccd-pos-1",
 				title: "Data Engineer",
-				employmentPeriod: { start: "Feb 2022", end: "Dec 2022" },
+				employmentPeriod: { start: "Feb 2022", end: "Oct 2022" },
 				location: "Pune, Maharashtra, India (Hybrid)",
 				employmentType: "Full-time",
 				icon: "code",
 				description: `
-**Green Commodities Trading**
-- Formulated a trading strategy using technical indicators (**RSI, moving averages**), time-series models (**ARIMA, Prophet, RNNs, LSTMs**), and improved forecast accuracy by 4% through pattern recognition and trend analysis  
-- Developed cross-cloud real-time pipeline to stream carbon credits data (**GCP Pub/Sub → AWS SNS/SQS, S3, Glue, DynamoDB**), with event decoding, replay and failover mechanisms for emissions trading  
-- Curated and prepared a dataset for carbon offsets price forecasting, integrating financial data (commodities, stock indices) and applying statistical analysis, enhancing feature coverage with 10 new features and improving prediction accuracy  
-- Led end-to-end automation of carbon registry data ingestion using **Selenium**, **BeautifulSoup**, and **GCP**; built scalable **Python ETL** pipelines, streamlining workflows and reducing manual effort by 40%  
-- Designed a **Looker Studio dashboard** linking CRM, emissions, and energy trade data to surface real-time sales KPIs and carbon impact trends, improving carbon footprint reporting efficiency by 30%
-
 **Energy Demand & Load Forecasting**
-- Designed an event-driven micro-batch pipeline to ingest power grid data from **GCS → BigQuery** using **Pub/Sub, Cloud Functions, and Dataflow**; reduced end-to-end latency from 15 to 5 minutes and cut cloud costs by 60%  
-- Automated end-to-end ML pipelines for 15-min grid balancing forecasts on GCP (**Beam, BigQuery, MLflow, Prefect**); enabled daily retraining with updated SCADA features, improving forecast accuracy by 3% and reducing turn-around time by 10%  
-- Engineered a **data lakehouse** using BigQuery and Cloud Storage, optimizing query performance for analytics platform through partitioning, materialized views, and stored procedures, reducing data scanning by 30%  
-- Migrated **SCADA data** (MongoDB → BigQuery) via **Apache Beam**, ensuring zero downtime and reducing storage costs by 60%  
-- Refactored weather data pipelines integrating data validation and anomaly detection, automating workflows with **Dagster**, improving maintainability, and reducing pipeline failures by 70%  
+- Designed an **event-driven** pipeline on **GCP (Pub/Sub, Cloud Functions, Dataflow)** to ingest power grid data from **GCS** into **BigQuery**, with processing time of ∼5 min and 60% lower cloud costs compared to real-time streaming
+- Analyzed *power consumption patterns* across 5M+ households and industries using BigQuery, defining KPIs (peak load, daily usage, load factor) to surface insights for **demand forecasting and energy trading** decisions
+- Automated ML pipelines for *15-min grid balancing forecasts* on GCP (**Beam, BigQuery, MLflow, Prefect**); enabled daily retraining and metric-triggered with updated SCADA features, improving forecast accuracy by 3% and reducing turn-around time by 10%  
+- Engineered a **data lakehouse** using BigQuery and Cloud Storage in **dbt**, optimizing query performance for analytics platform through partitioning, materialized views, and stored procedures, reducing data scanning by 30%  
+- Migrated *SCADA data* (MongoDB → BigQuery) via **Apache Beam**, ensuring zero downtime and reducing storage costs by 60%  
+- Refactored *weather data* pipelines integrating data validation and *anomaly detection*, automating workflows with **Dagster**, improving maintainability, and reducing pipeline failures by 70%  
 - Organized 2 sessions on source control and scripting practices, giving an overview of **Data and Machine Learning Operations Systems** for the company’s products
         `,
 				skills: [
@@ -170,6 +195,7 @@ export const EXPERIENCES: Experience[] = [
 					"Data Modeling",
 					"Data Warehousing",
 					"ML Ops",
+					"dbt",
 				],
 			},
 		],
