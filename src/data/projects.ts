@@ -123,8 +123,8 @@ export const PROJECTS: Project[] = [
 * **Kafka-Powered Ingestion** – Uses **Apache Kafka** to capture and buffer sensor events with long-term retention guarantees.`,
 	},
 	{
-		id: "credit-card-fraud-mlops",
-		title: "Credit Card Fraud Detection",
+		id: "transaction-anomaly-detection",
+		title: "Transaction Risk Detection",
 		period: {
 			start: "Nov 2024",
 			end: "Jan 2025",
@@ -146,7 +146,8 @@ export const PROJECTS: Project[] = [
 		],
 		tags: ["MLOps", "ML", "AI", "Finance"],
 		link: "https://github.com/DataForgeOpenAIHub/mlops-credit-card-fraud-detection-end-to-end",
-		summary: "End-to-end fraud detection pipeline with full MLOps integration",
+		summary:
+			"Low-latency fraud detection service with streaming pipeline, explainable ML, and full MLOps integration",
 		description: `A complete fraud detection system built around the **Capital One Transactions Dataset**, combining rigorous modeling with production-grade MLOps practices. The project spans from data wrangling and experimentation to model deployment and CI/CD automation.
 
 * **Advanced Data Prep** – Cleaned raw transaction data for multi-swipe errors, reversed duplicates, missing values, and outliers. Normalized and encoded features; addressed class imbalance via **bootstrapped undersampling**.
@@ -155,6 +156,7 @@ export const PROJECTS: Project[] = [
 * **MLOps + CI/CD** – Packaged the pipeline into **Docker containers**, staged using **GitHub Actions**, and deployed on **AWS** with a **FastAPI**-powered inference service.
 * **Remote Storage with Google Drive** – Used **DVC GDrive remote** to offload data artifacts, with automated setup and remote config via scripts.
 * **Interactive Analysis** – Modular notebooks for data loading, visualization, modeling, and deployment workflows.`,
+		// "description": "Designed a real-time anomaly detection system to flag suspicious financial transactions, combining scalable data engineering with production-grade ML.\n\n* **Streaming Pipeline** – Built end-to-end ingestion and detection workflow (~1M+ tx/day) with deduplication, replay handling, and class balancing.\n* **Risk Scoring Service** – Deployed FastAPI microservice delivering explainable predictions (85% recall) using statistical features + ML models (XGBoost, logistic regression).\n* **MLOps + Reliability** – Tracked experiments in MLflow, versioned data/models with DVC, packaged in Docker, and deployed via AWS Lambda for reproducibility and scalability.\n* **Monitoring & Dashboards** – Integrated alerts and dashboards to reduce manual fraud reviews by 30%."
 	},
 	{
 		id: "productivity-caffeine-sleep",
