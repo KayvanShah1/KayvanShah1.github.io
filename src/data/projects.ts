@@ -290,7 +290,15 @@ export const PROJECTS: Project[] = [
 		period: { start: "Feb 2023", end: "Apr 2023" },
 		skills: ["Web Development", "Data Warehousing", "Docker", "Python", "GitHub Actions", "FastAPI", "MongoDB"],
 		tags: ["Backend"],
+		link: "https://github.com/KayvanShah1/firebase-realtime-db-emulator",
 		summary: "Emulated Firebase Realtime DB with MongoDB + REST APIs",
+		description: `Developed a **local emulator** for Firebase Realtime Database, enabling developers to build and test applications without relying on the cloud service. The emulator mimics Firebase's core functionalities, providing a seamless development experience.
+- Built a FastAPI and Motor backend emulating Firebase Realtime Database **REST semantics** with full CRUD parity.
+- Implemented Firebase-style querying: orderBy $key/$value/child, limitToFirst/Last, startAt, endAt, equalTo, with validation.
+- Designed scalable data model: collection-per-root, _fm_id/_fm_val docs, efficient nested updates via dot-notation and upserts.
+- Productionized service using Docker, Compose, and Okteto; added CORS, JWT foundations, and GitHub Actions CI/CD to Docker Hub.
+- Delivered versioned APIs with OpenAPI/Redoc docs, plus tooling for bulk data ingestion and endpoint verification via tests.		
+`,
 	},
 	{
 		id: "greenfield-datacenter",
