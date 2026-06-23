@@ -2,13 +2,51 @@ import { type Experience } from "@/components/features/profile/types/experiences
 
 export const EXPERIENCES: Experience[] = [
 	{
+		id: "mercor-intelligence",
+		companyName: "Mercor Intelligence",
+		positions: [
+			{
+				id: "mi-1",
+				title: "Generalist - AI Trainer & Evaluation Expert",
+				employmentPeriod: { start: "May 2026"},
+				location: "Remote",
+				employmentType: "Contract",
+				isExpanded: true,
+				icon: "code",
+				description: `
+- Contracted with Frontier AI Labs to improve and evaluate content generation model as an Human-in-the-loop reviewer
+`,
+				skills: ["Research", "Data Analysis", "Writing", "HITL", "Python"],
+			},
+		],
+		isCurrentEmployer: true,
+	},
+	{
+		id: "toptal",
+		companyName: "Toptal",
+		positions: [
+			{
+				id: "toptal-1",
+				title: "Senior Data Engineer",
+				employmentPeriod: { start: "Apr 2026"},
+				location: "Remote",
+				employmentType: "Freelance",
+				isExpanded: true,
+				icon: "code",
+				description: ``,
+				skills: ["GCP", "Data Engineering", "RAG", "LLMs", "Python", "Machine Learning", "AWS", "ETL"],
+			},
+		],
+		isCurrentEmployer: true,
+	},
+	{
 		id: "usc-isi",
 		companyName: "USC Information Sciences Institute",
 		positions: [
 			{
 				id: "usc-isi-pos-1",
-				title: "Software Engineer - AI",
-				employmentPeriod: { start: "Feb 2025" },
+				title: "AI Engineer",
+				employmentPeriod: { start: "Feb 2025" , end: "Feb 2026"},
 				location: "Marina del Rey, CA (Remote)",
 				employmentType: "Part-time",
 				isExpanded: true,
@@ -30,7 +68,7 @@ export const EXPERIENCES: Experience[] = [
 				],
 			},
 		],
-		isCurrentEmployer: true,
+		isCurrentEmployer: false,
 	},
 	// 	{
 	// 		id: "usc",
