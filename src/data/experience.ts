@@ -11,7 +11,7 @@ export const EXPERIENCES: Experience[] = [
 				employmentPeriod: { start: "May 2026"},
 				location: "Remote",
 				employmentType: "Contract",
-				isExpanded: true,
+				isExpanded: false,
 				icon: "code",
 				description: `
 - Contracted with Frontier AI Labs to improve and evaluate content generation model as an Human-in-the-loop reviewer
@@ -31,7 +31,7 @@ export const EXPERIENCES: Experience[] = [
 				employmentPeriod: { start: "Apr 2026"},
 				location: "Remote",
 				employmentType: "Freelance",
-				isExpanded: true,
+				isExpanded: false,
 				icon: "code",
 				description: ``,
 				skills: ["GCP", "Data Engineering", "RAG", "LLMs", "Python", "Machine Learning", "AWS", "ETL"],
