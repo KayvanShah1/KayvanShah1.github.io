@@ -52,8 +52,13 @@ export const EXPERIENCES: Experience[] = [
 				isExpanded: true,
 				icon: "code",
 				description: `
-- Built an **AI teaching companion** that monitored expert workflows and delivered contextual assistance in **Jupyter notebooks** via RAG pipeline (ElasticSearch, FAISS) with 400ms retrieval latency and 90%+ relevance 
-- Designed and integrated GenAI features - Q&A generation, summarization, search, personalized responses leveraging GPT-4o, LLaMA-2, Mistral-7B, and PEFT-finetuned models for improved domain accuracy by 10%
+- Built retrieval infrastructure with **Elasticsearch** and **Flask**, serving docs and code artifacts for contextual notebook ML workflows
+- Implemented **FAISS** semantic caching layer with score thresholding, improving top-k relevance to 85% by filtering 40% irrelevant results
+- Designed *agent reasoning loop* persisting notebook execution state and metadata, reducing manual analysis review effort by 3×
+- Deployed GPU-scheduled inference stack with **vLLM** endpoints, reducing avg response latency to ∼5s for multi-LLM workloads
+- Reduced hallucinations in agent outputs by evaluating task-specific prompts with offline relevance checks & retrieval thresholds
+- Fine-tuned LLMs via **QLoRA** for notebook-assistance tasks, enabling low-cost adaptation and benchmark-driven model selection 
+- Designed and integrated GenAI features - Q&A generation, summarization, search, personalized responses leveraging GPT-4o, LLaMA-2, Mistral-7B, and PEFT-finetuned models for improved domain accuracy
         `,
 				skills: [
 					"Python",
