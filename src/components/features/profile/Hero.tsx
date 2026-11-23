@@ -21,16 +21,17 @@ const Hero = () => {
 			</h1>
 
 			<div className="mt-4 text-center text-xl text-gray-400 sm:text-2xl lg:text-3xl" id="hero-subtitle">
-				Code-driven. Product-focused. Business-savvy.
+				What would someone do differently with better information?
 			</div>
 
 			<div
 				className="mt-4 max-w-150 text-center text-base text-muted-foreground sm:text-lg lg:text-xl"
 				id="hero-description"
 			>
-				I'm a software and ML engineer driven by curiosity and scale – from shaping data infrastructure and
-				AI-driven systems to building intelligence into real-world platforms. I love bridging the gap between
-				raw data, applied machine learning, and impactful products.
+				I’m a data and AI engineer. I like sitting down with the people doing the work and figuring out how they
+				make a call today. What do they trust in the data? Where are they still guessing? Those questions shape
+				what I build, whether that’s a data pipeline they can rely on or an AI tool that helps them work through
+				a decision.
 			</div>
 
 			<a href="#contact">

@@ -7,23 +7,21 @@ const About = () => {
 
 			<div className="flex flex-col-reverse items-center gap-8 md:flex-row">
 				<div className="space-y-4 text-lg leading-relaxed text-muted-foreground md:w-3/5">
-					<p className="mb-6 font-medium text-foreground">
-						Builder first. Not just of pipelines, but of systems that solve real problems.
-					</p>
-					<p className="">
-						I'm drawn to systems — not just ones that process data, but those that drive decisions, power
-						products, and adapt as things evolve. I build software that connects the dots between
-						infrastructure, intelligence, and end-user impact.
-					</p>
-					<p className="">
-						My work lives at the intersection of engineering and business. I care about how things scale,
-						how teams collaborate, and how technical choices ripple into product experience and strategy.
-						Whether it's an ML pipeline or a backend service, I aim to make each system resilient,
-						transparent, and purposeful.
+					<p className="text-foreground">
+						GridLedger started with a question I couldn’t answer from a chart. I could see how much wind and
+						solar power was going unused in Brazil. But if I were paying for a battery, I’d want to know
+						when that power was available, how much I could store, and how often I’d get to use it. I
+						started modeling different battery sizes to see when the investment might make sense.
 					</p>
 					<p>
-						To me, building is as much about alignment as it is execution — bridging technical depth with
-						business context, and shaping solutions that actually move the needle.
+						I write things down while I’m figuring them out. If I can explain how a system works but stumble
+						over why someone would pay for it, that’s usually the part I need to understand better.
+					</p>
+					<p>
+						That’s what I like about forward-deployed engineering. I want to be there when someone tries the
+						first version on a real piece of work. If they open their spreadsheet to double-check an answer,
+						I want to see what they’re checking. They know something about the business that I haven’t
+						accounted for yet.
 					</p>
 				</div>
 
