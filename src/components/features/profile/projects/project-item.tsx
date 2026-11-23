@@ -74,6 +74,10 @@ export function ProjectItem({ className, project, selectedTags = [] }: ProjectIt
 									<h3 className="text-lg leading-snug font-medium text-balance">{project.title}</h3>
 								</div>
 
+								{project.summary && (
+									<p className="mb-2 text-sm text-muted-foreground">{project.summary}</p>
+								)}
+
 								{period && (
 									<dl className="text-sm text-muted-foreground">
 										<dt className="sr-only">Period</dt>
@@ -140,7 +144,6 @@ export function ProjectItem({ className, project, selectedTags = [] }: ProjectIt
 
 				<CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down motion-reduce:animate-none! motion-reduce:duration-0!">
 					<div className="border-edge space-y-4 border-t border-dashed p-4">
-						{project.summary && <p className="text-base font-bold">{project.summary}</p>}
 						{project.description && (
 							<Prose className="text-muted-foreground!">
 								<Markdown>{project.description}</Markdown>

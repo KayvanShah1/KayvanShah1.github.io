@@ -7,16 +7,17 @@ export const EXPERIENCES: Experience[] = [
 		positions: [
 			{
 				id: "mi-1",
+				summary: "I evaluated coding agents on changes that had to work inside an existing repository.",
 				title: "AI/ML Evaluation Engineer",
 				employmentPeriod: { start: "May 2026", end: "Jul 2026" },
 				location: "Remote",
 				employmentType: "Contract",
 				isExpanded: false,
 				icon: "code",
-				description: `
-- Built Docker environments and test harnesses to evaluate AI-generated changes against repository-level tasks.
-- Compared test results, runtime behavior, and task requirements to identify where coding agents repeatedly produced incorrect or incomplete changes.
-`,
+				description: `A patch could look reasonable in isolation and still fail when the application used it. My job was to turn that difference into evidence a model evaluation team could use.
+
+- Built Docker environments and test harnesses around repository tasks so I could run a proposed change under repeatable conditions.
+- Compared the implementation with the task requirements, ran the tests, and checked runtime behavior. I documented where a patch failed and looked for the same failure across other tasks.`,
 				skills: ["Python", "Docker", "Test Automation", "Coding Agent Evaluation"],
 			},
 		],
@@ -28,13 +29,19 @@ export const EXPERIENCES: Experience[] = [
 		positions: [
 			{
 				id: "toptal-1",
+				summary:
+					"Senior Data Engineer in Toptal’s freelance network, focused on data pipelines and analytical warehouses.",
 				title: "Senior Data Engineer",
 				employmentPeriod: { start: "Apr 2026" },
 				location: "Remote",
 				employmentType: "Freelance",
 				isExpanded: false,
 				icon: "code",
-				description: ``,
+				description: `For my technical assessment, I built a B2B commerce pipeline around three sources that change independently: PostgreSQL records, web server logs, and marketing lead spreadsheets.
+
+- Built restartable incremental ingestion with metadata tracking, then modeled the staged records into dbt marts and reports. That made it possible to follow an order from its source through to a sales report and rerun a failed load.
+
+[Explore the public B2B e-commerce project](https://github.com/KayvanShah1/b2b-ecommerce-platform)`,
 				skills: ["GCP", "Data Engineering", "RAG", "LLMs", "Python", "Machine Learning", "AWS", "ETL"],
 			},
 		],
@@ -46,19 +53,19 @@ export const EXPERIENCES: Experience[] = [
 		positions: [
 			{
 				id: "usc-isi-pos-1",
+				summary:
+					"I built the retrieval and model-serving backend for a research assistant that works inside Jupyter notebooks.",
 				title: "AI Engineer",
 				employmentPeriod: { start: "Feb 2025", end: "Feb 2026" },
 				location: "Marina del Rey, CA (Remote)",
 				employmentType: "Volunteer",
 				isExpanded: true,
 				icon: "code",
-				description: `
-Built retrieval and inference services for an assistant that helps researchers work inside Jupyter notebooks.
+				description: `A researcher asking about “the last run” is referring to a particular cell, its code, and its output. I made that execution history available to the assistant so it could distinguish runs and answer follow-up questions in context.
 
-- Indexed documentation and code in Elasticsearch and served it through Flask. A FAISS cache with relevance thresholds filtered out 40% of irrelevant results and brought top-k relevance to 85% on offline checks.
-- Persisted notebook execution state so the assistant could use earlier cells and outputs across a multi-step analysis. RabbitMQ events made backend failures easier to trace.
-- Served models through GPU-scheduled vLLM endpoints at about five seconds per response on average. Evaluated task-specific prompts and QLoRA adapters on notebook assistance tasks.
-`,
+- Indexed code, Markdown, outputs, and execution metadata in Elasticsearch. A FAISS cache matched paraphrased questions to candidate documents. When the match was weak, the service fell back to a fresh search. Offline checks showed **85% top-k relevance** and filtered out **40% of irrelevant results**.
+- Persisted state across reasoning steps and added RabbitMQ events so we could trace which context reached the model. That made it possible to distinguish a retrieval mistake from a bad answer produced with the right evidence.
+- Served models on GPUs through vLLM at about **five seconds per response** on average. Compared task-specific prompts and QLoRA adapters on notebook-assistance tasks.`,
 				skills: [
 					"Python",
 					"TypeScript",
@@ -80,18 +87,18 @@ Built retrieval and inference services for an assistant that helps researchers w
 		positions: [
 			{
 				id: "usc-pos-1",
+				summary:
+					"I led four graders for USC’s DSCI 510 and automated a weekly grading batch that had taken the teaching team about 20 hours.",
 				title: "Course Producer & Grader (Grading Automation)",
 				employmentPeriod: { start: "Aug 2023", end: "Dec 2024" },
 				location: "Los Angeles, CA (Remote)",
 				employmentType: "Part-time",
 				icon: "code",
-				description: `
-For DSCI 510, Principles of Programming for Data Science, the teaching team spent roughly 20 hours a week running student code, checking it against the rubric, and handling regrades. I led four graders and automated that work across 70+ assignments.
+				description: `Each week we ran student code, checked the rubric, wrote feedback, and revisited submissions when a student requested a regrade. Much of that work was the same across submissions. I built a GitHub Classroom workflow we could reuse across **70+ assignments**.
 
-- Built a GitHub Classroom pipeline that dispatched private tests to 100+ isolated GitHub Actions evaluations. Each run checked code with Pytest and Flake8 and preserved its results for review.
-- Brought the full weekly batch, including regrades, down to about **10 minutes**. Students received individual feedback and the teaching team received a consolidated CSV in Slack.
-- Used the time we recovered to design more challenging assignments and answer more questions on the student forum. Instructors teaching similar courses adopted the workflow.
-`,
+- The dispatcher started **100+ isolated GitHub Actions evaluations**. Each runner received the private tests, ran Pytest and Flake8, and preserved the results so a disputed grade could be traced back to the run.
+- The **full weekly batch, including regrades, finished in about 10 minutes**. Each student received individual feedback, and the workflow posted one consolidated results CSV to the teaching team’s Slack channel.
+- We spent the time we recovered designing harder assignments and answering more questions on the student forum. Instructors teaching similar courses adopted the workflow.`,
 				skills: ["Python", "GitHub Actions", "Pytest", "Flake8", "Bash", "CI/CD", "Automation"],
 			},
 		],
@@ -102,16 +109,18 @@ For DSCI 510, Principles of Programming for Data Science, the teaching team spen
 		positions: [
 			{
 				id: "workup-pos-1",
+				summary:
+					"I worked on the data, ranking models, and serving pipeline behind WorkUp’s personalized video feed.",
 				title: "Machine Learning Engineer Intern",
 				employmentPeriod: { start: "Jun 2024", end: "Jul 2024" },
 				location: "Los Angeles, CA (Remote)",
 				employmentType: "Internship",
 				icon: "code",
-				description: `
-- Feature-engineered and preprocessed large datasets via **NVTabular workflows** and **RAPIDS cuDF** for the 'For-You' video recommendation system, optimizing performance with NVIDIA GPUs, achieving 3× faster processing  
-- Trained **DLRM, DCN, and DCNv2** models to predict user interest, achieving a ROC-AUC of 71% with **NVIDIA Merlin** and **TensorFlow**  
-- Deployed models on **AWS SageMaker** with **NVIDIA Triton server**, establishing inference pipeline using **AWS Lambda** and **API Gateway**
-        `,
+				description: `The team needed to estimate which videos a user would be interested in. Preparing the interaction features was a bottleneck before we could even compare ranking models.
+
+- Moved feature preparation onto NVIDIA GPUs with NVTabular and RAPIDS cuDF. The same preprocessing ran about **3× faster** than the CPU workflow.
+- Trained and compared DLRM, DCN, and DCNv2 models using NVIDIA Merlin and TensorFlow. The recommendation model reached **0.71 ROC-AUC**.
+- Deployed inference on SageMaker with NVIDIA Triton, with Lambda and API Gateway connecting the serving endpoint to the application.`,
 				skills: [
 					"Python",
 					"TensorFlow",
@@ -135,15 +144,17 @@ For DSCI 510, Principles of Programming for Data Science, the teaching team spen
 		positions: [
 			{
 				id: "lisus-pos-1",
+				summary:
+					"I used satellite imagery to narrow the search for potential lithium-brine sites in California.",
 				title: "Data Science Intern",
 				employmentPeriod: { start: "Jun 2023", end: "Jul 2023" },
 				location: "Los Angeles, CA (Remote)",
 				employmentType: "Internship",
 				icon: "code",
-				description: `
-- Processed 2 TB of satellite imagery into georeferenced grids for lithium-brine exploration in California. Cropping, cloud masking, and denoising made measurements comparable across locations.
-- Combined ECOSTRESS thermal and Sentinel-1 radar measurements with terrain data. Used DBSCAN and spectral clustering to identify candidate regions, then checked them against elevation, land cover, and evapotranspiration, filtering out about a quarter of the initial candidates.
-`,
+				description: `A warm patch in a satellite image can reflect terrain, land cover, or surface conditions. I combined measurements across sensors and dates so the team had more evidence for deciding which regions deserved investigation.
+
+- Converted **2 TB of satellite imagery** into georeferenced grids. Cropping, cloud masking, and denoising made ECOSTRESS thermal observations and Sentinel-1 radar measurements comparable across locations.
+- Used DBSCAN and spectral clustering to identify candidate regions, then checked them against elevation, land cover, and evapotranspiration. Those checks removed about **a quarter of the initial candidates** before further review.`,
 				skills: [
 					"Python",
 					"Google Earth Engine",
@@ -170,17 +181,17 @@ For DSCI 510, Principles of Programming for Data Science, the teaching team spen
 		positions: [
 			{
 				id: "ccd-pos-0",
+				summary:
+					"I built the data flows that let the carbon-markets team price contracts and reconcile trade events across GCP and AWS.",
 				title: "Data Engineer",
 				employmentPeriod: { start: "Nov 2022", end: "Dec 2022" },
 				location: "Pune, Maharashtra, India (Hybrid)",
 				employmentType: "Freelance",
 				icon: "code",
-				description: `
-Built the data pipeline behind carbon-market pricing and trade reconciliation.
+				description: `The latest trade state served analysts, while investigating a missing update required the original exchange message. I kept both representations and made the event history replayable.
 
-- Bridged GCP Pub/Sub and AWS SNS/SQS with Cloud Functions. Lambda decoded trade events, retained raw messages in S3, and recorded processing state in DynamoDB so failed events could be replayed.
-- Combined CME carbon futures data with market indicators and prepared time-series features for the pricing workflow. Automated carbon registry ingestion and built Looker Studio reporting for the commercial team.
-`,
+- Bridged Pub/Sub to SNS/SQS through Cloud Functions. Lambda decoded messages, S3 kept the originals, and DynamoDB tracked processing state. Event IDs and instrument sequence numbers helped distinguish a duplicate delivery from a missing update.
+- Combined CME futures data with market indicators for pricing features. I also automated carbon-registry collection and built Looker Studio reporting for the commercial team.`,
 				skills: [
 					"Python",
 					"SQL",
@@ -199,20 +210,19 @@ Built the data pipeline behind carbon-market pricing and trade reconciliation.
 			},
 			{
 				id: "ccd-pos-1",
+				summary:
+					"I led the data engineering and MLOps behind plant telemetry and 15-minute load forecasts for five power plants.",
 				title: "Data Engineer",
 				employmentPeriod: { start: "Feb 2022", end: "Oct 2022" },
 				location: "Pune, Maharashtra, India (Hybrid)",
 				employmentType: "Full-time",
 				icon: "code",
-				description: `
-Led data engineering and MLOps for grid forecasting and renewable-site analytics.
+				description: `Grid operators needed forecasts on schedule, even when weather feeds were late or a plant needed its history reprocessed. The ML team developed the forecasting models. I owned the data, automation, serving integrations, and monitoring around them.
 
-- Moved live SCADA publishing from AWS MSK to Pub/Sub and added a GCS batch path for replay and reconciliation. Pipeline cloud spend fell about **60% over a quarter**.
-- Migrated telemetry from MongoDB to BigQuery with parallel ingestion and historical backfills. Existing consumers stayed online throughout. Modeled readings by site, asset, and tag in dbt, reducing query scans by 30%.
-- Built reusable Dataflow jobs for telemetry exports and model results across **20+ sites**. Terraform-managed Cloud Functions launched scheduled and on-demand runs.
-- Automated the ML team's **15-minute load forecasts across five power plants** with Dagster, FastAPI, and MLflow. Monitoring actual load and triggering retraining on drift helped improve accuracy by about 3% and lower deviation penalties by about 10%.
-- Rebuilt weather ingestion as configurable Dagster jobs with validation and retries, reducing pipeline failures by 70%.
-`,
+- Moved live SCADA publishing from AWS MSK to Pub/Sub and built a GCS batch path for replay and reconciliation. The change lowered pipeline cloud spend by **about 60% over a quarter**.
+- Kept legacy consumers online during the move from MongoDB to BigQuery through parallel ingestion and cutoff-based backfills. Modeled site, asset, and tag readings in dbt. Partitioned time aggregates reduced query scans by **30%**.
+- Standardized telemetry exports and result loads across **20+ sites** with Dataflow templates and Terraform-managed Cloud Functions. Rebuilt weather ingestion in Dagster with validation and retries, reducing failures by **70%**.
+- Connected Dagster, FastAPI, and MLflow to run the 15-minute forecast cycle, compare predictions with actual load, and trigger retraining on drift. Across the five plants, forecast accuracy improved about **3%** and deviation penalties fell about **10%**.`,
 				skills: [
 					"Python",
 					"SQL",
@@ -243,14 +253,16 @@ Led data engineering and MLOps for grid forecasting and renewable-site analytics
 		positions: [
 			{
 				id: "taiyo-pos-1",
+				summary:
+					"I helped the team trace missing or stale infrastructure records from their source through to the search index.",
 				title: "Consultant - Data & Machine Learning",
 				employmentPeriod: { start: "Jan 2022", end: "Apr 2022" },
 				location: "San Francisco, CA (Remote)",
 				employmentType: "Part-time",
-				description: `
-- Used Kibana and Logstash to trace recurring ingestion and indexing failures. Error rates fell 40% over three months.
-- Documented schemas, naming conventions, and operating procedures so new engineers could trace a record from its source to the search index.
-`,
+				description: `When a project disappeared from a search result, the underlying problem could be a failed fetch, a transformation, or an indexing error. I used Kibana and Logstash to follow failures across those stages.
+
+- Investigated recurring ingestion and indexing failures and tracked their frequency as we fixed them. Error rates fell **40% over three months**.
+- Documented source schemas, naming conventions, and operating procedures so an engineer onboarding a new feed could follow a known record through the pipeline.`,
 				skills: [
 					"Python",
 					"ELK Stack",
@@ -263,19 +275,18 @@ Led data engineering and MLOps for grid forecasting and renewable-site analytics
 			},
 			{
 				id: "taiyo-pos-2",
+				summary:
+					"I led the data platform and search work that helped infrastructure investors find comparable projects across 50M+ records.",
 				title: "Data & Machine Learning Engineer",
 				icon: "idea",
 				employmentPeriod: { start: "Jul 2021", end: "Dec 2021" },
 				location: "San Francisco, CA (Remote)",
 				employmentType: "Full-time",
-				description: `
-Led data infrastructure and retrieval for an investment research platform where analysts could find comparable projects across **50M+ infrastructure records**.
+				description: `Project notices from different sources can describe the same asset under different names. Investors also need details unique to a particular tender or market. I designed a record model that reconciled shared fields while retaining the original source attributes.
 
-- Built semantic search and similar-project recommendations with domain-adapted BERT embeddings and heuristic reranking. The system reached **85% Precision@10 and 0.7 MRR**.
-- Reconciled duplicate records across sources while preserving source-specific fields. Extracted entities and keyphrases from text and scanned documents, and ran embedding generation and indexing in parallel to keep search aligned with the underlying records. Enrichment closed 27% of project data gaps.
-- Standardized 35+ multistage pipelines with reusable Argo Workflows on AWS Fargate and Terraform. Onboarding a source took half as long, and data-product release cycles shortened by 60%.
-- Organized historical data in S3 and tuned Elasticsearch field mappings and indexes, reducing search latency by 20%.
-`,
+- Enriched standardized records with entities and keyphrases from source text and OCR-processed scans. Parallel embedding generation and indexing kept the search representation tied to each record. The enrichment closed **27% of project data gaps**.
+- Built semantic search and similar-project recommendations using domain-adapted BERT embeddings and heuristic reranking. On our evaluation set, retrieval reached **85% Precision@10 and 0.7 MRR**. Tuning Elasticsearch mappings and indices reduced search latency by **20%**.
+- Standardized **35+ multistage pipelines** with reusable Argo Workflows on AWS Fargate, backed by Terraform and tiered S3 storage. New sources took half as long to integrate and data-product release cycles shortened by **60%**.`,
 				skills: [
 					"Python",
 					"TypeScript",
@@ -297,16 +308,18 @@ Led data infrastructure and retrieval for an investment research platform where 
 			},
 			{
 				id: "taiyo-pos-3",
+				summary:
+					"I built classification and investment-risk models that helped analysts investigate infrastructure projects.",
 				title: "Data Scientist",
 				employmentPeriod: { start: "Jan 2021", end: "Jun 2021" },
 				location: "San Francisco, CA (Remote)",
 				employmentType: "Part-time",
 				icon: "code",
-				description: `
-- Built pipelines for government and multilateral contract data and a reusable ETL framework with checkpoints and restart logic.
-- Trained a weakly supervised BERT classifier to assign sector and subsector labels across roughly 300 classes, reaching 0.80 macro F1 on 100K+ records.
-- Developed investment-risk and survival models using XGBoost and LSTMs. The risk classifier reached 0.84 F1. Django APIs returned predictions and the ten leading SHAP risk drivers in two to five seconds so analysts could investigate a flagged project.
-`,
+				description: `An analyst needed to know why a project was flagged and when risk might emerge. I combined project and tender attributes with economic indicators, and kept the explanation available alongside the score.
+
+- Trained an XGBoost risk classifier that reached **0.84 F1**. Django endpoints returned the score and its ten leading SHAP drivers in two to five seconds. I also developed an LSTM-Cox survival model to study time-to-risk when many project outcomes were still unknown.
+- Used curated seed labels and BERT embeddings to classify 100K+ records across roughly 300 sectors and subsectors. The classifier reached **0.80 macro F1** on a manually reviewed holdout set.
+- Built reusable ingestion and transformation pipelines for government and multilateral contract sources, with checkpoints so interrupted loads could resume.`,
 				skills: [
 					"Python",
 					"TensorFlow",
@@ -324,16 +337,16 @@ Led data infrastructure and retrieval for an investment research platform where 
 			},
 			{
 				id: "taiyo-pos-4",
+				summary: "I built the economic and financial data feeds behind Taiyō’s market scanner.",
 				title: "Data Scientist Intern",
 				employmentPeriod: { start: "Jun 2020", end: "Dec 2020" },
 				location: "San Francisco, CA (Remote)",
 				employmentType: "Internship",
 				icon: "code",
-				description: `
-- Built Airflow pipelines for financial and economic data used by the market scanner. The sources covered more than 60 years of history and supplied ongoing updates.
-- Extended the forecasting toolkit and built Grafana dashboards to compare model performance across assets.
-- Compiled benchmark results for the Stanford HAI AI Index Report 2021.
-`,
+				description: `The team needed historical context as well as fresh observations to compare conditions across markets. I built Airflow jobs for scrapers and APIs that fed those time series into PostgreSQL.
+
+- Expanded the scanner’s coverage across **40+ sources** with more than **60 years of historical data**. Grafana dashboards let the team compare forecasting models and indicators across assets.
+- I also compiled benchmark results for the Stanford HAI AI Index Report 2021.`,
 				skills: [
 					"Python",
 					"Apache Airflow",
@@ -354,17 +367,17 @@ Led data infrastructure and retrieval for an investment research platform where 
 		positions: [
 			{
 				id: "oss-pos-1",
+				summary:
+					"I built backend services that turned uploaded clinical document scans into structured results for review.",
 				title: "Backend Developer Intern",
 				location: "Mumbai, Maharashtra, India (Onsite)",
 				employmentPeriod: { start: "Dec 2019", end: "Jan 2020" },
 				employmentType: "Internship",
 				icon: "code",
-				description: `
-- Built **Django REST Framework** endpoints for secure doc upload, job status, and results; normalized outputs to EHR-friendly JSON
-- Wired an async OCR pipeline using **Tesseract OCR** with **OpenCV** pre-processing (de-skew/denoise) via Celery workers
-- Set up **AWS S3** storage with server-side encryption; added basic RBAC and audit logging for PHI
-- Added processing updates via **Firebase Cloud Messaging** and webhooks for review notifications
-		`,
+				description: `OCR takes longer than a file upload. I separated document submission from processing so the application could return a job ID, show its status, and notify the reviewer when results were ready.
+
+- Built Django REST Framework endpoints for uploads, job status, and structured JSON results. Celery workers used OpenCV to straighten and denoise scans before Tesseract extracted text.
+- Stored documents in S3 with server-side encryption, role-based access, and audit logging. Firebase Cloud Messaging and webhooks delivered processing updates to the review workflow.`,
 				skills: ["Python", "Django", "RESTful APIs", "Firebase", "AWS S3", "Tesseract OCR", "OpenCV"],
 			},
 		],

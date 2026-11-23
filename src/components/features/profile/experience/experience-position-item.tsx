@@ -77,6 +77,7 @@ export function ExperiencePositionItem({ position }: { position: ExperiencePosit
 							</>
 						)}
 					</div>
+					{position.summary && <p className="mt-2 pl-9 text-sm text-muted-foreground">{position.summary}</p>}
 				</CollapsibleTrigger>
 
 				<CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
