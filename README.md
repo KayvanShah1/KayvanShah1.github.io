@@ -4,11 +4,11 @@ This is my personal portfolio, showcasing work in data engineering, MLOps, machi
 
 ## 🧩 Key Features
 
-* **Responsive, Minimal Design** — Tailored for both desktop and mobile devices.
-* **Tabbed Experience Section** — Cleanly displays multi-role and multi-company timelines.
-* **Projects & Education** — Highlights academic background and impactful engineering contributions.
-* **Web3Forms Contact** — Easy-to-use, spam-free form handling.
-* **Creative Visuals** — Includes custom interactive sketches like the circuit tree (p5.js + WebGL).
+- **Responsive, Minimal Design** — Tailored for both desktop and mobile devices.
+- **Tabbed Experience Section** — Cleanly displays multi-role and multi-company timelines.
+- **Projects & Education** — Highlights academic background and impactful engineering contributions.
+- **Web3Forms Contact** — Easy-to-use, spam-free form handling.
+- **Creative Visuals** — Includes custom interactive sketches like the circuit tree (p5.js + WebGL).
 
 ## 🌟 Visual Highlight
 
@@ -19,25 +19,53 @@ A dynamic, interactive visualization of recursive circuit-style trees built usin
 
 All key animation parameters are exposed and can be tweaked, including:
 
-* `maxDepth`, `maxBranchesPerNode`
-* `shineSpeed`, `growthDelay`, `childDelay`, `growthDuration`
-* `treeScale`, `swayDecayDuration`
+- `maxDepth`, `maxBranchesPerNode`
+- `shineSpeed`, `growthDelay`, `childDelay`, `growthDuration`
+- `treeScale`, `swayDecayDuration`
 
 These allow experimentation with different tree behaviors and styles.
 
 ### 🖱️ Interactions
 
-* **Left Click:** Triggers a sway based on click location
-* **Timed Shine:** Pulses from the tree center periodically
-* **Tree Charging:** Brief glow effect before shine
+- **Left Click:** Triggers a sway based on click location
+- **Timed Shine:** Pulses from the tree center periodically
+- **Tree Charging:** Brief glow effect before shine
 
 ## 🛠 Tech Stack
 
-* React + TypeScript + Vite
-* TailwindCSS / ShadCN UI
-* p5.js (WebGL)
-* Web3Forms for contact handling
-* GitHub Pages for deployment
+- React + TypeScript + Vite+
+- TailwindCSS / ShadCN UI
+- p5.js (WebGL)
+- Web3Forms for contact handling
+- GitHub Pages for deployment
+
+## Local Development
+
+Use Node.js 24 (see `.node-version`) and pnpm 12.23.0, pinned in `package.json`.
+If you use the global Vite+ CLI, `vp install` also uses the project's pinned pnpm version.
+
+```sh
+pnpm install
+pnpm dev
+```
+
+| Command             | Purpose                                            |
+| ------------------- | -------------------------------------------------- |
+| `pnpm check`        | Check formatting, lint rules, and types with Vite+ |
+| `pnpm format`       | Format code, including sorting Tailwind classes    |
+| `pnpm format:check` | Check formatting without changing files            |
+| `pnpm lint`         | Run lint rules and type checks                     |
+| `pnpm typecheck`    | Check the project with TypeScript                  |
+| `pnpm build`        | Type-check and build the site into `dist/`         |
+| `pnpm preview`      | Serve the production build locally                 |
+
+Vite+ uses Oxlint and Oxfmt. Their settings live in `vite.config.ts`.
+Linting uses Oxlint defaults with React hook and Fast Refresh checks.
+Commit `pnpm-lock.yaml` when dependencies change; CI installs with `pnpm install --frozen-lockfile`.
+Keep the Vite+ and Vite core versions in `pnpm-workspace.yaml` aligned when upgrading the toolchain.
+
+GitHub Actions checks and builds pushes to `main`, then deploys `dist/` to GitHub Pages.
+For the existing manual branch deployment, `pnpm run deploy` builds the site before publishing with `gh-pages`.
 
 #### License
 
@@ -48,6 +76,7 @@ Read more [here](LICENSE).
 If you'd like to use parts of this project or collaborate, feel free to reach out via the contact form on the site.
 
 #### Disclaimer
+
 <sub>
 This portfolio and the associated code, visuals, and documentation were written and developed by Kayvan Shah, with collaborative input, code structuring, and creative ideation assisted by AI tools including ChatGPT and Perplexity. All content remains the intellectual property of the author unless otherwise stated.  
 </sub>
