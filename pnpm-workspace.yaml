@@ -3,7 +3,12 @@ catalog:
     vite-plus: 1.7.0
 overrides:
     vite@*: "catalog:"
+    # The hero uses only Neuromorph's Canvas 2D core, which has no React imports.
+    "@kayvanshah1/neuromorph@0.1.28>react:peer": "-"
+    "@kayvanshah1/neuromorph@0.1.28>react-dom:peer": "-"
 
 allowBuilds:
     "@firebase/util": true
     protobufjs: true
+patchedDependencies:
+    "@kayvanshah1/neuromorph@0.1.28": patches/@kayvanshah1__neuromorph@0.1.28.patch

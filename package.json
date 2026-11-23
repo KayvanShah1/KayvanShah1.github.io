@@ -39,6 +39,7 @@
 	},
 	"dependencies": {
 		"@icons-pack/react-simple-icons": "^13.7.0",
+		"@kayvanshah1/neuromorph": "0.1.28",
 		"@radix-ui/react-collapsible": "^1.1.12",
 		"@radix-ui/react-dialog": "^1.1.15",
 		"@radix-ui/react-dropdown-menu": "^2.1.15",
@@ -59,7 +60,6 @@
 		"firebase": "^11.10.0",
 		"lucide-react": "^0.525.0",
 		"motion": "^12.23.12",
-		"p5": "^2.0.3",
 		"radix-ui": "^1.4.3",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
@@ -74,7 +74,6 @@
 	"devDependencies": {
 		"@types/mdast": "^4.0.4",
 		"@types/node": "^26.6.6",
-		"@types/p5": "^1.7.6",
 		"@types/react": "^19.1.8",
 		"@types/react-dom": "^19.1.6",
 		"@vitejs/plugin-react": "^6.3.0",

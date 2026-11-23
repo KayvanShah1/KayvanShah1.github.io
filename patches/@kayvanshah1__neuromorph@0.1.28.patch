@@ -1,0 +1,179 @@
+diff --git a/dist/core.js b/dist/core.js
+index 860bfed0035a9dce237363c8845ceebb974aba50..6521aee48698aa7602f292f7b4d4950331d8ac6e 100644
+--- a/dist/core.js
++++ b/dist/core.js
+@@ -49,6 +49,7 @@ var TreeController = class {
+     this.swayStartTime = 0;
+     this.width = 0;
+     this.height = 0;
++    this.pixelRatio = 1;
+     this.handleContextMenu = (e) => {
+       e.preventDefault();
+     };
+@@ -58,7 +59,6 @@ var TreeController = class {
+       const mx = e.clientX - rect.left;
+       const my = e.clientY - rect.top;
+       if (mx < 0 || mx > this.width || my < 0 || my > this.height) return;
+-      this.canvas.focus();
+       const clickedBranch = this.root.findClickedBranch(mx, my, this.config.hitTestRadius) !== null;
+       if (!clickedBranch) return;
+       if (e.button === 0) {
+@@ -68,7 +68,6 @@ var TreeController = class {
+         this.swayStartTime = performance.now();
+       }
+       if (e.button === 2) {
+-        e.preventDefault();
+         this.root.resetShine();
+         this.root.triggerShine(performance.now());
+         this.lastShineTime = performance.now();
+@@ -81,26 +80,23 @@ var TreeController = class {
+       this.lastShineTime = performance.now();
+     };
+     this.handleKeyDown = (e) => {
+-      if (e.key === "s" && this.canvas) {
++      const canvas = this.canvas;
++      if (e.key === "s" && canvas) {
+         const now = /* @__PURE__ */ new Date();
+         const filename = `neuromorph_${now.toISOString().replace(/[:.]/g, "")}`;
+         const region = this.getScreenshotRegion();
++        const scaleX = canvas.width / Math.max(1, this.width);
++        const scaleY = canvas.height / Math.max(1, this.height);
++        const x = Math.round(region.x * scaleX);
++        const y = Math.round(region.y * scaleY);
++        const width = Math.round((region.x + region.width) * scaleX) - x;
++        const height = Math.round((region.y + region.height) * scaleY) - y;
+         const exportCanvas = document.createElement("canvas");
+-        exportCanvas.width = region.width;
+-        exportCanvas.height = region.height;
++        exportCanvas.width = width;
++        exportCanvas.height = height;
+         const exportCtx = exportCanvas.getContext("2d");
+         if (!exportCtx) return;
+-        exportCtx.drawImage(
+-          this.canvas,
+-          region.x,
+-          region.y,
+-          region.width,
+-          region.height,
+-          0,
+-          0,
+-          region.width,
+-          region.height
+-        );
++        exportCtx.drawImage(canvas, x, y, width, height, 0, 0, width, height);
+         const link = document.createElement("a");
+         link.download = `${filename}.png`;
+         link.href = exportCanvas.toDataURL("image/png");
+@@ -113,8 +109,7 @@ var TreeController = class {
+       const previousHeight = this.height;
+       this.width = this.container.clientWidth;
+       this.height = this.container.clientHeight;
+-      this.canvas.width = this.width;
+-      this.canvas.height = this.height;
++      this.updateCanvasResolution();
+       if (!this.root) {
+         this.root = this.createTree();
+         return;
+@@ -127,6 +122,8 @@ var TreeController = class {
+     this.loop = () => {
+       this.animFrameId = requestAnimationFrame(this.loop);
+       if (!this.ctx || !this.root) return;
++      const pixelRatio = window.devicePixelRatio || 1;
++      if (pixelRatio !== this.pixelRatio) this.updateCanvasResolution(pixelRatio);
+       const now = performance.now();
+       const ctx = this.ctx;
+       ctx.clearRect(0, 0, this.width, this.height);
+@@ -136,7 +133,7 @@ var TreeController = class {
+         this.swayStartTime,
+         this.config
+       );
+-      this.root.drawTree(ctx, this.config);
++      this.root.drawTree(ctx, this.config, pixelRatio);
+       if (now - this.lastShineTime > this.config.shineInterval) {
+         this.root.resetShine();
+         this.root.triggerShine(now);
+@@ -193,8 +190,8 @@ var TreeController = class {
+     return count;
+   }
+   getScreenshotRegion() {
+-    const canvasWidth = Math.max(1, this.canvas?.width ?? this.width);
+-    const canvasHeight = Math.max(1, this.canvas?.height ?? this.height);
++    const canvasWidth = Math.max(1, this.width);
++    const canvasHeight = Math.max(1, this.height);
+     if (!this.root) {
+       return { x: 0, y: 0, width: canvasWidth, height: canvasHeight };
+     }
+@@ -255,13 +252,27 @@ var TreeController = class {
+       this.height
+     );
+   }
++  updateCanvasResolution(pixelRatio = window.devicePixelRatio || 1) {
++    const canvas = this.canvas;
++    const ctx = this.ctx;
++    if (!canvas || !ctx) return;
++    this.pixelRatio = pixelRatio;
++    canvas.width = Math.max(1, Math.round(this.width * pixelRatio));
++    canvas.height = Math.max(1, Math.round(this.height * pixelRatio));
++    ctx.setTransform(
++      canvas.width / Math.max(1, this.width),
++      0,
++      0,
++      canvas.height / Math.max(1, this.height),
++      0,
++      0
++    );
++  }
+   createCanvas() {
+     if (!this.container) return;
+     this.width = this.container.clientWidth;
+     this.height = this.container.clientHeight;
+     const canvas = document.createElement("canvas");
+-    canvas.width = this.width;
+-    canvas.height = this.height;
+     canvas.style.width = "100%";
+     canvas.style.height = "100%";
+     canvas.style.display = "block";
+@@ -271,6 +282,7 @@ var TreeController = class {
+     this.container.appendChild(canvas);
+     this.canvas = canvas;
+     this.ctx = canvas.getContext("2d");
++    this.updateCanvasResolution();
+     this.startTime = performance.now();
+     canvas.addEventListener("mousedown", this.handleMouseDown);
+     canvas.addEventListener("dblclick", this.handleDblClick);
+@@ -531,7 +543,7 @@ var Branch = class _Branch {
+       child.updateCanvasBounds(width, height);
+     }
+   }
+-  drawTree(ctx, config) {
++  drawTree(ctx, config, pixelRatio) {
+     if (this.lengthProgress < 0.05 && this.shineProgress < 0) return;
+     const start = this.getStartPosition();
+     const end = this.getEndPosition();
+@@ -583,7 +595,7 @@ var Branch = class _Branch {
+       const trailEnd = this.shineProgress;
+       const eased = Math.pow(this.shineProgress, 0.75);
+       const shineHue = lerp(160, 60, eased);
+-      ctx.shadowBlur = 10;
++      ctx.shadowBlur = 10 * pixelRatio;
+       ctx.shadowColor = `hsla(${shineHue}, 100%, 50%, 0.8)`;
+       for (let i = 0; i < steps; i++) {
+         const t1 = lerp(trailStart, trailEnd, i / steps);
+@@ -613,7 +625,7 @@ var Branch = class _Branch {
+         ctx.fill();
+       }
+       const pulseSize = 3.5 + Math.sin(performance.now() / 100 + this.depth) * 1.4;
+-      ctx.shadowBlur = config.glowStrength;
++      ctx.shadowBlur = config.glowStrength * pixelRatio;
+       ctx.shadowColor = `hsla(${shineHue}, 100%, 60%, 0.9)`;
+       ctx.beginPath();
+       ctx.arc(shineDotX, shineDotY, pulseSize / 2, 0, Math.PI * 2);
+@@ -621,7 +633,7 @@ var Branch = class _Branch {
+       ctx.fill();
+       ctx.shadowBlur = 0;
+     }
+-    for (const child of this.children) child.drawTree(ctx, config);
++    for (const child of this.children) child.drawTree(ctx, config, pixelRatio);
+   }
+ };
+ 

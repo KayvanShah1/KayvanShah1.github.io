@@ -8,34 +8,24 @@ This is my personal portfolio, showcasing work in data engineering, MLOps, machi
 - **Tabbed Experience Section** — Cleanly displays multi-role and multi-company timelines.
 - **Projects & Education** — Highlights academic background and impactful engineering contributions.
 - **Web3Forms Contact** — Easy-to-use, spam-free form handling.
-- **Creative Visuals** — Includes custom interactive sketches like the circuit tree (p5.js + WebGL).
+- **Creative Visuals** — The hero features the interactive Luminous Grove tree.
 
 ## 🌟 Visual Highlight
 
-**Recursive Electric Circuit Tree**
-A dynamic, interactive visualization of recursive circuit-style trees built using `p5.js` with `WebGL` and rendered inside a React component using `p5-wrapper`. The animation features smooth branch growth, shine propagation, tree sway on user interaction, shine reset, and saving a snapshot of the tree and regrowth of tree.
-
-### ⚙️ Customization Options
-
-All key animation parameters are exposed and can be tweaked, including:
-
-- `maxDepth`, `maxBranchesPerNode`
-- `shineSpeed`, `growthDelay`, `childDelay`, `growthDuration`
-- `treeScale`, `swayDecayDuration`
-
-These allow experimentation with different tree behaviors and styles.
+The hero runs the Canvas 2D engine from [Luminous Grove](https://github.com/KayvanShah1/luminous-grove) through the published `@kayvanshah1/neuromorph/core` entry point. The [standalone demo](https://kayvanshah1.github.io/luminous-grove/) includes the full customizer.
 
 ### 🖱️ Interactions
 
-- **Left Click:** Triggers a sway based on click location
-- **Timed Shine:** Pulses from the tree center periodically
-- **Tree Charging:** Brief glow effect before shine
+- Left-click a branch to make it sway.
+- Right-click a branch to send a light pulse through the tree.
+- Double-click the canvas to grow a new tree.
+- Press `S` while the canvas is focused to download a PNG.
 
 ## 🛠 Tech Stack
 
 - React + TypeScript + Vite+
 - TailwindCSS / ShadCN UI
-- p5.js (WebGL)
+- Neuromorph (Canvas 2D)
 - Web3Forms for contact handling
 - GitHub Pages for deployment
 

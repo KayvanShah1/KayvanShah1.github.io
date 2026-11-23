@@ -47,7 +47,7 @@ export const PROJECTS: Project[] = [
 			"Developer Portfolio",
 			"React.js 19",
 			"Tailwind CSS v4",
-			"p5.js",
+			"Canvas 2D",
 			"Motion",
 			"shadcn/ui",
 			"TypeScript",
@@ -59,7 +59,7 @@ export const PROJECTS: Project[] = [
 		description: `A modern portfolio site blending clean design with interactive visuals to highlight my engineering work and creative coding.
 
 * **Immersive UI** – Built with **React + Tailwind v4**, styled for speed and clarity, and enhanced with **shadcn/ui**.
-* **Living Animations** – Features a custom-built **VoltTree circuit tree** using **p5.js**, with recursive growth, shine effects, and interactivity.
+* **Living Animations** – Uses the Canvas 2D engine from [Luminous Grove](https://github.com/KayvanShah1/luminous-grove) for interactive tree growth, light pulses, and sway.
 * **Seamless Navigation** – Responsive design with smooth transitions and optimized performance across devices.
 * **Automated Deploys** – Backed by **GitHub Actions**, ensuring CI/CD with every commit.
 * **Open Source** – Fully available on [GitHub](https://github.com/KayvanShah1/KayvanShah1.github.io)`,
