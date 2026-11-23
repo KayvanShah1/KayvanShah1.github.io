@@ -24,8 +24,7 @@ type ProjectItemProps = {
 };
 
 export function ProjectItem({ className, project, selectedTags = [] }: ProjectItemProps) {
-	const { start, end } = project.period;
-	const isOngoing = !end;
+	const period = project.period;
 
 	const renderLogo = (logo?: LogoType) => {
 		if (!logo) {
@@ -75,21 +74,23 @@ export function ProjectItem({ className, project, selectedTags = [] }: ProjectIt
 									<h3 className="text-lg leading-snug font-medium text-balance">{project.title}</h3>
 								</div>
 
-								<dl className="text-sm text-muted-foreground">
-									<dt className="sr-only">Period</dt>
-									<dd className="flex items-center gap-1">
-										<time dateTime={start}>{start}</time>
-										<span className="font-mono">—</span>
-										{isOngoing ? (
-											<>
-												<InfinityIcon className="size-4.5 translate-y-[0.5px]" aria-hidden />
-												<span className="sr-only">Present</span>
-											</>
-										) : (
-											<time dateTime={end}>{end}</time>
-										)}
-									</dd>
-								</dl>
+								{period && (
+									<dl className="text-sm text-muted-foreground">
+										<dt className="sr-only">Period</dt>
+										<dd className="flex items-center gap-1">
+											<time dateTime={period.start}>{period.start}</time>
+											<span className="font-mono">—</span>
+											{!period.end ? (
+												<>
+													<InfinityIcon className="size-4.5 translate-y-[0.5px]" aria-hidden />
+													<span className="sr-only">Present</span>
+												</>
+											) : (
+												<time dateTime={period.end}>{period.end}</time>
+											)}
+										</dd>
+									</dl>
+								)}
 
 								<div className="mt-1 flex flex-wrap gap-1">
 									{project.tags?.map((tag, idx) => {
