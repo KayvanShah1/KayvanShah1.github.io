@@ -34,7 +34,7 @@ jobs:
 
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v7.0.1
 
             - name: Set up Vite+
               uses: voidzero-dev/setup-vp@v1.22.0
@@ -42,6 +42,15 @@ jobs:
                   node-version-file: ".node-version"
                   cache: true
                   run-install: false
+
+            - name: Verify Node.js version
+              run: |
+                  node --input-type=module -e '
+                    import assert from "node:assert/strict";
+                    import { readFileSync } from "node:fs";
+                    assert.equal(process.versions.node, readFileSync(".node-version", "utf8").trim());
+                    console.log(`Node.js ${process.versions.node}`);
+                  '
 
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
@@ -53,10 +62,10 @@ jobs:
               run: pnpm run build
 
             - name: Setup Pages
-              uses: actions/configure-pages@v5
+              uses: actions/configure-pages@v6.0.0
 
             - name: Upload artifact
-              uses: actions/upload-pages-artifact@v3
+              uses: actions/upload-pages-artifact@v5.0.0
               with:
                   # Upload dist folder
                   path: "./dist"
@@ -75,8 +84,8 @@ jobs:
 
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v7.0.1
 
             - name: Deploy to GitHub Pages
               id: deployment
-              uses: actions/deploy-pages@v4
+              uses: actions/deploy-pages@v5.0.1

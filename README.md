@@ -41,7 +41,7 @@ These allow experimentation with different tree behaviors and styles.
 
 ## Local Development
 
-Use Node.js 24 (see `.node-version`) and pnpm 12.23.0, pinned in `package.json`.
+Use Node.js 26.13.1 (see `.node-version`) and pnpm 12.23.0, pinned in `package.json`.
 If you use the global Vite+ CLI, `vp install` also uses the project's pinned pnpm version.
 
 ```sh
@@ -61,10 +61,12 @@ pnpm dev
 
 Vite+ uses Oxlint and Oxfmt. Their settings live in `vite.config.ts`.
 Linting uses Oxlint defaults with React hook and Fast Refresh checks.
+Lint and check commands fail on warnings as well as errors.
 Commit `pnpm-lock.yaml` when dependencies change; CI installs with `pnpm install --frozen-lockfile`.
 Keep the Vite+ and Vite core versions in `pnpm-workspace.yaml` aligned when upgrading the toolchain.
 
 GitHub Actions checks and builds pushes to `main`, then deploys `dist/` to GitHub Pages.
+The build reads the same Node.js version from `.node-version`. GitHub Pages serves the generated static files and does not run Node.js.
 For the existing manual branch deployment, `pnpm run deploy` builds the site before publishing with `gh-pages`.
 
 #### License

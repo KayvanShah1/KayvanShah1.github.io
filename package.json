@@ -5,7 +5,7 @@
 	"type": "module",
 	"packageManager": "pnpm@12.23.0",
 	"engines": {
-		"node": "^22.18.0 || ^24.11.0 || >=26.0.0"
+		"node": "^26.13.1"
 	},
 	"homepage": "https://kayvanshah1.github.io",
 	"description": "A dev portfolio.",
@@ -28,8 +28,8 @@
 	"scripts": {
 		"dev": "vp dev",
 		"build": "tsc -b && vp build",
-		"lint": "vp lint .",
-		"check": "vp check",
+		"lint": "vp lint --deny-warnings .",
+		"check": "vp check --deny-warnings",
 		"format": "vp fmt",
 		"format:check": "vp fmt --check",
 		"typecheck": "tsc -b",
@@ -73,7 +73,7 @@
 	},
 	"devDependencies": {
 		"@types/mdast": "^4.0.4",
-		"@types/node": "^24.0.13",
+		"@types/node": "^26.6.6",
 		"@types/p5": "^1.7.6",
 		"@types/react": "^19.1.8",
 		"@types/react-dom": "^19.1.6",
