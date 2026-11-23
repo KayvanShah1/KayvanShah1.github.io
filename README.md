@@ -69,6 +69,10 @@ GitHub Actions checks and builds pushes to `main`, then deploys `dist/` to GitHu
 The build reads the same Node.js version from `.node-version`. GitHub Pages serves the generated static files and does not run Node.js.
 For the existing manual branch deployment, `pnpm run deploy` builds the site before publishing with `gh-pages`.
 
+## Editing Portfolio Data
+
+Edit the datasets in [`src/data`](src/data) to update education, experience, leadership, projects, skills, social links, and company logo references. The record types live in [`src/data/types`](src/data/types). Profile sections in `src/components/features/profile` render that data, and image files live in `src/assets`.
+
 #### License
 
 This project is **publicly viewable** for portfolio purposes, but **not licensed for reuse, distribution, or derivative works** without **explicit permission** from the author.

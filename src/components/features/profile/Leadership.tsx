@@ -1,5 +1,5 @@
 import { ExperienceItem } from "@/components/features/profile/experience/experience-item";
-import { LEADERSHIP } from "./data/leadership";
+import { LEADERSHIP } from "@/data/leadership";
 
 const Leadership = () => {
 	return (

@@ -8,7 +8,7 @@ import { UTM_PARAMS } from "@/config/site";
 import { addQueryParams } from "@/utils/url";
 import { ChevronsDownUpIcon, ChevronsUpDownIcon, InfinityIcon, LinkIcon } from "lucide-react";
 
-import type { Project } from "../types/projects";
+import type { Project } from "@/data/types/projects";
 import { Badge } from "@/components/ui/badge";
 
 type LogoType = string | React.ReactNode;

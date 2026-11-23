@@ -1,4 +1,4 @@
-import type { Project } from "@/components/features/profile/types/projects";
+import type { Project } from "./types/projects";
 
 export const PROJECTS: Project[] = [
 	{

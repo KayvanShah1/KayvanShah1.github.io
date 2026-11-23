@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { SKILLS, type Skill } from "@/components/features/profile/data/skills";
+import { SKILLS, type Skill } from "@/data/skills";
 import { SimpleTooltip } from "@/components/ui/tooltip";
 import { Toggle } from "@/components/ui/toggle";
 import { cn } from "@/lib/utils";

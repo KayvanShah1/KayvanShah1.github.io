@@ -7,7 +7,7 @@ import {
 	LightbulbIcon,
 } from "lucide-react";
 
-import type { ExperiencePositionIcon } from "../types/experiences";
+import type { ExperiencePositionIcon } from "@/data/types/experiences";
 
 const iconMap: Record<ExperiencePositionIcon, React.ComponentType<LucideProps>> = {
 	code: CodeXmlIcon,

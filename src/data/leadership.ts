@@ -1,4 +1,4 @@
-import { type Experience } from "@/components/features/profile/types/experiences";
+import type { Experience } from "./types/experiences";
 
 export const LEADERSHIP: Experience[] = [
 	{

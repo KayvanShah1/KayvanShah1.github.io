@@ -38,7 +38,7 @@ function Meteor({ minDelay, maxDelay, minDuration, maxDuration, angle, className
 				className
 			)}
 		>
-			<div className="pointer-events-none absolute top-1/2 -z-10 h-px w-[50px] -translate-y-1/2 bg-linear-to-r from-zinc-500 to-transparent" />
+			<div className="pointer-events-none absolute top-1/2 -z-10 h-px w-12.5 -translate-y-1/2 bg-linear-to-r from-zinc-500 to-transparent" />
 		</span>
 	);
 }

@@ -1,81 +1,80 @@
-import USCLogo from "@/assets/img/USCLogo_PrimShield_Word_RegUse_Card-Blk_RGB.png";
-import DJSCOELogo from "@/assets/img/DJSCOE_Logo.png";
+import type { EducationPosition } from "./types/education";
 
-type EducationRole = {
-	title: string;
-	org: string;
-	period: string;
-};
-
-type Education = {
-	id: number;
-	degree: string;
-	university: string;
-	location?: string;
-	duration: string;
-	gpa?: string;
-	key_courses?: Array<string>;
-	roles?: EducationRole[];
-	logo?: string; // Optional logo URL for the university
-};
-
-const educationData: Education[] = [
+export const EDUCATION: EducationPosition[] = [
 	{
-		id: 1,
+		id: "usc",
 		degree: "Masters of Science in Applied Data Science",
 		university: "University of Southern California",
 		location: "Los Angeles, CA",
-		duration: "2023 – 2024",
+		educationPeriod: {
+			start: "2023",
+			end: "2024",
+		},
 		gpa: "3.62/4.0",
 		key_courses: [
-			"Machine Learning",
-			"Data Management",
-			"Natural Language Processing",
-			"Data Mining",
-			"Deep Learning",
-			"ML Optimization Techniques",
+			"Machine Learning for Data Science",
+			"Foundations of Data Management",
+			"Applications of Natural Language Processing",
+			"Foundations & Applications of Data Mining",
+			"Deep Learning & Applications",
+			"Optimization Techniques for Machine Learning",
+			"Research Methods and Analysis of User Studies",
+			"Data Visualization",
 		],
-		roles: [
-			{
-				title: "Course Producer & Grader",
-				org: "USC DSCI 510 - Principles of Python Programming",
-				period: "Aug 2023 - Dec 2024",
-			},
-			{
-				title: "Graduate Mentor",
-				org: "Viterbi Graduate Student Mentorship Program",
-				period: "Aug 2023 - Dec 2024",
-			},
-			{
-				title: "Technical AI Fellow",
-				org: "USC Center for AI Safety",
-				period: "Jan 2023 - Mar 2023",
-			},
-		],
-		logo: USCLogo,
+		icon: "education",
+		description: `
+- Course Producer & Grader for USC DSCI 510 - Principles of Python Programming (Aug 2023 - Dec 2024)
+- Graduate Mentor for Viterbi Graduate Student Mentorship Program (Aug 2023 - Dec 2024)
+- Technical AI Fellow at USC Center for AI Safety (Jan 2023 - Mar 2023)
+        `,
 	},
 	{
-		id: 2,
+		id: "djsce",
 		degree: "Bachelors of Engineering in Electronics & Telecommunications",
-		university: "D.J. Sanghvi College of Engineering (Mumbai University)",
+		university: "Dwarkadas J. Sanghvi College of Engineering",
 		location: "Mumbai, MH",
-		duration: "2017 – 2021",
+		educationPeriod: {
+			start: "2017",
+			end: "2021",
+		},
 		gpa: "8.77/10",
+		icon: "education",
 		key_courses: [
 			"Big Data Analytics",
 			"Nueral Networks and Fuzzy Logic",
 			"Database Management Systems",
 			"Image Processing and Machine Vision",
+			"Structured Programming Approach",
 		],
-		roles: [
-			{
-				title: "Data Science & Ops Head, Student Mentor",
-				org: "DJ Antariksh",
-				period: "Jan 2020 - May 2021",
-			},
-		],
-		logo: DJSCOELogo,
+		description: `- Graduated with First Class with Distinction
+- Data Science & Ops Head, Student Mentor at DJS Antariksh (Jan 2020 - May 2021)
+
+*Affiliated to University of Mumbai*
+        `,
+	},
+	{
+		id: "pace-jc",
+		degree: "High School Certificate - Science",
+		university: "Pace Junior Science College",
+		location: "Mumbai, MH",
+		educationPeriod: {
+			start: "2015",
+			end: "2017",
+		},
+		icon: "education",
+		key_courses: ["Physics", "Chemistry", "Mathematics"],
+	},
+	{
+		id: "cnms",
+		degree: "Indian Certificate of Secondary Education",
+		university: "Chhatrabhuj Narsee Memorial School",
+		location: "Mumbai, MH",
+		educationPeriod: {
+			start: "2005",
+			end: "2015",
+		},
+		icon: "education",
+		description: `- Graduated with Distinction (Top 15 in school)
+- Top Engineering Drawings in ICSE Board Exam (2015)`,
 	},
 ];
-
-export default educationData;

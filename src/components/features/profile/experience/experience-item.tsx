@@ -1,5 +1,5 @@
 import { Building2 } from "lucide-react";
-import type { Experience } from "../types/experiences";
+import type { Experience } from "@/data/types/experiences";
 import { ExperiencePositionItem } from "./experience-position-item";
 
 export function ExperienceItem({ experience }: { experience: Experience }) {

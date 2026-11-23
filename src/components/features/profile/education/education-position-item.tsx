@@ -6,7 +6,7 @@ import { Prose } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import { ChevronsDownUpIcon, ChevronsUpDownIcon, InfinityIcon } from "lucide-react";
 
-import type { EducationPosition } from "../types/education";
+import type { EducationPosition } from "@/data/types/education";
 import { ExperienceIcon } from "@/components/features/profile/experience/experience-position-icon";
 
 export function EducationPositionItem({ position }: { position: EducationPosition }) {
@@ -117,7 +117,7 @@ export function EducationPositionItem({ position }: { position: EducationPositio
 // 	TimelineSeparator,
 // } from "@/components/ui/timeline";
 
-// import type { EducationPosition } from "../types/education";
+// import type { EducationPosition } from "@/data/types/education";
 // import { ExperienceIcon } from "@/components/features/profile/experience/experience-position-icon";
 
 // export function EducationPositionItem({ position, step }: { position: EducationPosition; step: number }) {

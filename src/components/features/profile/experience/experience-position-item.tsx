@@ -6,7 +6,7 @@ import { Prose } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import { ChevronsDownUpIcon, ChevronsUpDownIcon, InfinityIcon } from "lucide-react";
 
-import type { ExperiencePosition } from "../types/experiences";
+import type { ExperiencePosition } from "@/data/types/experiences";
 import { ExperienceIcon } from "./experience-position-icon";
 
 export function ExperiencePositionItem({ position }: { position: ExperiencePosition }) {

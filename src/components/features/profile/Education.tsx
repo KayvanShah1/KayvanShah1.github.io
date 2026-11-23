@@ -1,4 +1,4 @@
-import { EDUCATION } from "./data/education";
+import { EDUCATION } from "@/data/education";
 import { EducationPositionItem } from "./education/education-position-item";
 
 const Education = () => {
@@ -19,7 +19,7 @@ export default Education;
 
 // education/index (Education.tsx)
 // import { Timeline } from "@/components/ui/timeline";
-// import { EDUCATION } from "./data/education";
+// import { EDUCATION } from "@/data/education";
 // import { EducationPositionItem } from "./education/education-position-item";
 
 // const Education = () => {
