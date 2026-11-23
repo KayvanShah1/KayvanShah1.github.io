@@ -9,7 +9,8 @@ export const PROJECTS: Project[] = [
 		skills: ["Python", "OpenAI Agents SDK", "Groq", "MotherDuck", "Streamlit"],
 		link: "https://github.com/KayvanShah1/conversational-commercial-vehicle-search",
 		summary: "Search 1,000 used commercial-vehicle listings by voice or text in English or Hinglish.",
-		description: "A buyer can change the budget, correct the payload, or ask about the second truck in a shortlist. Vivi carries those constraints across turns and checks every ranked result against the catalog. It passed 51 of 52 voice and text benchmark cases.",
+		description:
+			"A buyer can change the budget, correct the payload, or ask about the second truck in a shortlist. Vivi carries those constraints across turns and checks every ranked result against the catalog. It passed 51 of 52 voice and text benchmark cases.",
 	},
 	{
 		id: "gridledger",
@@ -17,7 +18,8 @@ export const PROJECTS: Project[] = [
 		tags: ["Energy", "Data Engineering", "Analytics"],
 		skills: ["Python", "Polars", "BigQuery", "dbt", "Dagster", "GCP"],
 		summary: "Estimate how much curtailed wind and solar generation battery storage could recover.",
-		description: "Ingested Brazilian grid data into GCS and BigQuery and modeled curtailed generation by plant and region at 30-minute intervals. Simulated batteries with two to twelve hours of storage to compare recovered energy, state of charge, and utilization.",
+		description:
+			"Ingested Brazilian grid data into GCS and BigQuery and modeled curtailed generation by plant and region at 30-minute intervals. Simulated batteries with two to twelve hours of storage to compare recovered energy, state of charge, and utilization.",
 	},
 	{
 		id: "settlesentry",
@@ -26,8 +28,10 @@ export const PROJECTS: Project[] = [
 		tags: ["AI", "Finance", "Backend"],
 		skills: ["Python", "LangGraph", "Pydantic AI", "OpenRouter", "Pytest"],
 		link: "https://github.com/KayvanShah1/settlesentry-payment-collection-agent",
-		summary: "A collection agent that verifies identity before disclosing a balance and requires confirmation before calling a payment tool.",
-		description: "Compared four modes, from fixed rules to model-directed tool calls, against the same 15 simulated collection scenarios. The evaluation recorded no privacy leaks or premature payment calls. Automated conversations averaged 8.6 turns.",
+		summary:
+			"A collection agent that verifies identity before disclosing a balance and requires confirmation before calling a payment tool.",
+		description:
+			"Compared four modes, from fixed rules to model-directed tool calls, against the same 15 simulated collection scenarios. The evaluation recorded no privacy leaks or premature payment calls. Automated conversations averaged 8.6 turns.",
 	},
 	{
 		id: "b2b-ecommerce-data-platform",
@@ -36,8 +40,10 @@ export const PROJECTS: Project[] = [
 		tags: ["Data Engineering", "Analytics"],
 		skills: ["Python", "Dagster", "dbt", "PostgreSQL", "Polars", "MotherDuck", "MinIO"],
 		link: "https://github.com/KayvanShah1/b2b-ecommerce-platform",
-		summary: "A warehouse for tracking orders, product performance, and customer activity as commerce data changes.",
-		description: "Generated synthetic business activity and processed over 10 million rows through incremental loads. Watermarks, manifests, and checkpoints let interrupted runs resume without duplicating orders. Tested dbt marts expose sales trends and customer funnels.",
+		summary:
+			"A warehouse for tracking orders, product performance, and customer activity as commerce data changes.",
+		description:
+			"Generated synthetic business activity and processed over 10 million rows through incremental loads. Watermarks, manifests, and checkpoints let interrupted runs resume without duplicating orders. Tested dbt marts expose sales trends and customer funnels.",
 	},
 	{
 		id: "btm-bess-market-optimizer",
@@ -46,8 +52,10 @@ export const PROJECTS: Project[] = [
 		tags: ["Energy", "Analytics"],
 		skills: ["Python", "Battery Dispatch", "Scenario Analysis", "Streamlit"],
 		link: "https://github.com/KayvanShah1/btm-bess-market-optimizer",
-		summary: "Compare factory peak savings with the revenue from selling a battery’s spare capacity into Swedish reserve markets.",
-		description: "Modeled a 1 MW / 2 MWh behind-the-meter battery serving factory load and solar generation. The dashboard compares hourly dispatch, state of charge, and break-even prices. Adding mFRR improved value in the low-activation scenario, but heavier activation left less energy available for later factory peaks.",
+		summary:
+			"Compare factory peak savings with the revenue from selling a battery's spare capacity into Swedish reserve markets.",
+		description:
+			"Modeled a 1 MW / 2 MWh behind-the-meter battery serving factory load and solar generation. The dashboard compares hourly dispatch, state of charge, and break-even prices. Adding mFRR improved value in the low-activation scenario, but heavier activation left less energy available for later factory peaks.",
 	},
 	{
 		id: "climate-transition-risk",
@@ -56,15 +64,18 @@ export const PROJECTS: Project[] = [
 		tags: ["AI", "Finance", "Research"],
 		skills: ["LlamaIndex", "AlloyDB", "Document AI", "vLLM", "System Design"],
 		summary: "A system design for tracing portfolio climate-risk ratings back to policy and market evidence.",
-		description: "Designed a retrieval workflow that combines exact policy terms, semantic search, and reranking. Agents extract carbon-pricing and demand-shift indicators from the retrieved passages. Deterministic rules assign ratings and retain supporting evidence for review.",
+		description:
+			"Designed a retrieval workflow that combines exact policy terms, semantic search, and reranking. Agents extract carbon-pricing and demand-shift indicators from the retrieved passages. Deterministic rules assign ratings and retain supporting evidence for review.",
 	},
 	{
 		id: "electric-mobility-intelligence",
 		title: "Electric Mobility Intelligence Platform",
 		tags: ["Data Engineering", "Analytics", "Energy"],
 		skills: ["PySpark", "H3", "dbt", "Databricks", "Delta Lake", "Tableau"],
-		summary: "Connect trips, charging sessions, and vehicle telemetry to explain fleet efficiency and charger utilization.",
-		description: "Modeled trips and charging sessions as incremental facts in Delta Lake. H3 cells group trip coordinates for geographic analysis. Partitioned tables and Z-Ordering support the queries behind Tableau dashboards for fleet and charging performance.",
+		summary:
+			"Connect trips, charging sessions, and vehicle telemetry to explain fleet efficiency and charger utilization.",
+		description:
+			"Modeled trips and charging sessions as incremental facts in Delta Lake. H3 cells group trip coordinates for geographic analysis. Partitioned tables and Z-Ordering support the queries behind Tableau dashboards for fleet and charging performance.",
 	},
 	{
 		id: "bfsi-reputation-intelligence",
@@ -73,8 +84,9 @@ export const PROJECTS: Project[] = [
 		tags: ["NLP", "Analytics", "Finance"],
 		skills: ["Python", "Pydantic", "Parquet", "Streamlit"],
 		link: "https://github.com/KayvanShah1/bfsi-reputation-intelligence",
-		summary: "Trace changes in a financial institution’s reputation back to the mentions driving them.",
-		description: "Normalized and deduplicated source mentions, filtered for relevance, and recorded the reason for each driver and sentiment label. A Streamlit dashboard lets reviewers move from a trend to the underlying records.",
+		summary: "Trace changes in a financial institution's reputation back to the mentions driving them.",
+		description:
+			"Normalized and deduplicated source mentions, filtered for relevance, and recorded the reason for each driver and sentiment label. A Streamlit dashboard lets reviewers move from a trend to the underlying records.",
 	},
 	{
 		id: "coretrail",
@@ -84,7 +96,8 @@ export const PROJECTS: Project[] = [
 		skills: ["Jekyll", "Markdown", "GitHub Pages"],
 		link: "https://kayvanshah1.github.io/coretrail/",
 		summary: "A technical interview handbook built around topics I wanted to revisit after interviews.",
-		description: "Organized lessons on data engineering, machine learning, AI, and software engineering by subject so readers can return to a specific concept between interviews.",
+		description:
+			"Organized lessons on data engineering, machine learning, AI, and software engineering by subject so readers can return to a specific concept between interviews.",
 	},
 	{
 		id: "neuromorph-tree",
@@ -94,7 +107,8 @@ export const PROJECTS: Project[] = [
 		skills: ["TypeScript", "Canvas 2D", "React"],
 		link: "https://github.com/KayvanShah1/luminous-grove",
 		summary: "The interactive circuit tree on this portfolio is also a reusable Canvas 2D package.",
-		description: "Procedural branches grow into different structures, pulses travel through the tree, and pointer input changes its movement. The portfolio uses the same published rendering engine as the standalone demo.",
+		description:
+			"Procedural branches grow into different structures, pulses travel through the tree, and pointer input changes its movement. The portfolio uses the same published rendering engine as the standalone demo.",
 	},
 	{
 		id: "mediflow",
@@ -104,7 +118,8 @@ export const PROJECTS: Project[] = [
 		skills: ["Airflow", "dbt", "Snowflake", "Python"],
 		link: "https://github.com/KayvanShah1/mediflow",
 		summary: "A Medicare analytics warehouse for exploring cost of care, provider utilization, and readmissions.",
-		description: "Airflow coordinates claims and provider ingestion. dbt transforms staged data into dimensions, facts, and reporting marts, with checks on the modeled data.",
+		description:
+			"Airflow coordinates claims and provider ingestion. dbt transforms staged data into dimensions, facts, and reporting marts, with checks on the modeled data.",
 	},
 	{
 		id: "taskaza",
@@ -133,10 +148,10 @@ export const PROJECTS: Project[] = [
 		summary: "A smart, conversational productivity app",
 		description: `Built with a secure FastAPI backend and a sleek React frontend, Taskaza lets you manage tasks the way you think, not the way APIs demand.
 
-* **Conversational Tasking** – Add, update, or complete tasks just by telling the **AskBar** what you need.
-* **AI Agent Inside** – Powered by **FastMCP + OpenRouter**, Taskaza translates natural language into real actions.
-* **Secure & Scalable** – Backed by JWT + API key authentication and a Postgres data layer.
-* **End-to-End Experience** – From backend APIs to frontend dashboards, designed for speed, security, and simplicity.
+* **Conversational Tasking** - Add, update, or complete tasks just by telling the **AskBar** what you need.
+* **AI Agent Inside** - Powered by **FastMCP + OpenRouter**, Taskaza translates natural language into real actions.
+* **Secure & Scalable** - Backed by JWT + API key authentication and a Postgres data layer.
+* **End-to-End Experience** - From backend APIs to frontend dashboards, designed for speed, security, and simplicity.
 
 [Try the Taskaza API](https://taskaza.onrender.com/docs) via Swagger UI`,
 		isExpanded: true,
@@ -163,11 +178,11 @@ export const PROJECTS: Project[] = [
 		summary: "An interactive developer portfolio showcasing projects and animations",
 		description: `A modern portfolio site blending clean design with interactive visuals to highlight my engineering work and creative coding.
 
-* **Immersive UI** – Built with **React + Tailwind v4**, styled for speed and clarity, and enhanced with **shadcn/ui**.
-* **Living Animations** – Uses the Canvas 2D engine from [Luminous Grove](https://github.com/KayvanShah1/luminous-grove) for interactive tree growth, light pulses, and sway.
-* **Seamless Navigation** – Responsive design with smooth transitions and optimized performance across devices.
-* **Automated Deploys** – Backed by **GitHub Actions**, ensuring CI/CD with every commit.
-* **Open Source** – Fully available on [GitHub](https://github.com/KayvanShah1/KayvanShah1.github.io)`,
+* **Immersive UI** - Built with **React + Tailwind v4**, styled for speed and clarity, and enhanced with **shadcn/ui**.
+* **Living Animations** - Uses the Canvas 2D engine from [Luminous Grove](https://github.com/KayvanShah1/luminous-grove) for interactive tree growth, light pulses, and sway.
+* **Seamless Navigation** - Responsive design with smooth transitions and optimized performance across devices.
+* **Automated Deploys** - Backed by **GitHub Actions**, ensuring CI/CD with every commit.
+* **Open Source** - Fully available on [GitHub](https://github.com/KayvanShah1/KayvanShah1.github.io)`,
 		logo: "https://kayvanshah1.github.io/dark-logo/favicon-32x32.png",
 	},
 	{
@@ -177,8 +192,10 @@ export const PROJECTS: Project[] = [
 		tags: ["Data Engineering", "Cloud", "Analytics", "Security"],
 		skills: ["Python", "Polars", "Dagster", "dbt", "DuckDB", "MotherDuck"],
 		link: "https://github.com/KayvanShah1/gws-audit-analytics-pipeline",
-		summary: "Investigate token use, logins, SAML, administrative changes, and Drive activity across Google Workspace.",
-		description: "Per-app cursors and overlapping fetch windows recover late events. Polars normalizes and deduplicates records before Dagster triggers incremental warehouse loads and dbt models. The pipeline handled over a million events across five audit feeds.",
+		summary:
+			"Investigate token use, logins, SAML, administrative changes, and Drive activity across Google Workspace.",
+		description:
+			"Per-app cursors and overlapping fetch windows recover late events. Polars normalizes and deduplicates records before Dagster triggers incremental warehouse loads and dbt models. The pipeline handled over a million events across five audit feeds.",
 	},
 	{
 		id: "drive-access-analysis",
@@ -187,8 +204,10 @@ export const PROJECTS: Project[] = [
 		tags: ["Security", "Research"],
 		skills: ["Access Control", "Data Modeling", "Google Drive"],
 		link: "https://github.com/KayvanShah1/gdrive-access-analyzer",
-		summary: "A design study of who can access Drive files through direct grants, groups, shared drives, and inherited permissions.",
-		description: "Mapped the relationships between principals, files, and permissions and documented cases where link sharing or inheritance can expose a file more widely than intended.",
+		summary:
+			"A design study of who can access Drive files through direct grants, groups, shared drives, and inherited permissions.",
+		description:
+			"Mapped the relationships between principals, files, and permissions and documented cases where link sharing or inheritance can expose a file more widely than intended.",
 	},
 	{
 		id: "real-time-event-stream-processing-pipeline",
@@ -212,12 +231,12 @@ export const PROJECTS: Project[] = [
 		summary: "A tool for replaying and recovering missed events in event-driven systems",
 		description: `Designed to maintain **data integrity** in streaming pipelines by filling gaps, repairing corrupted events and recalculating accurate time-series outputs. Originally built to simulate **industrial equipment monitoring**, where replay and recovery are essential for anomaly correction and predictive maintenance. This framework can be extended to **IoT, financial trading, telemetry, and log analytics** domains.
 
-* **File-Based Logging** – Uses **JSONL** for durable, efficient event storage and retrieval.
-* **Heap-Based Ordering** – Ensures events are replayed in correct **chronological order**, preventing skew in time-series data.
-* **Resilient Replay** – Reprocesses events from any timestamp while avoiding duplicates via a **reprocessed set**.
-* **Synthetic Gap Filling** – Generates **probabilistic synthetic events** for missing data, maintaining logical consistency.
-* **Flexible Transmission** – Supports JSON (readable), CSV (compact), and extensible formats (Protobuf/Avro).
-* **Kafka-Powered Ingestion** – Uses **Apache Kafka** to capture and buffer sensor events with long-term retention guarantees.`,
+* **File-Based Logging** - Uses **JSONL** for durable, efficient event storage and retrieval.
+* **Heap-Based Ordering** - Ensures events are replayed in correct **chronological order**, preventing skew in time-series data.
+* **Resilient Replay** - Reprocesses events from any timestamp while avoiding duplicates via a **reprocessed set**.
+* **Synthetic Gap Filling** - Generates **probabilistic synthetic events** for missing data, maintaining logical consistency.
+* **Flexible Transmission** - Supports JSON (readable), CSV (compact), and extensible formats (Protobuf/Avro).
+* **Kafka-Powered Ingestion** - Uses **Apache Kafka** to capture and buffer sensor events with long-term retention guarantees.`,
 	},
 	{
 		id: "transaction-anomaly-detection",
@@ -247,13 +266,13 @@ export const PROJECTS: Project[] = [
 			"Low-latency fraud detection service with streaming pipeline, explainable ML, and full MLOps integration",
 		description: `A complete fraud detection system built around the **Capital One Transactions Dataset**, combining rigorous modeling with production-grade MLOps practices. The project spans from data wrangling and experimentation to model deployment and CI/CD automation.
 
-* **Advanced Data Prep** – Cleaned raw transaction data for multi-swipe errors, reversed duplicates, missing values, and outliers. Normalized and encoded features; addressed class imbalance via **bootstrapped undersampling**.
-* **Modeling Excellence** – Trained multiple ensemble classifiers (RF, GBM, XGBoost), tracked using **MLflow**/**Databricks**, achieving **0.91 F-beta score** with Gradient Boosting and extensive hyperparameter tuning.
-* **Reproducible Pipelines** – All stages managed via **DVC**, including data versioning, pipeline execution (dvc repro), and DAG visualization.
-* **MLOps + CI/CD** – Packaged the pipeline into **Docker containers**, staged using **GitHub Actions**, and deployed on **AWS** with a **FastAPI**-powered inference service.
-* **Remote Storage with Google Drive** – Used **DVC GDrive remote** to offload data artifacts, with automated setup and remote config via scripts.
-* **Interactive Analysis** – Modular notebooks for data loading, visualization, modeling, and deployment workflows.`,
-		// "description": "Designed a real-time anomaly detection system to flag suspicious financial transactions, combining scalable data engineering with production-grade ML.\n\n* **Streaming Pipeline** – Built end-to-end ingestion and detection workflow (~1M+ tx/day) with deduplication, replay handling, and class balancing.\n* **Risk Scoring Service** – Deployed FastAPI microservice delivering explainable predictions (85% recall) using statistical features + ML models (XGBoost, logistic regression).\n* **MLOps + Reliability** – Tracked experiments in MLflow, versioned data/models with DVC, packaged in Docker, and deployed via AWS Lambda for reproducibility and scalability.\n* **Monitoring & Dashboards** – Integrated alerts and dashboards to reduce manual fraud reviews by 30%."
+* **Advanced Data Prep** - Cleaned raw transaction data for multi-swipe errors, reversed duplicates, missing values, and outliers. Normalized and encoded features; addressed class imbalance via **bootstrapped undersampling**.
+* **Modeling Excellence** - Trained multiple ensemble classifiers (RF, GBM, XGBoost), tracked using **MLflow**/**Databricks**, achieving **0.91 F-beta score** with Gradient Boosting and extensive hyperparameter tuning.
+* **Reproducible Pipelines** - All stages managed via **DVC**, including data versioning, pipeline execution (dvc repro), and DAG visualization.
+* **MLOps + CI/CD** - Packaged the pipeline into **Docker containers**, staged using **GitHub Actions**, and deployed on **AWS** with a **FastAPI**-powered inference service.
+* **Remote Storage with Google Drive** - Used **DVC GDrive remote** to offload data artifacts, with automated setup and remote config via scripts.
+* **Interactive Analysis** - Modular notebooks for data loading, visualization, modeling, and deployment workflows.`,
+		// "description": "Designed a real-time anomaly detection system to flag suspicious financial transactions, combining scalable data engineering with production-grade ML.\n\n* **Streaming Pipeline** - Built end-to-end ingestion and detection workflow (~1M+ tx/day) with deduplication, replay handling, and class balancing.\n* **Risk Scoring Service** - Deployed FastAPI microservice delivering explainable predictions (85% recall) using statistical features + ML models (XGBoost, logistic regression).\n* **MLOps + Reliability** - Tracked experiments in MLflow, versioned data/models with DVC, packaged in Docker, and deployed via AWS Lambda for reproducibility and scalability.\n* **Monitoring & Dashboards** - Integrated alerts and dashboards to reduce manual fraud reviews by 30%."
 	},
 	{
 		id: "productivity-caffeine-sleep",
@@ -272,7 +291,8 @@ export const PROJECTS: Project[] = [
 		tags: ["Deep Learning", "Research", "Computer Vision"],
 		link: "https://github.com/shbyun080/OneNet",
 		summary: "Co-authored a channel-wise 1D U-Net for semantic segmentation, presented at IEEE IPTA 2025.",
-		description: "We used pixel rearrangement and channel-wise 1D convolutions to reduce the parameter count of a U-Net encoder. [Read the paper](https://arxiv.org/abs/2411.09838).",
+		description:
+			"We used pixel rearrangement and channel-wise 1D convolutions to reduce the parameter count of a U-Net encoder. [Read the paper](https://arxiv.org/abs/2411.09838).",
 	},
 	{
 		id: "steam-sales-analysis",
@@ -320,7 +340,7 @@ export const PROJECTS: Project[] = [
 		],
 		tags: ["AI", "MLOps", "Education"],
 		summary: "AI-powered teaching assistant automating Piazza Q&A with multimodal retrieval",
-		description: `VirtuTA is an AI-powered **virtual teaching assistant** that enhances university learning by delivering context-aware, multimodal, and automated support for students and instructors. As part of Final project for *DSCI 560 – Data Science Professional Practicum* @ *USC*.
+		description: `VirtuTA is an AI-powered **virtual teaching assistant** that enhances university learning by delivering context-aware, multimodal, and automated support for students and instructors. As part of Final project for *DSCI 560 - Data Science Professional Practicum* @ *USC*.
 * Designed a **multimodal RAG pipeline** (LangChain + Google Gemini) using dual vector stores (Mongo Atlas) for content + logistics queries
 * Integrated with **Piazza API** to auto-answer unresolved student queries in discussion forums
 * Delivered **personalized support**: Q&A, assignment management, logistics updates, and tutoring resources
@@ -357,7 +377,8 @@ export const PROJECTS: Project[] = [
 		skills: ["Python", "Hidden Markov Models", "Viterbi Decoding"],
 		link: "https://github.com/KayvanShah1/pos-tagging-hmm-adversarial-learning",
 		summary: "Compared sequence decoders on Wall Street Journal text for a USC optimization course.",
-		description: "Implemented greedy and Viterbi decoding and evaluated how adversarial training affected part-of-speech tagging accuracy.",
+		description:
+			"Implemented greedy and Viterbi decoding and evaluated how adversarial training affected part-of-speech tagging accuracy.",
 	},
 	{
 		id: "static-analysis-llm",
@@ -366,7 +387,8 @@ export const PROJECTS: Project[] = [
 		period: { start: "Sep 2023", end: "Nov 2023" },
 		tags: ["AI", "Research", "NLP", "Analytics"],
 		skills: ["NLP", "PyTorch", "Python", "LLM", "Data Analysis", "Machine Learning"],
-		summary: "Compared baseline Code Llama generations with static-analysis feedback and preference tuning on Python and C++ samples from XLCoST.",
+		summary:
+			"Compared baseline Code Llama generations with static-analysis feedback and preference tuning on Python and C++ samples from XLCoST.",
 	},
 	{
 		id: "personalized-email-gen",
@@ -419,8 +441,10 @@ export const PROJECTS: Project[] = [
 		period: { start: "Nov 2022", end: "Dec 2022" },
 		tags: ["Data Engineering", "Cloud", "Finance", "Energy"],
 		skills: ["Python", "Pub/Sub", "SNS/SQS", "AWS Lambda", "DynamoDB", "Terraform"],
-		summary: "A Climate Connect system for tracing carbon-market events from ingestion through pricing and reconciliation.",
-		description: "Built a cross-cloud event pipeline with separate paths for archiving, low-latency lookup, and replay. Integrated CME carbon futures and market indicators so analysts could compare contracts and prepare pricing features from the same underlying data.",
+		summary:
+			"A Climate Connect system for tracing carbon-market events from ingestion through pricing and reconciliation.",
+		description:
+			"Built a cross-cloud event pipeline with separate paths for archiving, low-latency lookup, and replay. Integrated CME carbon futures and market indicators so analysts could compare contracts and prepare pricing features from the same underlying data.",
 	},
 	{
 		id: "greenfield-datacenter",

@@ -79,10 +79,13 @@ export function ProjectItem({ className, project, selectedTags = [] }: ProjectIt
 										<dt className="sr-only">Period</dt>
 										<dd className="flex items-center gap-1">
 											<time dateTime={period.start}>{period.start}</time>
-											<span className="font-mono">—</span>
+											<span className="font-mono">-</span>
 											{!period.end ? (
 												<>
-													<InfinityIcon className="size-4.5 translate-y-[0.5px]" aria-hidden />
+													<InfinityIcon
+														className="size-4.5 translate-y-[0.5px]"
+														aria-hidden
+													/>
 													<span className="sr-only">Present</span>
 												</>
 											) : (
