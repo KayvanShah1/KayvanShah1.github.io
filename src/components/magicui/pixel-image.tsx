@@ -1,7 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+
+const MIN_GRID = 1;
+const MAX_GRID = 16;
 
 type Grid = {
 	rows: number;
@@ -37,11 +40,7 @@ export const PixelImage = ({
 	colorRevealDelay = 1300,
 	customGrid,
 }: PixelImageProps) => {
-	const [isVisible, setIsVisible] = useState(false);
-	const [showColor, setShowColor] = useState(false);
-
-	const MIN_GRID = 1;
-	const MAX_GRID = 16;
+	const [randomDelays] = useState(() => Array.from({ length: MAX_GRID * MAX_GRID }, () => Math.random()));
 
 	const { rows, cols } = useMemo(() => {
 		const isValidGrid = (grid?: Grid) => {
@@ -60,14 +59,6 @@ export const PixelImage = ({
 		return isValidGrid(customGrid) ? customGrid! : DEFAULT_GRIDS[grid];
 	}, [customGrid, grid]);
 
-	useEffect(() => {
-		setIsVisible(true);
-		const colorTimeout = setTimeout(() => {
-			setShowColor(true);
-		}, colorRevealDelay);
-		return () => clearTimeout(colorTimeout);
-	}, [colorRevealDelay]);
-
 	const pieces = useMemo(() => {
 		const total = rows * cols;
 		return Array.from({ length: total }, (_, index) => {
@@ -81,36 +72,32 @@ export const PixelImage = ({
         ${col * (100 / cols)}% ${(row + 1) * (100 / rows)}%
       )`;
 
-			const delay = Math.random() * maxAnimationDelay;
+			const delay = randomDelays[index] * maxAnimationDelay;
 			return {
 				clipPath,
 				delay,
 			};
 		});
-	}, [rows, cols, maxAnimationDelay]);
+	}, [rows, cols, maxAnimationDelay, randomDelays]);
 
 	return (
 		<div className="relative h-72 w-72 select-none md:h-96 md:w-96">
 			{pieces.map((piece, index) => (
 				<div
 					key={index}
-					className={cn("absolute inset-0 transition-all ease-out", isVisible ? "opacity-100" : "opacity-0")}
+					className="absolute inset-0"
 					style={{
 						clipPath: piece.clipPath,
-						transitionDelay: `${piece.delay}ms`,
-						transitionDuration: `${pixelFadeInDuration}ms`,
+						animation: `pixel-image-fade-in ${pixelFadeInDuration}ms ease-out ${piece.delay}ms both`,
 					}}
 				>
 					<img
 						src={src}
 						alt={`Pixel image piece ${index + 1}`}
-						className={cn(
-							"z-1 object-cover rounded-[2.5rem]",
-							grayscaleAnimation && (showColor ? "grayscale-0" : "grayscale")
-						)}
+						className={cn("z-1 object-cover rounded-[2.5rem]", grayscaleAnimation && "grayscale")}
 						style={{
-							transition: grayscaleAnimation
-								? `filter ${pixelFadeInDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`
+							animation: grayscaleAnimation
+								? `pixel-image-color-reveal ${pixelFadeInDuration}ms cubic-bezier(0.4, 0, 0.2, 1) ${colorRevealDelay}ms both`
 								: "none",
 						}}
 						draggable={false}

@@ -1,35 +1,14 @@
-import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
 
 export function ModeToggle() {
-	const { setTheme } = useTheme();
-	const [mounted, setMounted] = useState(false);
-	const [isDark, setIsDark] = useState(false);
-
-	useEffect(() => {
-		setMounted(true);
-		try {
-			const stored = localStorage.getItem("theme");
-			if (stored === "light") setIsDark(false);
-			else if (stored === "dark") setIsDark(true);
-			else
-				setIsDark(
-					window.matchMedia("(prefers-color-scheme: dark)").matches ||
-						document.documentElement.classList.contains("dark")
-				);
-		} catch {
-			setIsDark(document.documentElement.classList.contains("dark"));
-		}
-	}, []);
-
-	if (!mounted) return null;
+	const { resolvedTheme, setTheme } = useTheme();
+	const isDark = resolvedTheme === "dark";
 
 	const toggle = () => {
 		const next = isDark ? "light" : "dark";
 		setTheme(next);
-		setIsDark((d) => !d); // ensure instant icon flip
 	};
 
 	return (

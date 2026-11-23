@@ -1,8 +1,8 @@
 import socialLinks from "@/data/socials";
 
-const Footer = () => {
-	const year = new Date().getFullYear();
+const copyrightYear = new Date().getFullYear();
 
+const Footer = () => {
 	return (
 		<footer
 			className="right-0 left-0 mx-4 mt-10 border-t border-border bg-background text-sm text-muted-foreground"
@@ -11,7 +11,7 @@ const Footer = () => {
 			id="footer"
 		>
 			<div className="relative flex flex-col items-center justify-between gap-4 py-6 sm:px-6 md:px-16">
-				<nav className="flex gap-6 md:order-none" aria-label="Social media">
+				<nav className="flex gap-6 md:order-0" aria-label="Social media">
 					{socialLinks.map((link) => (
 						<a
 							key={link.label}
@@ -28,8 +28,8 @@ const Footer = () => {
 				</nav>
 
 				{/* Left: Copyright */}
-				<div className="mb-3 w-full items-center text-center md:order-none">
-					<p>Copyright © {year} Kayvan Shah. All rights reserved.</p>
+				<div className="mb-3 w-full items-center text-center md:order-0">
+					<p>Copyright © {copyrightYear} Kayvan Shah. All rights reserved.</p>
 				</div>
 			</div>
 		</footer>

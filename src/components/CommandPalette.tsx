@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/components/theme-provider";
 import {
 	CommandDialog,
 	CommandEmpty,
@@ -59,26 +60,6 @@ const SOCIAL_LINKS: CommandLinkItem[] = socialLinks.map((s) => ({
 	openInNewTab: true,
 }));
 
-/* ---------- Theme helpers (safe for SSR) ---------- */
-function setTheme(theme: "light" | "dark" | "system") {
-	if (typeof window === "undefined") return;
-	if (theme === "system") {
-		const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-		document.documentElement.classList.toggle("dark", prefersDark);
-		localStorage.setItem("theme", "system");
-	} else {
-		document.documentElement.classList.toggle("dark", theme === "dark");
-		localStorage.setItem("theme", theme);
-	}
-}
-function getResolvedTheme(): "light" | "dark" {
-	if (typeof window === "undefined") return "light";
-	const stored = localStorage.getItem("theme");
-	if (stored === "dark") return "dark";
-	if (stored === "light") return "light";
-	return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
-
 /* ---------- Footer enter hint ---------- */
 const ENTER_ACTION_LABELS: Record<CommandKind, string> = {
 	command: "Run command",
@@ -100,12 +81,7 @@ function buildCommandMetaMap(links: CommandLinkItem[]) {
 export function CommandPalette({ posts }: { posts?: { title: string; slug: string; category?: string }[] }) {
 	const [open, setOpen] = React.useState(false);
 	const [highlightedTitle, setHighlightedTitle] = React.useState<string>("");
-	const [resolvedTheme, setResolvedTheme] = React.useState<"light" | "dark">(getResolvedTheme);
-
-	const handleOpenChange = React.useCallback((nextOpen: boolean) => {
-		if (nextOpen) setResolvedTheme(getResolvedTheme());
-		setOpen(nextOpen);
-	}, []);
+	const { resolvedTheme, setTheme } = useTheme();
 
 	// Open/close by ⌘K / Ctrl+K / '/'
 	React.useEffect(() => {
@@ -116,12 +92,12 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 					return;
 				}
 				e.preventDefault();
-				handleOpenChange(!open);
+				setOpen((previousOpen) => !previousOpen);
 			}
 		};
 		window.addEventListener("keydown", onKey);
 		return () => window.removeEventListener("keydown", onKey);
-	}, [open, handleOpenChange]);
+	}, []);
 
 	// Posts -> links
 	const { blogLinks, componentLinks } = React.useMemo(() => {
@@ -157,18 +133,21 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 		}
 	}, []);
 
-	const handleTheme = React.useCallback((t: "light" | "dark" | "system") => {
-		setOpen(false);
-		setTheme(t);
-		const now = getResolvedTheme();
-		setResolvedTheme(now);
-		toast.success(`Theme: ${t === "system" ? `Auto (${now})` : t}`);
-	}, []);
+	const handleTheme = React.useCallback(
+		(t: "light" | "dark" | "system") => {
+			setOpen(false);
+			setTheme(t);
+			const now =
+				t === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : t;
+			toast.success(`Theme: ${t === "system" ? `Auto (${now})` : t}`);
+		},
+		[setTheme]
+	);
 
 	return (
 		<>
 			{/* Trigger (put this in your navbar) */}
-			<Button variant="outline" className="gap-1.5 rounded-full text-sm" onClick={() => handleOpenChange(true)}>
+			<Button variant="outline" className="gap-1.5 rounded-full text-sm" onClick={() => setOpen(true)}>
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" aria-hidden>
 					<path
 						d="M10.278 11.514a5.824 5.824 0 1 1 1.235-1.235l3.209 3.208A.875.875 0 0 1 14.111 15a.875.875 0 0 1-.624-.278l-3.209-3.208Zm.623-4.69a4.077 4.077 0 1 1-8.154 0 4.077 4.077 0 0 1 8.154 0Z"
@@ -182,7 +161,7 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 				<CommandMenuKbd className="hidden sm:not-[.os-macos_&]:flex">Ctrl K</CommandMenuKbd>
 			</Button>
 
-			<CommandDialog open={open} onOpenChange={handleOpenChange}>
+			<CommandDialog open={open} onOpenChange={setOpen}>
 				<CommandInput placeholder="Type a command or search…" />
 				<CommandList className="min-h-80">
 					<CommandEmpty>No results found.</CommandEmpty>

@@ -6,6 +6,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState, type FormEvent } from "react";
 import { ShineBorder } from "@/components/magicui/shine-border";
 
+function getTextField(formData: FormData, field: string) {
+	const value = formData.get(field);
+	return typeof value === "string" ? value.trim() : "";
+}
+
 const Contact = () => {
 	const apiUrl = import.meta.env.VITE_WEB3FORMS_API_URL;
 	const apiKey = import.meta.env.VITE_WEB3FORMS_API_KEY;
@@ -21,9 +26,9 @@ const Contact = () => {
 		const errors: { [key: string]: string } = {};
 
 		// Extract fields
-		const name = formData.get("name")?.toString().trim() || "";
-		const email = formData.get("email")?.toString().trim() || "";
-		const message = formData.get("message")?.toString().trim() || "";
+		const name = getTextField(formData, "name");
+		const email = getTextField(formData, "email");
+		const message = getTextField(formData, "message");
 
 		// Validate
 		if (!name) errors.name = "Name is required.";
