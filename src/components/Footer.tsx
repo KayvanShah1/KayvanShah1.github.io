@@ -5,7 +5,7 @@ const Footer = () => {
 
 	return (
 		<footer
-			className="border-border text-muted-foreground bg-background right-0 left-0 mx-4 mt-10 border-t text-sm"
+			className="right-0 left-0 mx-4 mt-10 border-t border-border bg-background text-sm text-muted-foreground"
 			role="contentinfo"
 			aria-label="Footer"
 			id="footer"
@@ -20,7 +20,7 @@ const Footer = () => {
 								? {}
 								: { target: "_blank", rel: "noopener noreferrer" })}
 							aria-label={link.label}
-							className="hover:text-foreground transition"
+							className="transition hover:text-foreground"
 						>
 							{link.icon}
 						</a>

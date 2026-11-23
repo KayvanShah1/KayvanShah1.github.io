@@ -68,7 +68,7 @@ function Heading<T extends HeadingTypes = "h1">({ as, className, ...props }: Hea
 			</a>
 
 			<LinkIcon
-				className="text-muted-foreground size-4 shrink-0 opacity-0 transition-opacity peer-hover:opacity-100"
+				className="size-4 shrink-0 text-muted-foreground opacity-0 transition-opacity peer-hover:opacity-100"
 				aria-label="Link to section"
 			/>
 		</Comp>

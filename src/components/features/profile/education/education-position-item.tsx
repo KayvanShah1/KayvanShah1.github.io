@@ -15,7 +15,7 @@ export function EducationPositionItem({ position }: { position: EducationPositio
 
 	return (
 		<Collapsible defaultOpen={position.isExpanded} asChild>
-			<div className="last:before:bg-background relative last:before:absolute last:before:h-full last:before:w-4">
+			<div className="relative last:before:absolute last:before:h-full last:before:w-4 last:before:bg-background">
 				<CollapsibleTrigger
 					className={cn(
 						"group/experience block w-full text-left select-none",
@@ -25,7 +25,7 @@ export function EducationPositionItem({ position }: { position: EducationPositio
 				>
 					<div className="relative z-1 mb-1 flex items-center gap-3">
 						<div
-							className="bg-muted text-muted-foreground flex size-6 shrink-0 items-center justify-center rounded-lg dark:inset-shadow-[1px_1px_1px,0px_0px_1px] dark:inset-shadow-white/15"
+							className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground dark:inset-shadow-[1px_1px_1px,0px_0px_1px] dark:inset-shadow-white/15"
 							aria-hidden
 						>
 							<ExperienceIcon className="size-4" icon={position.icon} />
@@ -33,13 +33,13 @@ export function EducationPositionItem({ position }: { position: EducationPositio
 
 						<h4 className="flex-1 text-base font-medium md:text-lg">{position.university}</h4>
 
-						<div className="text-muted-foreground shrink-0 [&_svg]:size-4" aria-hidden>
+						<div className="shrink-0 text-muted-foreground [&_svg]:size-4" aria-hidden>
 							<ChevronsDownUpIcon className="hidden group-data-[state=open]/experience:block" />
 							<ChevronsUpDownIcon className="hidden group-data-[state=closed]/experience:block" />
 						</div>
 					</div>
 
-					<div className="text-muted-foreground flex items-center gap-2 pl-9 text-sm">
+					<div className="flex items-center gap-2 pl-9 text-sm text-muted-foreground">
 						<>
 							<dl>
 								<dt className="sr-only">Employment Type</dt>
@@ -49,7 +49,7 @@ export function EducationPositionItem({ position }: { position: EducationPositio
 							<Separator className="data-[orientation=vertical]:h-4" orientation="vertical" />
 						</>
 
-						<dl className="text-muted-foreground text-sm">
+						<dl className="text-sm text-muted-foreground">
 							<dt className="sr-only">Employment Period</dt>
 							<dd className="flex items-center gap-1">
 								<time>{start}</time>
@@ -77,9 +77,9 @@ export function EducationPositionItem({ position }: { position: EducationPositio
 					</div>
 				</CollapsibleTrigger>
 
-				<CollapsibleContent className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden duration-300">
+				<CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
 					{position.description && (
-						<Prose className="!text-muted-foreground pt-2 pl-9">
+						<Prose className="pt-2 pl-9 !text-muted-foreground">
 							<Markdown>{position.description}</Markdown>
 						</Prose>
 					)}

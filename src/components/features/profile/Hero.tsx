@@ -26,7 +26,7 @@ const Hero = () => {
 			</div>
 
 			<div
-				className="text-muted-foreground mt-4 max-w-[600px] text-center text-base sm:text-lg lg:text-xl"
+				className="mt-4 max-w-[600px] text-center text-base text-muted-foreground sm:text-lg lg:text-xl"
 				id="hero-description"
 			>
 				I'm a software and ML engineer driven by curiosity and scale – from shaping data infrastructure and

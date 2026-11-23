@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 function SkillIcon({ Icon, label }: { Icon: Skill["icon"]; label: string }) {
 	return (
 		<SimpleTooltip content={label}>
-			<Icon className="text-muted-foreground size-6 shrink-0 md:size-8" />
+			<Icon className="size-6 shrink-0 text-muted-foreground md:size-8" />
 		</SimpleTooltip>
 	);
 }
@@ -47,7 +47,7 @@ export default function Skills() {
 		<section id="skills" className="mx-6 my-10 flex flex-col justify-start py-10 sm:px-8 md:mx-4 md:px-16">
 			<h1 className="mb-4 text-4xl font-semibold">
 				Skills
-				<sup className="text-muted-foreground ml-1 text-sm select-none">
+				<sup className="ml-1 text-sm text-muted-foreground select-none">
 					({filtered.length}/{SKILLS.length})
 				</sup>
 			</h1>
@@ -63,7 +63,7 @@ export default function Skills() {
 						<button
 							type="button"
 							onClick={clear}
-							className="text-muted-foreground ml-auto text-xs underline decoration-dotted underline-offset-4"
+							className="ml-auto text-xs text-muted-foreground underline decoration-dotted underline-offset-4"
 						>
 							Clear ({selected.length})
 						</button>

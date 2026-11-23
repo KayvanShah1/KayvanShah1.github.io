@@ -6,7 +6,7 @@ const Education = () => {
 		<section id="education" className="mx-6 my-10 flex flex-col justify-center py-10 sm:px-8 md:mx-4 md:px-16">
 			<h1 className="mb-8 text-4xl font-semibold">Education</h1>
 
-			<div className="before:bg-border relative space-y-4 before:absolute before:left-3 before:h-full before:w-px">
+			<div className="relative space-y-4 before:absolute before:left-3 before:h-full before:w-px before:bg-border">
 				{EDUCATION.map((position) => (
 					<EducationPositionItem key={position.id} position={position} />
 				))}

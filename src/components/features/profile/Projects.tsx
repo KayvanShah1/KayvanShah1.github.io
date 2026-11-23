@@ -44,7 +44,7 @@ export function ProjectFilters({ allTags, selected, mode, onToggleTag, onClear, 
 			<div className="flex flex-wrap items-center gap-2">
 				Match
 				<Tabs value={mode} onValueChange={(val) => onModeChange(val as Mode)}>
-					<TabsList className="bg-muted/40 rounded-full">
+					<TabsList className="rounded-full bg-muted/40">
 						<TabsTrigger
 							value="AND"
 							className="rounded-full px-3 py-1 text-xs data-[state=active]:!bg-green-600 data-[state=active]:text-white"
@@ -63,7 +63,7 @@ export function ProjectFilters({ allTags, selected, mode, onToggleTag, onClear, 
 					<button
 						type="button"
 						onClick={onClear}
-						className="text-muted-foreground ml-auto text-xs underline decoration-dotted underline-offset-4"
+						className="ml-auto text-xs text-muted-foreground underline decoration-dotted underline-offset-4"
 					>
 						Clear ({selected.length})
 					</button>
@@ -105,7 +105,7 @@ export default function Projects() {
 		<section id="projects" className="mx-6 my-10 flex flex-col justify-center py-10 sm:px-8 md:mx-4 md:px-16">
 			<h1 className="mb-4 text-4xl font-semibold">
 				Projects
-				<sup className="text-muted-foreground ml-1 text-sm select-none">
+				<sup className="ml-1 text-sm text-muted-foreground select-none">
 					({filtered.length}/{PROJECTS.length})
 				</sup>
 			</h1>

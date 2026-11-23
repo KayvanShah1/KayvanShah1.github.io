@@ -4,7 +4,7 @@ import { ExperiencePositionItem } from "./experience-position-item";
 
 export function ExperienceItem({ experience }: { experience: Experience }) {
 	return (
-		<div className="border-border space-y-4 border-b py-4 last:border-b-0">
+		<div className="space-y-4 border-b border-border py-4 last:border-b-0">
 			<div className="flex items-center gap-3">
 				<div className="flex size-6 shrink-0 items-center justify-center select-none">
 					{experience.companyLogo ? (
@@ -18,7 +18,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
 						/>
 					) : (
 						// <span className="flex size-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
-						<Building2 className="text-muted-foreground/70 size-4.5 stroke-1" />
+						<Building2 className="size-4.5 stroke-1 text-muted-foreground/70" />
 					)}
 				</div>
 
@@ -33,7 +33,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
 				)}
 			</div>
 
-			<div className="before:bg-border relative space-y-4 before:absolute before:left-3 before:h-full before:w-px">
+			<div className="relative space-y-4 before:absolute before:left-3 before:h-full before:w-px before:bg-border">
 				{experience.positions.map((position) => (
 					<ExperiencePositionItem key={position.id} position={position} />
 				))}

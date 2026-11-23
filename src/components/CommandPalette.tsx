@@ -271,14 +271,14 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 						>
 							<Icons.contrast />
 							<span className="flex-1">Auto</span>
-							<span className="text-muted-foreground mr-2 text-xs">({resolvedTheme})</span>
+							<span className="mr-2 text-xs text-muted-foreground">({resolvedTheme})</span>
 						</CommandItem>
 					</CommandGroup>
 				</CommandList>
 
 				{/* Footer */}
-				<div className="text-muted-foreground flex items-center justify-between border-t px-3 py-2 text-xs">
-					<NameInitialsSVGComponent className="!text-muted-foreground size-5" />
+				<div className="flex items-center justify-between border-t px-3 py-2 text-xs text-muted-foreground">
+					<NameInitialsSVGComponent className="size-5 text-muted-foreground!" />
 					<div className="flex items-center gap-2">
 						<span className="font-bold">{ENTER_ACTION_LABELS[selectedKind]}</span>
 						<CommandMenuKbd>

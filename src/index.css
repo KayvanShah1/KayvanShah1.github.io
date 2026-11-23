@@ -109,17 +109,21 @@
 			transform: translateZ(0) rotate(360deg);
 		}
 	}
-	--animate-meteor: meteor 5s linear infinite
-;
-  @keyframes meteor {
-  0% {
-    transform: rotate(var(--angle)) translateX(0);
-    opacity: 1;}
-  70% {
-    opacity: 1;}
-  100% {
-    transform: rotate(var(--angle)) translateX(-500px);
-    opacity: 0;}}}
+	--animate-meteor: meteor 5s linear infinite;
+	@keyframes meteor {
+		0% {
+			transform: rotate(var(--angle)) translateX(0);
+			opacity: 1;
+		}
+		70% {
+			opacity: 1;
+		}
+		100% {
+			transform: rotate(var(--angle)) translateX(-500px);
+			opacity: 0;
+		}
+	}
+}
 
 :root {
 	--radius: 0.625rem;
@@ -222,7 +226,7 @@
 		@apply motion-safe:scroll-smooth;
 	}
 	body {
-		@apply bg-background text-foreground overscroll-y-none font-sans antialiased;
+		@apply overscroll-y-none bg-background font-sans text-foreground antialiased;
 		font-synthesis-weight: none;
 		text-rendering: optimizeLegibility;
 	}

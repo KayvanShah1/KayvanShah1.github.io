@@ -8,7 +8,7 @@ export const EXPERIENCES: Experience[] = [
 			{
 				id: "mi-1",
 				title: "Generalist - AI Trainer & Evaluation Expert",
-				employmentPeriod: { start: "May 2026"},
+				employmentPeriod: { start: "May 2026" },
 				location: "Remote",
 				employmentType: "Contract",
 				isExpanded: false,
@@ -28,7 +28,7 @@ export const EXPERIENCES: Experience[] = [
 			{
 				id: "toptal-1",
 				title: "Senior Data Engineer",
-				employmentPeriod: { start: "Apr 2026"},
+				employmentPeriod: { start: "Apr 2026" },
 				location: "Remote",
 				employmentType: "Freelance",
 				isExpanded: false,
@@ -46,7 +46,7 @@ export const EXPERIENCES: Experience[] = [
 			{
 				id: "usc-isi-pos-1",
 				title: "AI Engineer",
-				employmentPeriod: { start: "Feb 2025" , end: "Feb 2026"},
+				employmentPeriod: { start: "Feb 2025", end: "Feb 2026" },
 				location: "Marina del Rey, CA (Remote)",
 				employmentType: "Part-time",
 				isExpanded: true,

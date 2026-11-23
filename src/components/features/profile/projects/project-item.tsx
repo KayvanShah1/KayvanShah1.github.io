@@ -31,7 +31,7 @@ export function ProjectItem({ className, project, selectedTags = [] }: ProjectIt
 		if (!logo) {
 			return (
 				<div
-					className="text-muted-foreground mx-4 size-6 shrink-0 items-center justify-center select-none sm:flex"
+					className="mx-4 size-6 shrink-0 items-center justify-center text-muted-foreground select-none sm:flex"
 					aria-hidden="true"
 				>
 					<Icons.project className="size-5" />
@@ -61,7 +61,7 @@ export function ProjectItem({ className, project, selectedTags = [] }: ProjectIt
 	return (
 		<Collapsible defaultOpen={project.isExpanded} asChild>
 			<div className={className}>
-				<div className="hover:bg-muted/30 flex items-center transition-colors">
+				<div className="flex items-center transition-colors hover:bg-muted/30">
 					{renderLogo(project.logo)}
 
 					<div className="border-edge flex-1 border-l border-dashed">
@@ -75,7 +75,7 @@ export function ProjectItem({ className, project, selectedTags = [] }: ProjectIt
 									<h3 className="text-lg leading-snug font-medium text-balance">{project.title}</h3>
 								</div>
 
-								<dl className="text-muted-foreground text-sm">
+								<dl className="text-sm text-muted-foreground">
 									<dt className="sr-only">Period</dt>
 									<dd className="flex items-center gap-1">
 										<time dateTime={start}>{start}</time>
@@ -115,7 +115,7 @@ export function ProjectItem({ className, project, selectedTags = [] }: ProjectIt
 							{project.link && (
 								<SimpleTooltip content="Open Project Link">
 									<a
-										className="text-muted-foreground hover:text-foreground relative flex size-6 shrink-0 items-center justify-center after:absolute after:-inset-2"
+										className="relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute after:-inset-2 hover:text-foreground"
 										href={addQueryParams(project.link, UTM_PARAMS)}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -126,7 +126,7 @@ export function ProjectItem({ className, project, selectedTags = [] }: ProjectIt
 								</SimpleTooltip>
 							)}
 
-							<div className="text-muted-foreground shrink-0 [&_svg]:size-4" aria-hidden>
+							<div className="shrink-0 text-muted-foreground [&_svg]:size-4" aria-hidden>
 								<ChevronsDownUpIcon className="hidden group-data-[state=open]/project:block" />
 								<ChevronsUpDownIcon className="hidden group-data-[state=closed]/project:block" />
 							</div>
@@ -134,7 +134,7 @@ export function ProjectItem({ className, project, selectedTags = [] }: ProjectIt
 					</div>
 				</div>
 
-				<CollapsibleContent className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden duration-300 motion-reduce:!animate-none motion-reduce:!duration-0">
+				<CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down motion-reduce:!animate-none motion-reduce:!duration-0">
 					<div className="border-edge space-y-4 border-t border-dashed p-4">
 						{project.summary && <p className="text-base font-bold">{project.summary}</p>}
 						{project.description && (

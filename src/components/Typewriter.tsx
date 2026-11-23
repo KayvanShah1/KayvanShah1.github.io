@@ -76,7 +76,7 @@ const Typewriter: FC<TypewriterProps> = ({ children, speed = 50, cursor = true, 
 	return (
 		<span>
 			{renderTypedContent(children, { count: typedChars })}
-			{cursor && <span className="animate-blink inline-block w-[1ch] text-green-400">|</span>}
+			{cursor && <span className="inline-block w-[1ch] animate-blink text-green-400">|</span>}
 		</span>
 	);
 };

@@ -50,7 +50,7 @@ const Navbar = () => {
 
 	return (
 		<header
-			className="bg-background sticky inset-0 top-0 z-50 w-full overflow-x-hidden"
+			className="sticky inset-0 top-0 z-50 w-full overflow-x-hidden bg-background"
 			id="navbar"
 			role="navigation"
 		>
@@ -80,7 +80,7 @@ const Navbar = () => {
 						</NavigationMenuList>
 					</NavigationMenu>
 
-					<div className="bg-border h-6 w-px self-center" />
+					<div className="h-6 w-px self-center bg-border" />
 					<div className="flex items-center gap-3">
 						<CommandPalette />
 						<NavItemGitHub />
@@ -89,7 +89,7 @@ const Navbar = () => {
 				</div>
 
 				{/* Mobile Nav using NavigationMenu */}
-				<div className="bg-background flex items-center justify-between gap-2 md:hidden">
+				<div className="flex items-center justify-between gap-2 bg-background md:hidden">
 					<div className="flex items-center gap-2">
 						<CommandPalette />
 						<NavItemGitHub />
@@ -106,7 +106,7 @@ const Navbar = () => {
 				</div>
 				{isOpen && (
 					<div id="mobile-menu" className="fixed inset-x-0 top-16 left-24 z-[60] md:hidden">
-						<div className="bg-background mx-4 rounded-xl border p-2 shadow-md">
+						<div className="mx-4 rounded-xl border bg-background p-2 shadow-md">
 							<nav className="flex flex-col">
 								{navItems.map((item, index) => (
 									<React.Fragment key={item.label}>
