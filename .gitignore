@@ -45,7 +45,6 @@ node_modules/
 # Ignore lock files
 package-lock.json
 yarn.lock
-pnpm-lock.yaml
 lerna-lock.json
 # Ignore IDE specific files
 .idea/

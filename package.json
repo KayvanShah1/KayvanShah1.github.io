@@ -3,6 +3,10 @@
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
+	"packageManager": "pnpm@12.23.0",
+	"engines": {
+		"node": "^22.18.0 || ^24.11.0 || >=26.0.0"
+	},
 	"homepage": "https://kayvanshah1.github.io",
 	"description": "A dev portfolio.",
 	"author": {
@@ -22,13 +26,16 @@
 		"url": "git+https://github.com/kayvanshah1.github.io"
 	},
 	"scripts": {
-		"dev": "vite",
-		"build": "tsc -b && vite build",
-		"lint": "eslint .",
-		"preview": "vite preview",
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -d dist",
-		"upgrade:tailwind": "npx @tailwindcss/upgrade@latest"
+		"dev": "vp dev",
+		"build": "tsc -b && vp build",
+		"lint": "vp lint .",
+		"check": "vp check",
+		"format": "vp fmt",
+		"format:check": "vp fmt --check",
+		"typecheck": "tsc -b",
+		"preview": "vp preview",
+		"deploy": "pnpm run build && gh-pages -d dist",
+		"upgrade:tailwind": "pnpm dlx @tailwindcss/upgrade@latest"
 	},
 	"dependencies": {
 		"@icons-pack/react-simple-icons": "^13.7.0",
@@ -44,7 +51,7 @@
 		"@radix-ui/react-tooltip": "^1.2.7",
 		"@radix-ui/react-visually-hidden": "^1.2.3",
 		"@tailwindcss/typography": "^0.5.16",
-		"@tailwindcss/vite": "^4.1.11",
+		"@tailwindcss/vite": "^4.3.5",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"cmdk": "^1.1.1",
@@ -65,25 +72,19 @@
 		"tailwind-merge": "^3.3.1"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.30.1",
+		"@types/mdast": "^4.0.4",
 		"@types/node": "^24.0.13",
 		"@types/p5": "^1.7.6",
 		"@types/react": "^19.1.8",
 		"@types/react-dom": "^19.1.6",
-		"@vitejs/plugin-react": "^4.6.0",
-		"eslint": "^9.30.1",
-		"eslint-plugin-react-hooks": "^5.2.0",
-		"eslint-plugin-react-refresh": "^0.4.20",
+		"@vitejs/plugin-react": "^6.3.0",
 		"gh-pages": "^6.3.0",
-		"globals": "^16.3.0",
-		"prettier": "^3.6.2",
-		"prettier-plugin-tailwindcss": "^0.6.14",
-		"tailwindcss": "^4.1.11",
+		"tailwindcss": "^4.3.5",
 		"tw-animate-css": "^1.3.5",
 		"typescript": "~5.8.3",
-		"typescript-eslint": "^8.35.1",
+		"unified": "^11.0.5",
 		"unist-builder": "^3.0.0",
 		"unist-util-visit": "^5.0.0",
-		"vite": "^7.0.4"
+		"vite-plus": "catalog:"
 	}
 }
