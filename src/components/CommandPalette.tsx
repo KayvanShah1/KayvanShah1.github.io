@@ -100,7 +100,12 @@ function buildCommandMetaMap(links: CommandLinkItem[]) {
 export function CommandPalette({ posts }: { posts?: { title: string; slug: string; category?: string }[] }) {
 	const [open, setOpen] = React.useState(false);
 	const [highlightedTitle, setHighlightedTitle] = React.useState<string>("");
-	const [resolvedTheme, setResolvedTheme] = React.useState<"light" | "dark">(getResolvedTheme());
+	const [resolvedTheme, setResolvedTheme] = React.useState<"light" | "dark">(getResolvedTheme);
+
+	const handleOpenChange = React.useCallback((nextOpen: boolean) => {
+		if (nextOpen) setResolvedTheme(getResolvedTheme());
+		setOpen(nextOpen);
+	}, []);
 
 	// Open/close by ⌘K / Ctrl+K / '/'
 	React.useEffect(() => {
@@ -111,16 +116,12 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 					return;
 				}
 				e.preventDefault();
-				setOpen((o) => !o);
+				handleOpenChange(!open);
 			}
 		};
 		window.addEventListener("keydown", onKey);
 		return () => window.removeEventListener("keydown", onKey);
-	}, []);
-
-	React.useEffect(() => {
-		if (open) setResolvedTheme(getResolvedTheme());
-	}, [open]);
+	}, [open, handleOpenChange]);
 
 	// Posts -> links
 	const { blogLinks, componentLinks } = React.useMemo(() => {
@@ -167,7 +168,7 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 	return (
 		<>
 			{/* Trigger (put this in your navbar) */}
-			<Button variant="outline" className="gap-1.5 rounded-full text-sm" onClick={() => setOpen(true)}>
+			<Button variant="outline" className="gap-1.5 rounded-full text-sm" onClick={() => handleOpenChange(true)}>
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" aria-hidden>
 					<path
 						d="M10.278 11.514a5.824 5.824 0 1 1 1.235-1.235l3.209 3.208A.875.875 0 0 1 14.111 15a.875.875 0 0 1-.624-.278l-3.209-3.208Zm.623-4.69a4.077 4.077 0 1 1-8.154 0 4.077 4.077 0 0 1 8.154 0Z"
@@ -181,7 +182,7 @@ export function CommandPalette({ posts }: { posts?: { title: string; slug: strin
 				<CommandMenuKbd className="hidden sm:not-[.os-macos_&]:flex">Ctrl K</CommandMenuKbd>
 			</Button>
 
-			<CommandDialog open={open} onOpenChange={setOpen}>
+			<CommandDialog open={open} onOpenChange={handleOpenChange}>
 				<CommandInput placeholder="Type a command or search…" />
 				<CommandList className="min-h-80">
 					<CommandEmpty>No results found.</CommandEmpty>
