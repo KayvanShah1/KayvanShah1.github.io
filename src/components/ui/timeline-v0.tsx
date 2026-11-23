@@ -19,7 +19,7 @@ const TimelineHeader = React.forwardRef<HTMLParagraphElement, React.HTMLAttribut
 		<div
 			ref={ref}
 			className={cn(
-				"after:border-primary-foreground/95 after:bg-foreground mb-1 flex flex-col items-start before:absolute before:left-2 before:h-full before:-translate-x-1/2 before:translate-y-3 before:self-start before:bg-slate-300 before:px-px group-last:before:hidden after:absolute after:left-2 after:box-content after:h-2 after:w-2 after:-translate-x-1/2 after:translate-y-1.5 after:rounded-full after:border-4 sm:flex-row sm:before:left-0 sm:before:ml-[10rem] sm:after:left-0 sm:after:ml-[10rem]",
+				"after:border-primary-foreground/95 after:bg-foreground mb-1 flex flex-col items-start before:absolute before:left-2 before:h-full before:-translate-x-1/2 before:translate-y-3 before:self-start before:bg-slate-300 before:px-px group-last:before:hidden after:absolute after:left-2 after:box-content after:h-2 after:w-2 after:-translate-x-1/2 after:translate-y-1.5 after:rounded-full after:border-4 sm:flex-row sm:before:left-0 sm:before:ml-40 sm:after:left-0 sm:after:ml-40",
 				className
 			)}
 			{...props}

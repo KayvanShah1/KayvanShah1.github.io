@@ -79,7 +79,7 @@ export function EducationPositionItem({ position }: { position: EducationPositio
 
 				<CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
 					{position.description && (
-						<Prose className="pt-2 pl-9 !text-muted-foreground">
+						<Prose className="pt-2 pl-9 text-muted-foreground!">
 							<Markdown>{position.description}</Markdown>
 						</Prose>
 					)}
@@ -199,7 +199,7 @@ export function EducationPositionItem({ position }: { position: EducationPositio
 // 					<CollapsibleContent className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden duration-300">
 // 						{position.description && (
 // 							<TimelineContent className="pt-1">
-// 								<Prose className="!text-muted-foreground">
+// 								<Prose className="text-muted-foreground!">
 // 									<Markdown>{position.description}</Markdown>
 // 								</Prose>
 // 							</TimelineContent>

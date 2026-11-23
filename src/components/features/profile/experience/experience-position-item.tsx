@@ -81,7 +81,7 @@ export function ExperiencePositionItem({ position }: { position: ExperiencePosit
 
 				<CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
 					{position.description && (
-						<Prose className="pt-2 pl-9 !text-muted-foreground">
+						<Prose className="pt-2 pl-9 text-muted-foreground!">
 							<Markdown>{position.description}</Markdown>
 						</Prose>
 					)}

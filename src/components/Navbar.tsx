@@ -105,7 +105,7 @@ const Navbar = () => {
 					</Button>
 				</div>
 				{isOpen && (
-					<div id="mobile-menu" className="fixed inset-x-0 top-16 left-24 z-[60] md:hidden">
+					<div id="mobile-menu" className="fixed inset-x-0 top-16 left-24 z-60 md:hidden">
 						<div className="mx-4 rounded-xl border bg-background p-2 shadow-md">
 							<nav className="flex flex-col">
 								{navItems.map((item, index) => (

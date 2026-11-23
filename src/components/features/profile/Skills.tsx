@@ -19,7 +19,7 @@ function DomainPill({ domain, active, onClick }: { domain: string; active: boole
 			onPressedChange={onClick}
 			className={cn(
 				"rounded-full px-3 py-1 text-xs transition duration-300",
-				active ? "!text-green-400 ring-2 ring-green-400/70" : "bg-muted text-muted-foreground hover:bg-muted/70"
+				active ? "text-green-400! ring-2 ring-green-400/70" : "bg-muted text-muted-foreground hover:bg-muted/70"
 			)}
 		>
 			{domain}

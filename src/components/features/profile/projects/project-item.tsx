@@ -134,11 +134,11 @@ export function ProjectItem({ className, project, selectedTags = [] }: ProjectIt
 					</div>
 				</div>
 
-				<CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down motion-reduce:!animate-none motion-reduce:!duration-0">
+				<CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down motion-reduce:animate-none! motion-reduce:duration-0!">
 					<div className="border-edge space-y-4 border-t border-dashed p-4">
 						{project.summary && <p className="text-base font-bold">{project.summary}</p>}
 						{project.description && (
-							<Prose className="!text-muted-foreground">
+							<Prose className="text-muted-foreground!">
 								<Markdown>{project.description}</Markdown>
 							</Prose>
 						)}

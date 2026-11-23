@@ -15,7 +15,7 @@ function HomePage() {
 	return (
 		<>
 			<Navbar />
-			<main className="mx-auto max-w-screen overflow-x-hidden md:max-w-screen-xl">
+			<main className="mx-auto max-w-screen overflow-x-hidden md:max-w-(--breakpoint-xl)">
 				<Hero />
 				<About />
 				<Skills />

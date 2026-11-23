@@ -26,7 +26,7 @@ const Experience = () => {
 							<TabsTrigger
 								key={exp.id}
 								value={exp.id}
-								className="hover:bg-muted/70 h-auto w-full border-b-4 border-transparent px-4 py-2 text-center break-words whitespace-normal transition-colors duration-200 focus-visible:outline-none data-[state=active]:!border-b-green-400"
+								className="hover:bg-muted/70 h-auto w-full border-b-4 border-transparent px-4 py-2 text-center wrap-break-word whitespace-normal transition-colors duration-200 focus-visible:outline-none data-[state=active]:border-b-green-400!"
 							>
 								{exp.company}
 							</TabsTrigger>
@@ -99,8 +99,8 @@ const Experience = () => {
 						</div>
 					))}
 				</Marquee>
-				<div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r" />
-				<div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l" />
+				<div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-linear-to-r" />
+				<div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-linear-to-l" />
 			</div> */}
 
 			<div className="">

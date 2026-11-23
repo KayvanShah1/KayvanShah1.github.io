@@ -28,7 +28,7 @@ export function TagToggle({ tag, active, onClick }: TagToggleProps) {
 			className={[
 				"rounded-full px-3 py-1 text-xs transition duration-300",
 				active
-					? "!text-green-400 ring-2 ring-green-400/70"
+					? "text-green-400! ring-2 ring-green-400/70"
 					: "bg-muted text-muted-foreground hover:bg-muted/70",
 			].join(" ")}
 		>
@@ -47,13 +47,13 @@ export function ProjectFilters({ allTags, selected, mode, onToggleTag, onClear, 
 					<TabsList className="rounded-full bg-muted/40">
 						<TabsTrigger
 							value="AND"
-							className="rounded-full px-3 py-1 text-xs data-[state=active]:!bg-green-600 data-[state=active]:text-white"
+							className="rounded-full px-3 py-1 text-xs data-[state=active]:bg-green-600! data-[state=active]:text-white"
 						>
 							AND
 						</TabsTrigger>
 						<TabsTrigger
 							value="OR"
-							className="rounded-full px-3 py-1 text-xs data-[state=active]:!bg-green-600 data-[state=active]:text-white"
+							className="rounded-full px-3 py-1 text-xs data-[state=active]:bg-green-600! data-[state=active]:text-white"
 						>
 							OR
 						</TabsTrigger>
