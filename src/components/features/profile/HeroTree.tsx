@@ -20,7 +20,7 @@ export function HeroTree() {
 	}, []);
 
 	return (
-		<div className="group relative mt-20 mb-10 h-65 w-full max-w-150 sm:h-81.25">
+		<div className="group relative mt-20 mb-10 h-65 w-full max-w-150 sm:h-81.25 lg:mt-10 lg:mb-6 lg:h-121.875 lg:max-w-225">
 			<div ref={containerRef} className="size-full" />
 			<p
 				aria-hidden="true"

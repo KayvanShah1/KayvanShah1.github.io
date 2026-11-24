@@ -193,7 +193,7 @@ overrides:
   '@kayvanshah1/neuromorph@0.1.28>react-dom:peer': '-'
 
 patchedDependencies:
-  '@kayvanshah1/neuromorph@0.1.28': 07abf48800ae52c091d1aa2b175551907784dff6947966e49f6f8f0edb5f7b2c
+  '@kayvanshah1/neuromorph@0.1.28': 1d7bf9263237886402d457c7e0844556244e0f8a7e7df2d7a422444ce38b0c68
 
 importers:
 
@@ -204,7 +204,7 @@ importers:
         version: 13.7.0(react@19.1.0)
       '@kayvanshah1/neuromorph':
         specifier: 0.1.28
-        version: 0.1.28(patch_hash=07abf48800ae52c091d1aa2b175551907784dff6947966e49f6f8f0edb5f7b2c)
+        version: 0.1.28(patch_hash=1d7bf9263237886402d457c7e0844556244e0f8a7e7df2d7a422444ce38b0c68)
       '@radix-ui/react-collapsible':
         specifier: ^1.1.12
         version: 1.1.12(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -3600,7 +3600,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.4
 
-  '@kayvanshah1/neuromorph@0.1.28(patch_hash=07abf48800ae52c091d1aa2b175551907784dff6947966e49f6f8f0edb5f7b2c)': {}
+  '@kayvanshah1/neuromorph@0.1.28(patch_hash=1d7bf9263237886402d457c7e0844556244e0f8a7e7df2d7a422444ce38b0c68)': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

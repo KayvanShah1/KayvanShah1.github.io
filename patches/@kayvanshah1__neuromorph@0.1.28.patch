@@ -1,5 +1,5 @@
 diff --git a/dist/core.js b/dist/core.js
-index 860bfed0035a9dce237363c8845ceebb974aba50..6d9660f45ba163954e2bc5c5be47fc932bafa6a6 100644
+index 860bfed0035a9dce237363c8845ceebb974aba50..128dd50c8bcce77bc2dd926c47e8205af3ecef13 100644
 --- a/dist/core.js
 +++ b/dist/core.js
 @@ -36,6 +36,11 @@ function constrain(value, low, high) {
@@ -165,7 +165,7 @@ index 860bfed0035a9dce237363c8845ceebb974aba50..6d9660f45ba163954e2bc5c5be47fc93
        1,
        canvasHeight
      );
-@@ -240,19 +246,54 @@ var TreeController = class {
+@@ -240,19 +246,55 @@ var TreeController = class {
      return { x: cropX, y: cropY, width, height };
    }
    createTree() {
@@ -200,8 +200,9 @@ index 860bfed0035a9dce237363c8845ceebb974aba50..6d9660f45ba163954e2bc5c5be47fc93
 +    // Reserve room for leaves and pulse glow without letting animated effects resize the drawing.
 +    const padding = Math.max(26, this.config.glowStrength, this.config.branchThickness / 2) + 12;
 +    const halfWidth = Math.max(treeWidth / 2 - minX, maxX - treeWidth / 2);
++    const maxScale = Math.max(1, Math.min(this.width / treeWidth, this.height / treeHeight));
 +    const scale = Math.min(
-+      1,
++      maxScale,
 +      this.width / (2 * (halfWidth + padding)),
 +      this.height / (maxY - minY + 2 * padding)
 +    );
@@ -228,7 +229,7 @@ index 860bfed0035a9dce237363c8845ceebb974aba50..6d9660f45ba163954e2bc5c5be47fc93
      );
    }
    createCanvas() {
-@@ -260,8 +301,6 @@ var TreeController = class {
+@@ -260,8 +302,6 @@ var TreeController = class {
      this.width = this.container.clientWidth;
      this.height = this.container.clientHeight;
      const canvas = document.createElement("canvas");
@@ -237,7 +238,7 @@ index 860bfed0035a9dce237363c8845ceebb974aba50..6d9660f45ba163954e2bc5c5be47fc93
      canvas.style.width = "100%";
      canvas.style.height = "100%";
      canvas.style.display = "block";
-@@ -271,6 +310,7 @@ var TreeController = class {
+@@ -271,6 +311,7 @@ var TreeController = class {
      this.container.appendChild(canvas);
      this.canvas = canvas;
      this.ctx = canvas.getContext("2d");
@@ -245,7 +246,7 @@ index 860bfed0035a9dce237363c8845ceebb974aba50..6d9660f45ba163954e2bc5c5be47fc93
      this.startTime = performance.now();
      canvas.addEventListener("mousedown", this.handleMouseDown);
      canvas.addEventListener("dblclick", this.handleDblClick);
-@@ -286,6 +326,7 @@ var Branch = class _Branch {
+@@ -286,6 +327,7 @@ var Branch = class _Branch {
    constructor(opts, createdTime, config, canvasWidth, canvasHeight) {
      this.lengthProgress = 0;
      this.children = [];
@@ -253,7 +254,7 @@ index 860bfed0035a9dce237363c8845ceebb974aba50..6d9660f45ba163954e2bc5c5be47fc93
      this.shineProgress = -1;
      this.shineStartTime = null;
      this.baseAngle = opts.angle;
-@@ -319,18 +360,16 @@ var Branch = class _Branch {
+@@ -319,18 +361,16 @@ var Branch = class _Branch {
        const swayElapsed = now - swayStartTime;
        if (swayElapsed < config.swayDecay) {
          const decayFactor = 1 - swayElapsed / config.swayDecay;
@@ -276,7 +277,7 @@ index 860bfed0035a9dce237363c8845ceebb974aba50..6d9660f45ba163954e2bc5c5be47fc93
      }
      if (this.shineProgress >= 0 && this.shineProgress < 1) {
        const shineElapsed = (now - (this.shineStartTime ?? now)) / 1e3;
-@@ -353,12 +392,39 @@ var Branch = class _Branch {
+@@ -353,12 +393,39 @@ var Branch = class _Branch {
      const x = start.x + Math.cos(angle) * previewLength;
      const y = start.y + Math.sin(angle) * previewLength;
      const margin = Math.random() * (1 + this.depth / 6);
@@ -320,7 +321,7 @@ index 860bfed0035a9dce237363c8845ceebb974aba50..6d9660f45ba163954e2bc5c5be47fc93
      const childAngles = [];
      const spread = config.branchSpread / 50 * (Math.PI / 3);
      if (this.depth <= 1) {
-@@ -518,20 +584,7 @@ var Branch = class _Branch {
+@@ -518,20 +585,7 @@ var Branch = class _Branch {
      }
      return null;
    }
@@ -342,7 +343,7 @@ index 860bfed0035a9dce237363c8845ceebb974aba50..6d9660f45ba163954e2bc5c5be47fc93
      if (this.lengthProgress < 0.05 && this.shineProgress < 0) return;
      const start = this.getStartPosition();
      const end = this.getEndPosition();
-@@ -583,7 +636,7 @@ var Branch = class _Branch {
+@@ -583,7 +637,7 @@ var Branch = class _Branch {
        const trailEnd = this.shineProgress;
        const eased = Math.pow(this.shineProgress, 0.75);
        const shineHue = lerp(160, 60, eased);
@@ -351,7 +352,7 @@ index 860bfed0035a9dce237363c8845ceebb974aba50..6d9660f45ba163954e2bc5c5be47fc93
        ctx.shadowColor = `hsla(${shineHue}, 100%, 50%, 0.8)`;
        for (let i = 0; i < steps; i++) {
          const t1 = lerp(trailStart, trailEnd, i / steps);
-@@ -613,7 +666,7 @@ var Branch = class _Branch {
+@@ -613,7 +667,7 @@ var Branch = class _Branch {
          ctx.fill();
        }
        const pulseSize = 3.5 + Math.sin(performance.now() / 100 + this.depth) * 1.4;
@@ -360,7 +361,7 @@ index 860bfed0035a9dce237363c8845ceebb974aba50..6d9660f45ba163954e2bc5c5be47fc93
        ctx.shadowColor = `hsla(${shineHue}, 100%, 60%, 0.9)`;
        ctx.beginPath();
        ctx.arc(shineDotX, shineDotY, pulseSize / 2, 0, Math.PI * 2);
-@@ -621,7 +674,7 @@ var Branch = class _Branch {
+@@ -621,7 +675,7 @@ var Branch = class _Branch {
        ctx.fill();
        ctx.shadowBlur = 0;
      }
@@ -369,7 +370,7 @@ index 860bfed0035a9dce237363c8845ceebb974aba50..6d9660f45ba163954e2bc5c5be47fc93
    }
  };
  
-@@ -639,4 +692,4 @@ var createNeuromorphTree = (container, config = {}, onNodeCount) => {
+@@ -639,4 +693,4 @@ var createNeuromorphTree = (container, config = {}, onNodeCount) => {
  
  export { TreeController, createNeuromorphTree, defaultConfig };
  //# sourceMappingURL=core.js.map
